@@ -1,4 +1,3 @@
-import { useState } from "react"
 import './PProjects.css'
 import { CProjectCard } from "../../components/CProjectCard/CProjectCard"
 import { CInput } from "../../components/CInput/CInput"
