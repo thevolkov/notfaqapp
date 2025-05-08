@@ -1,0 +1,10 @@
+.custom-input {
+  width: 100%;
+  padding: 35px 0;
+  outline: none;
+  background: none;
+  border: none;
+  font-size: var(--font-size-xs);
+  caret-color: #fff;
+  color: #fff;
+}
