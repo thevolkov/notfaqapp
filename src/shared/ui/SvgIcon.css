@@ -1,0 +1,21 @@
+.svg-icon {
+  display: inline-block;
+  vertical-align: middle;
+  fill: none;
+}
+
+.white {
+  stroke: var(--light);
+}
+
+.success {
+  stroke: var(--success);
+}
+
+.warning {
+  stroke: var(--warning);
+}
+
+.danger {
+  stroke: var(--danger);
+}

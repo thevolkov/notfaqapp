@@ -1,0 +1,100 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popup-content label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: fit-content;
+}
+
+.popup-content input,
+.popup-content textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.popup-content textarea {
+  resize: vertical;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.links-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.faq-row {
+  flex-wrap: wrap;
+}
+
+.faq-row input {
+  flex: 1;
+  min-width: 150px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.popup-content button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/*.popup-content button[type="button"] {*/
+/*  background: #6c757d;*/
+/*}*/
+
+.popup-content button.remove-button {
+  background: #dc3545;
+  position: relative;
+}
+
+/*.popup-content button:hover {*/
+/*  opacity: 0.9;*/
+/*}*/

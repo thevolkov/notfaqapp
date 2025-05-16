@@ -1,0 +1,62 @@
+.project-page {
+  /*max-width: 800px;*/
+  /*margin: 0 auto;*/
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--xl);
+}
+
+.project-image {
+  display: inline-flex;
+  gap: var(--m);
+}
+
+.project-header {
+  margin-bottom: 20px;
+}
+
+.project-page img {
+  width: 60%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.links {
+  /*margin: 20px 0;*/
+}
+
+.links a {
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.faq {
+  /*margin-top: 20px;*/
+}
+
+.faq h3 {
+  /*margin: 10px 0 5px;*/
+}
+
+.project-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--m);
+}
+
+/*.project-actions button {*/
+/*  padding: 10px 20px;*/
+/*  background: #007bff;*/
+/*  color: white;*/
+/*  border: none;*/
+/*  border-radius: 4px;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*.project-actions .delete-button {*/
+/*  background: #dc3545;*/
+/*}*/
+
+/*.project-actions button:hover {*/
+/*  opacity: 0.9;*/
+/*}*/

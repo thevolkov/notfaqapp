@@ -1,0 +1,16 @@
+.faq {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--l);
+  padding-bottom: var(--l);
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-content {
+  width: 95%;
+}
+
+.faq-answer {
+  margin-top: var(--l);
+}

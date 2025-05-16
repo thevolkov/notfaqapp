@@ -1,0 +1,8 @@
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  background: var(--opacity-dark);
+}

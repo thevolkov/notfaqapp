@@ -1,0 +1,6 @@
+.title {
+  width: 100%;
+  font-size: var(--xl);
+  line-height: calc(var(--xl) - 5%);
+  font-weight: 800;
+}

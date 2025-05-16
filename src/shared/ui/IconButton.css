@@ -1,0 +1,39 @@
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  width: fit-content;
+  color: var(--light);
+}
+
+.icon-button--success {
+  background: var(--success);
+}
+
+.icon-button--warning {
+  background: var(--warning);
+}
+
+.icon-button--danger {
+  background: var(--danger);
+}
+
+.icon-button--round {
+  padding: 1rem;
+}
+
+.icon-button__icon {
+  transform: rotate(0deg);
+  transition: transform .5s ease;
+}
+
+.icon-button__icon--rotate {
+  transform: rotate(45deg);
+}
+
+.icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

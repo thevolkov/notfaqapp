@@ -1,0 +1,64 @@
+.user-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.user-header {
+  margin-bottom: 20px;
+}
+
+.permissions-section {
+  margin-top: 20px;
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.edit-user-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.edit-user-section label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.edit-user-section select {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.projects-list label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-user-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}

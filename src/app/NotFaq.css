@@ -1,0 +1,39 @@
+.content {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2.5rem;
+  max-width: 1290px;
+}
+
+.b-radius {
+  border-radius: var(--xl);
+}
+
+.shadow {
+  box-shadow: 0 .25rem .75rem var(--opacity-dark);
+}
+
+.bg-blur {
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.user-switch {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+}
