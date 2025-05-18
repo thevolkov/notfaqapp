@@ -2,10 +2,23 @@
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  padding: .5rem 1rem;
   cursor: pointer;
   width: fit-content;
   color: var(--light);
+  opacity: .75;
+  transition: opacity 1s ease;
+}
+
+.icon-button:hover {
+  opacity: 1;
+}
+
+.icon-button--light-alpha {
+  background: var(--light-alpha-0025);
+}
+
+.icon-button--dark-alpha {
+  background: var(--dark-alpha-05);
 }
 
 .icon-button--success {
@@ -21,7 +34,7 @@
 }
 
 .icon-button--round {
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .icon-button__icon {

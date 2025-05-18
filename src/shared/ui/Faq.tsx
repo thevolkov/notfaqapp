@@ -2,35 +2,38 @@ import './Faq.css';
 import Title from './Title';
 import IconButton from './IconButton';
 import { useState } from 'react';
+import {type FAQ} from '../../entities/project/projectSlice';
 
-// import type { FAQ } from '../../entities/project/projectSlice';
+export default function Faq({ faqData }: {faqData: FAQ[]}) {
 
-// interface FaqProps {
-//   question: string;
-//   answer: string;
-// }
+  const [faqId, setFaqId] = useState<string | null>(null);
 
-export default function Faq({faqData}) {
-
-  const [isAnswerOpen, setIsAnswerOpen] = useState(true);
+  const handleAnswerToggle = (id: string) => {
+    setFaqId(prevId => (prevId === id ? null : id));
+  };
 
   return (
     <>
-      <Title text="Frequently asked questions"/>
-      {faqData.map((item, index) => (
-        <div className="faq" key={index}>
-          <div className="faq-content">
-            <Title text={item.question}/>
-            {isAnswerOpen && (<div className="faq-answer">{item.answer}</div>)}
+      <Title text="Frequently asked questions" size="2xl" />
+      <div className="faq">
+        {faqData.map((item) => (
+          <div className="faq-wrapper" key={item.id}>
+            <div className="faq-content">
+              <div className="faq-question" onClick={() => handleAnswerToggle(item.id)}>
+                <Title text={item.question} size="l" />
+                <IconButton
+                  variant="light-alpha"
+                  iconId="plus"
+                  className="b-radius"
+                  iconSize="2"
+                  rotate={item.id === faqId}
+                />
+              </div>
+              {item.id === faqId && (<div className="faq-answer">{item.answer}</div>)}
+            </div>
           </div>
-
-          <IconButton
-            iconId="plus"
-            onClick={() => setIsAnswerOpen(!isAnswerOpen)}
-            rotate={isAnswerOpen}
-          />
-        </div>
-      ))}
+        ))}
+      </div>
     </>
   )
 }

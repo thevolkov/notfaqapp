@@ -1,11 +1,11 @@
-import SvgIcon from './SvgIcon';
+// Icon List: https://icons.getbootstrap.com/#icons
 import './IconButton.css';
 
 interface IconButtonProps {
   text?: string;
   iconId?: string;
-  iconColor?: string;
-  variant?: 'success' | 'warning' | 'danger' ;
+  iconSize?: string;
+  variant?: 'success' | 'warning' | 'danger' | 'light-alpha' | 'dark-alpha';
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   disabled?: boolean;
@@ -16,7 +16,7 @@ interface IconButtonProps {
 export default function IconButton({
   text,
   iconId,
-  iconColor = 'white',
+  iconSize,
   variant,
   type = 'button',
   onClick,
@@ -28,15 +28,10 @@ export default function IconButton({
   const getIconButtonClass = (variant?: string, text?: string) => {
     const classes = []
 
-    if (!variant) {
-      classes.push('p-0')
-    } else {
-      classes.push(`icon-button--${variant}`)
-    }
+    if (!variant) classes.push('p-0')
+    else classes.push(`icon-button--${variant}`)
 
-    if (!text) {
-      classes.push('icon-button--round')
-    }
+    if (!text) classes.push('icon-button--round')
 
     return classes.join(' ')
   }
@@ -48,12 +43,9 @@ export default function IconButton({
       onClick={onClick}
       disabled={disabled}
     >
-      {iconId &&
-          <SvgIcon
-              id={iconId}
-              color={iconColor}
-              className={`icon-button__icon ${rotate && 'icon-button__icon--rotate'}`}
-          />
+      {
+        iconId &&
+          <i style={{fontSize: `${iconSize}rem`}} className={`bi bi-${iconId} icon-button__icon ${rotate && 'icon-button__icon--rotate'}`} />
       }
       {text}
     </button>

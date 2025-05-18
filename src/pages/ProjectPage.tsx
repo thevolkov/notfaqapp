@@ -1,95 +1,96 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { type RootState, deleteProject } from '../app/store';
-import { useParams } from 'react-router-dom';
-import ProjectForm from '../features/project-form/ProjectForm';
-import IconButton from '../shared/ui/IconButton';
-import { type Project } from '../entities/project/projectSlice';
-import { useBackButton } from '../shared/lib';
 import './ProjectPage.css';
+import {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {type RootState} from '../app/store';
+import {useParams} from 'react-router-dom';
+import IconButton from '../shared/ui/IconButton';
+import {type Project} from '../entities/project/projectSlice';
+import {useBackButton} from '../shared/lib';
 import Title from '../shared/ui/Title';
 import Faq from '../shared/ui/Faq';
+import Lottie from 'lottie-react';
+import {
+  notcoin,
+  stickerPack,
+  dogs,
+  earn,
+  community,
+  notPixel,
+  voidGame,
+} from '../shared/assets';
+
+const lottie = {
+  'Notcoin': notcoin,
+  'Sticker Pack': stickerPack,
+  'Dogs': dogs,
+  'Earn': earn,
+  'Community': community,
+  'Not Pixel': notPixel,
+  'Not Games': notcoin,
+  'Void': voidGame,
+}
+
+const linksAlias = {
+  telegram: 'telegram',
+  community: 'chat-text',
+  x: 'twitter-x',
+  web: 'globe',
+  support: 'headset',
+}
 
 export default function ProjectPage() {
-  const { id } = useParams<{ id: string }>();
-  const dispatch = useDispatch();
-  const currentUser = useSelector((state: RootState) => state.user.currentUser);
+  const {id} = useParams<{id: string}>();
   const project: Project | undefined = useSelector((state: RootState) =>
-        state.projects.projects.find((project) => project.id === id))
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const { handleBack } = useBackButton();
+    state.projects.projects.find((project) => project.id === id))
+  const {handleBack} = useBackButton();
 
-  if (!project) return <div>Project not found</div>;
+  const [loop, setLoop] = useState(false);
 
-  const canEdit =
-    currentUser?.role === 'godmode' || (
-      currentUser?.role === 'editor' &&
-      currentUser.allowedProjects.includes(project.id)
-    );
-  const canDelete = currentUser?.role === 'godmode';
-
-  const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this project?')) {
-      dispatch(deleteProject(project.id));
-      handleBack();
-    }
-  };
-
-  // useEffect(() => {
-  //   if (project && isPopupOpen) {
-  //     document.body.classList.add("no-scroll")
-  //   } else {
-  //     document.body.classList.remove("no-scroll")
-  //   }
-  //
-  //   return () => {
-  //     document.body.classList.remove("no-scroll")
-  //   }
-  // }, [isPopupOpen]);
+  if (!project) return <Title text="Project not found ¯\_(ツ)_/¯" size="l" />;
 
   return (
     <div className="project-page">
+      <div className="project-title">
+        <Title text={project.title} size="4xl" shadow />
+        <Lottie
+          className={`lottie-icon ${project.title === 'Void' && 'filter-off'}`}
+          animationData={lottie[project.title]}
+          loop={loop}
+          onMouseEnter={() => setLoop(true)}
+          onMouseLeave={() => setLoop(false)}
+        />
+      </div>
+
+      <img
+        className="project-image b-radius"
+        src={project.image}
+        alt={project.title}
+      />
+      {project.desc}
+      <div className="links">
+        {
+          Object.entries(project.links).map((link, index) => (
+            link[1] && (
+              <a
+                className="b-radius bg-blur"
+                key={index}
+                href={link[1]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {/*<SvgIcon id={link[0]} color="white" />*/}
+                <i className={`bi bi-${linksAlias[link[0]]}`} />
+              </a>
+            )
+          ))
+        }
+      </div>
+      <Faq faqData={project.faq} />
       <IconButton
-        iconId="arrow-back"
+        iconId="arrow-90deg-left"
         text="Back"
         onClick={handleBack}
       />
-      <div className="project-image">
-        <img className="b-radius" src={project.image} alt={project.title} />
-        {(canEdit || canDelete) && (
-          <div className="project-actions">
-            {canEdit && (
-              <IconButton
-                iconId="edit"
-                // iconColor="success"
-                onClick={() => setIsPopupOpen(true)}
-              />
-            )}
-            {canDelete && (
-              <IconButton
-                iconId="trash"
-                // iconColor="danger"
-                onClick={handleDelete}
-              />
-            )}
-          </div>
-        )}
-      </div>
-      <Title text={project.title} />
-      {project.desc}
-      <div className="links">
-        {Object.entries(project.links).map((link, index) => (
-          link[1] ? <a key={index} href={link[1]} target="_blank" rel="noopener noreferrer">
-            {link[0]}
-          </a> : ''
-        ))}
-      </div>
-
-      <Faq faqData={project.faq} />
-
-      {isPopupOpen && (
-        <ProjectForm project={project} onClose={() => setIsPopupOpen(false)} />
-      )}
     </div>
   );
 }

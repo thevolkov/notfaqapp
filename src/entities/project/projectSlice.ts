@@ -1,12 +1,14 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import {createSlice, type PayloadAction} from '@reduxjs/toolkit';
+import {v4 as uuidv4} from 'uuid';
+import {faqsData} from './faqs';
 
 export interface FAQ {
+  id: string;
   question: string;
   answer: string;
 }
 
-export type LinkKey = 'tg' | 'x' | 'web' | 'supp';
+export type LinkKey = 'telegram' | 'community' | 'x' | 'web' | 'support';
 export type Links = Record<LinkKey, string>;
 
 export interface Project {
@@ -31,17 +33,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/notcoin.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: 'https://x.com',
         web: 'https://ton.org',
-        supp: 'https://t.me/supp',
+        support: 'https://t.me/supp',
       },
-      faq: [
-        {
-          question: 'Вы создали Telegram Mini App и хотели бы показать его другим и выпустить глобально, но что делать, если вы хотите собирать статистику со своего Mini App?',
-          answer: 'Для разработки Mini App понадобится установленный Node.js. Если Node.js не установлен, его можно скачать по ссылке. Рекомендуется оставить путь установки по умолчанию, чтобы избежать потенциальных проблем в будущем.'
-        }
-      ],
+      faq: faqsData,
     },
     {
       id: '0002',
@@ -49,12 +47,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/dogs.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: 'https://x.com',
         web: 'https://ton.org',
-        supp: 'https://t.me/supp',
+        support: 'https://t.me/supp',
       },
-      faq: [{question: 'What?', answer: 'This is a sample.'}],
+      faq: faqsData,
     },
     {
       id: '0003',
@@ -62,12 +61,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/community.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: 'https://x.com',
         web: 'https://ton.org',
-        supp: 'https://t.me/supp',
+        support: 'https://t.me/supp',
       },
-      faq: [{question: 'What?', answer: 'This is a sample.'}],
+      faq: faqsData,
     },
     {
       id: '0004',
@@ -75,12 +75,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/not-pixel.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: 'https://x.com',
         web: 'https://ton.org',
-        supp: 'https://t.me/supp',
+        support: 'https://t.me/supp',
       },
-      faq: [{question: 'What?', answer: 'This is a sample.'}],
+      faq: faqsData,
     },
     {
       id: '0005',
@@ -88,12 +89,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/sticker-pack.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: '',
         web: 'https://ton.org',
-        supp: '',
+        support: '',
       },
-      faq: [{question: 'What?', answer: 'This is a sample.'}],
+      faq: faqsData,
     },
     {
       id: '0006',
@@ -101,12 +103,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/earn.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: '',
         web: 'https://ton.org',
-        supp: '',
+        support: '',
       },
-      faq: [{question: 'What?', answer: 'This is a sample.'}],
+      faq: faqsData,
     },
     {
       id: '0007',
@@ -114,12 +117,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/not-games.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: 'https://x.com',
         web: '',
-        supp: '',
+        support: '',
       },
-      faq: [{question: 'What?', answer: 'This is a sample.'}],
+      faq: faqsData,
     },
     {
       id: '0008',
@@ -127,12 +131,13 @@ const loadFromLocalStorage = (): Project[] => {
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
       image: '/imgs/projects/void.jpg',
       links: {
-        tg: 'https://t.me',
+        telegram: 'https://t.me',
+        community: 'https://t.me',
         x: 'https://x.com',
         web: '',
-        supp: '',
+        support: '',
       },
-      faq: [{question: 'What?', answer: 'This is a sample.'}],
+      faq: faqsData,
     },
   ];
 };

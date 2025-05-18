@@ -1,21 +1,22 @@
 .svg-icon {
   display: inline-block;
   vertical-align: middle;
-  fill: none;
+  fill: currentColor;
+  stroke: currentColor;
 }
 
 .white {
-  stroke: var(--light);
+  color: var(--light);
 }
 
 .success {
-  stroke: var(--success);
+  color: var(--success);
 }
 
 .warning {
-  stroke: var(--warning);
+  color: var(--warning);
 }
 
 .danger {
-  stroke: var(--danger);
+  color: var(--danger);
 }

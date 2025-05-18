@@ -1,16 +1,34 @@
 .faq {
+
+}
+
+.faq-wrapper {
+  width: 100%;
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--l);
-  padding-bottom: var(--l);
-  border-bottom: 1px solid var(--border);
+  padding: var(--m) 0;
+  border-bottom: 1px solid var(--light-alpha-0025);
+}
+
+.faq-wrapper:first-child {
+  padding-top: 0;
 }
 
 .faq-content {
-  width: 95%;
+  width: 100%;
+}
+
+.faq-question {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
 }
 
 .faq-answer {
-  margin-top: var(--l);
+  margin-top: var(--m);
+  width: 85%;
 }

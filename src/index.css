@@ -1,12 +1,14 @@
-/* font-family: 'Inter', sans-serif */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 :root {
-  --s: .75rem;  /* 15 */
-  --m: 1rem;    /* html = font-size 20px -> 20 */
-  --l: 1.5rem;  /* 30 */
-  --xl: 2rem;   /* 40 */
-  --2xl: 3rem;  /* 60 */
+  --s: .75rem; /* 15 */
+  --m: 1rem; /* html = font-size 20px -> 20 */
+  --l: 1.5rem; /* 30 */
+  --xl: 2rem; /* 40 */
+  --2xl: 3rem; /* 60 */
+  --3xl: 4rem; /* 60 */
+  --4xl: 5rem; /* 100 */
 
   --dark: #131313;
   --light: #FFFFFF;
@@ -14,10 +16,15 @@
   --warning: #FF8C00;
   --success: #00B707;
 
-  --opacity-dark: rgba(0, 0, 0, 0.5);
-  --opacity-light: rgba(255, 255, 255, 0.25);
+  /*--opacity-dark: rgba(0, 0, 0, 0.5);*/
+  /*--opacity-light: rgba(255, 255, 255, 0.25);*/
 
-  --border: rgba(255, 255, 255, 0.05);
+  --dark-alpha-05: rgba(0, 0, 0, 0.5);
+  --light-alpha-025: rgba(255, 255, 255, 0.25);
+
+  --light-alpha-0025: rgba(255, 255, 255, 0.025);
+
+  --shadow: 0 10px 20px var(--dark-alpha-05);
 }
 
 *, *::before, *::after {
@@ -39,8 +46,13 @@ html {
 body {
   min-height: 100%;
   font-family: 'Inter', sans-serif;
-  background: #131313;
+  background: url("/imgs/bg/blur-bg.jpg") no-repeat 0 0 #131313 fixed;
+  background-size: cover;
   color: white;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 a {
@@ -52,6 +64,8 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  user-drag: none;
+  -webkit-user-drag: none;
 }
 
 :focus-visible {
@@ -64,4 +78,17 @@ input, textarea, button, select {
   border: none;
   background: none;
   line-height: 90%;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    min-height: 100%;
+    font-family: 'Inter', sans-serif;
+    background: url("/imgs/bg/blur-bg.jpg") no-repeat 0 0 #131313 fixed;
+    background-size: contain;
+  }
 }

@@ -1,10 +1,12 @@
 .content {
+  width: 1190px;
   margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 6rem 2.5rem;
-  max-width: 1290px;
+  padding: 10rem 1rem;
+}
+
+.dashboard-wrapper {
+  width: 100%;
+  padding: 0;
 }
 
 .b-radius {
@@ -12,7 +14,7 @@
 }
 
 .shadow {
-  box-shadow: 0 .25rem .75rem var(--opacity-dark);
+  box-shadow: 0 .25rem .75rem var(--dark-alpha-05);
 }
 
 .bg-blur {
@@ -32,8 +34,25 @@
   padding: 0;
 }
 
-.user-switch {
-  position: fixed;
-  top: 5%;
-  right: 5%;
+.lottie-icon {
+  position: absolute;
+  width: 1.5rem;
+  right: -1.5rem;
+  top: -5%;
+  filter: invert(1) grayscale(1) brightness(100);
+}
+
+.filter-off {
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+    padding: 7.5rem .75rem;
+  }
+
+  .dashboard-wrapper {
+    padding: 0;
+  }
 }

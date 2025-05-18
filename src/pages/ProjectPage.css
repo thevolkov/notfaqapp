@@ -6,43 +6,54 @@
   row-gap: var(--xl);
 }
 
-.project-image {
-  display: inline-flex;
-  gap: var(--m);
-}
-
-.project-header {
-  margin-bottom: 20px;
+.project-title {
+  position: relative;
+  width: fit-content;
 }
 
 .project-page img {
   width: 60%;
   max-height: 400px;
   object-fit: cover;
+  aspect-ratio: 1/.75;
+  box-shadow: var(--shadow);
+}
+
+
+.links, .links a, .links a i {
+  display: inline-flex;
+  height: fit-content;
 }
 
 .links {
-  /*margin: 20px 0;*/
+  /*margin: 1rem 0;*/
+  gap: .5rem;
 }
 
 .links a {
-  margin-right: 10px;
-  color: #007bff;
+  width: 2rem;
+  aspect-ratio: 1;
+  padding: .5rem;
+  background: var(--light-alpha-0025);
+  opacity: .75;
+  transition: opacity 1s ease;
 }
 
-.faq {
-  /*margin-top: 20px;*/
+.links a:hover {
+  opacity: 1;
 }
 
-.faq h3 {
-  /*margin: 10px 0 5px;*/
+@media (max-width: 768px) {
+  .project-page img {
+    width: 100%;
+    min-height: 170px;
+  }
 }
-
-.project-actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--m);
-}
+/*.project-actions {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: var(--m);*/
+/*}*/
 
 /*.project-actions button {*/
 /*  padding: 10px 20px;*/
