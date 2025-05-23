@@ -11,6 +11,9 @@ interface FileInputProps {
 export default function FileInput({buttonText, onChange, initialPreview}: FileInputProps) {
   const [preview, setPreview] = useState(initialPreview || '');
 
+  console.log(initialPreview)
+  console.log(preview)
+
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return
@@ -52,7 +55,9 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
               className="file-preview b-radius"
               src={
                 preview
-                  ? preview
+                  ? preview.startsWith('data:image')
+                    ? preview
+                    : `${import.meta.env.BASE_URL}${preview}`
                   : `${import.meta.env.BASE_URL}${initialPreview}`
               }
               alt="Preview"
