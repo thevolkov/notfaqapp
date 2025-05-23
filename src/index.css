@@ -14,7 +14,6 @@
   --light: #FFFFFF;
   --danger: rgba(207, 0, 0, 0.5);
   --warning: rgba(255, 140, 0, 0.5);
-  /*--success: rgba(0, 183, 7, 0.5);*/
   --success: rgba(124, 252, 0, 0.4);
 
   --dark-alpha-075: rgba(0, 0, 0, 0.75);
@@ -56,7 +55,13 @@ body {
 }
 
 html, body {
-  overflow-x: hidden;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  overflow-y: auto;
 }
 
 a {

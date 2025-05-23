@@ -53,8 +53,8 @@
 }
 
 .no-scroll {
-  overflow: hidden;
-  height: 100%;
+  overflow-y: hidden!important;
+  height: 100%!important;
 }
 
 .absolute {

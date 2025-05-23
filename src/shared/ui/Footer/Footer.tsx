@@ -38,7 +38,6 @@ export default function Footer() {
             ))
           }
         </div>
-        {/*<Title subtitle="[n:fə]" />*/}
       </div>
     </div>
   );

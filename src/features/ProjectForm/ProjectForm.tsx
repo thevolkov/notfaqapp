@@ -41,8 +41,6 @@ export default function ProjectForm() {
     if (!id) return;
     const projectData = projects.find((p) => p.id === id);
     if (projectData) {
-      console.log(projectData.image)
-
       setTitle(projectData.title);
       setImage(projectData.image);
       setDesc(projectData.desc);
@@ -50,7 +48,6 @@ export default function ProjectForm() {
       setFaq(projectData.faq);
     }
   }, [id, projects]);
-
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -150,44 +147,44 @@ export default function ProjectForm() {
         }
         <div className="form-section">
           {
-            faq.map((item, index) => (
-              <div key={index} className="form-row faq-row dark-bg-wrapper">
-                <div className="faq-row-buttons">
-                  <IconButton
-                    className="remove-faq-button"
-                    iconId="trash"
-                    variant="danger"
-                    onClick={() => removeFaq(index)}
-                  />
-                  {
-                    index === faq.length - 1 && (
-                      <IconButton
-                        iconId="plus-lg"
-                        variant="light-alpha"
-                        onClick={addFaq}
-                        full
-                      />
-                    )
-                  }
+            faq.map((item, index) => {
+              if (item.id === '666') return null;
+
+              return (
+                <div key={item.id} className="form-row faq-row dark-bg-wrapper">
+                  <div className="faq-row-buttons">
+                    <IconButton
+                      className="remove-faq-button"
+                      iconId="trash"
+                      variant="danger"
+                      onClick={() => removeFaq(index)}
+                    />
+                    <IconButton
+                      iconId="plus-lg"
+                      variant="light-alpha"
+                      onClick={addFaq}
+                      full
+                    />
+                  </div>
+                  <div className="form-section">
+                    <Input
+                      iconId="question-lg"
+                      value={item.question}
+                      onChange={(value) => updateFaq(index, 'question', value)}
+                      placeholder="Question"
+                      required
+                    />
+                    <Textarea
+                      iconId="card-text"
+                      value={item.answer}
+                      placeholder="Answer..."
+                      onChange={(value) => updateFaq(index, 'answer', value)}
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="form-section">
-                  <Input
-                    iconId="question-lg"
-                    value={item.question}
-                    onChange={(value) => updateFaq(index, 'question', value)}
-                    placeholder="Question"
-                    required
-                  />
-                  <Textarea
-                    iconId="card-text"
-                    value={item.answer}
-                    placeholder="Answer..."
-                    onChange={(value) => updateFaq(index, 'answer', value)}
-                    required
-                  />
-                </div>
-              </div>
-            ))
+              )
+            })
           }
         </div>
 

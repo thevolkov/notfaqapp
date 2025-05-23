@@ -211,10 +211,13 @@ export default function ProjectListPage() {
   }, [clickCount]);
 
   useEffect(() => {
+    const content = document.querySelector('#root');
+    if (!content) return;
+
     if (showConsole) {
-      document.body.classList.add("no-scroll")
+      content.classList.add('no-scroll');
     } else {
-      document.body.classList.remove("no-scroll")
+      content.classList.remove('no-scroll');
     }
   }, [showConsole]);
 
@@ -230,7 +233,6 @@ export default function ProjectListPage() {
 
     return () => clearTimeout(timeout);
   }, [showConsole, consoleOutput]);
-
 
   return (
     <>
@@ -256,7 +258,7 @@ export default function ProjectListPage() {
               // text="[n:fə]"
               className="b-radius blur-bg"
               iconId="plus-lg"
-              variant="success"
+              variant="dark-alpha"
             />
           </NavLink>
         </div>
@@ -306,9 +308,13 @@ export default function ProjectListPage() {
                 >
                   <img
                     className="b-radius"
-                    src={`${import.meta.env.BASE_URL}${project.image}` ||
-                      `${import.meta.env.BASE_URL}/imgs/no_image.png`}
-                    alt={project.title || 'no_image'}
+                    src={
+                      project.image
+                        ? project.image.startsWith('data:image')
+                          ? project.image
+                          : `${import.meta.env.BASE_URL}${project.image}`
+                        : `${import.meta.env.BASE_URL}imgs/no_image.png`
+                    }
                     style={!project.image ? {opacity: 0.025} : undefined}
                   />
                   <Title text={project.title} size="l" />

@@ -8,7 +8,7 @@ import {
   ProjectPage,
   UserPage
 } from '../pages';
-import ProjectForm from '../features/project-form/ProjectForm';
+import ProjectForm from '../features/ProjectForm/ProjectForm';
 import BSOD from '../pages/BSOD.tsx/BSOD';
 import {trackRoute} from '../shared/lib/routeCheat';
 import {useEffect} from 'react';

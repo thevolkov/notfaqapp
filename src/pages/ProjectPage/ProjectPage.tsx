@@ -1,5 +1,5 @@
 import './ProjectPage.css';
-import {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {type RootState} from '../../app/store';
 import {NavLink, useParams} from 'react-router-dom';
@@ -17,13 +17,18 @@ export default function ProjectPage() {
   const {handleBack} = useBackButton();
   const [highlightId, setHighlightId] = useState<string | null>(null);
   const [showRocket, setShowRocket] = useState(false);
-  const [launch, setLaunch] = useState(false);
+  const [rocketLaunch, setRocketLaunch] = useState(false);
+  const [projectImage, setProjectImage] = useState('');
 
   const project: Project | undefined = useSelector((state: RootState) =>
     state.projects.projects.find((project) => project.id === id))
 
-  const handleLaunch = () => {
-    setLaunch(true);
+  const handleChangeImage = () => {
+    setProjectImage(project?.image || '/imgs/no_image.png')
+  }
+
+  const handleRocketLaunch = () => {
+    setRocketLaunch(true);
 
     const contentEl = document.querySelector('.content') as HTMLElement | null;
 
@@ -31,8 +36,9 @@ export default function ProjectPage() {
       contentEl.classList.add('animate-bg');
 
       setTimeout(() => {
+        handleChangeImage();
         contentEl.classList.remove('animate-bg');
-      }, 100000);
+      }, 5000);
     }
   };
 
@@ -47,6 +53,8 @@ export default function ProjectPage() {
   }, [])
 
   useEffect(() => {
+    handleChangeImage()
+
     const hash = window.location.hash;
     if (hash) {
       const id = hash.replace('#', '');
@@ -63,6 +71,12 @@ export default function ProjectPage() {
     }
   }, [project]);
 
+  useEffect(() => {
+    if (project?.title.toLowerCase() === 'notcoin' && rocketLaunch) {
+      setProjectImage('/imgs/projects/Notcoin-Game.jpg')
+    }
+  }, [project?.title, rocketLaunch])
+
   if (!project) {
     return <Title text="Project not found ¯\_(ツ)_/¯" size="l" />;
   }
@@ -73,10 +87,11 @@ export default function ProjectPage() {
       <div className="d-flex project-desc">
         <img
           className="project-image b-radius"
-          src={project.title.toLowerCase() === 'notcoin' && launch
-            ? `${import.meta.env.BASE_URL}/imgs/projects/Notcoin-Game.jpg`
-            : `${import.meta.env.BASE_URL}${project.image}`
-            || '/imgs/no_image.png'}
+          src={
+            projectImage.startsWith('data:image')
+              ? projectImage
+              : `${import.meta.env.BASE_URL}${projectImage}`
+          }
           alt={project.title || 'no_image'}
           style={!project.image ? {opacity: 0.025} : undefined}
         />
@@ -144,7 +159,7 @@ export default function ProjectPage() {
       />
       {
         project.title.toLowerCase() === 'notcoin' && showRocket && (
-          <div className={`not-rocket ${launch ? 'launch' : ''}`} onClick={handleLaunch}>
+          <div className={`not-rocket ${rocketLaunch ? 'launch' : ''}`} onClick={handleRocketLaunch}>
             <img
               className="not-rocket-shake"
               src={Rocket}

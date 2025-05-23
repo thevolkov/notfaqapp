@@ -50,7 +50,11 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
           <div className="preview-block">
             <img
               className="file-preview b-radius"
-              src={preview || initialPreview}
+              src={
+                preview
+                  ? preview
+                  : `${import.meta.env.BASE_URL}${initialPreview}`
+              }
               alt="Preview"
             />
             <IconButton
