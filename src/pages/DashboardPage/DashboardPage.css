@@ -1,0 +1,151 @@
+/*:root {*/
+/*  --menu-width: 200px; !* Фиксированная ширина меню *!*/
+/*  --content-width: calc(100% - var(--menu-width) - 20px); !* Учитываем gap *!*/
+/*  --menu-collapsed-width: 60px; !* Ширина меню при сворачивании (для будущего) *!*/
+/*}*/
+
+.dashboard-page {
+  /*width: 100%; !* Полная ширина экрана *!*/
+  /*padding: 20px;*/
+  /*box-sizing: border-box;*/
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: flex-start; !* Выравнивание по левой стороне *!*/
+}
+
+.dashboard-header {
+  /*width: 100%;*/
+  /*margin-bottom: 20px;*/
+}
+
+.dashboard-content {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.dashboard-menu-block {
+  top: 3rem;
+}
+
+.dashboard-menu {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  /*width: var(--menu-width);*/
+  /*!*background: var(--opacity-dark);*!*/
+  /*border-radius: 8px;*/
+  /*padding: 10px;*/
+  /*box-sizing: border-box;*/
+  /*flex-shrink: 0; !* Предотвращает сжатие меню *!*/
+}
+
+/* Для будущего сворачивания меню */
+/*.dashboard-menu.collapsed {
+  width: var(--menu-collapsed-width);
+}*/
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--light-alpha-025);
+}
+
+.menu-item:hover {
+  /*background: #e0e0e0;*/
+}
+
+.menu-item.active {
+  background: var(--light-alpha-0025);
+  color: white;
+}
+
+.dashboard-main {
+  /* width: var(--content-width); */
+  /* background: var(--opacity-dark); */
+  /* border-radius: 8px; */
+  /* padding: 20px; */
+  box-sizing: border-box;
+  flex-grow: 1;
+  /* min-height: 400px;
+}
+
+.users-section,
+.projects-section,
+.roles-section {
+margin-bottom: 20px;
+width: 100%;
+}
+
+/*.users-list,*/
+  /*.projects-list,*/
+  /*.roles-list {*/
+  /*  display: flex;*/
+  /*  flex-direction: column;*/
+  /*  gap: 10px;*/
+  /*  width: 100%;*/
+  /*}*/
+}
+
+  .user-item,
+  .project-item,
+  .role-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .project-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .role-item {
+    cursor: pointer;
+  }
+
+  .role-item.selected {
+    background: #e0e0e0;
+    font-weight: bold;
+  }
+
+  .dashboard-projects-list label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .no-projects {
+    color: #666;
+    font-style: italic;
+}
+
+/*.dashboard-user-edit {*/
+/*right: 0;*/
+/*padding: 2rem 2rem 7rem;*/
+/*bottom: 0;*/
+/* width: 50%; */
+/* height: 100%; */
+/*background: var(--light-alpha-025);*/
+/*backdrop-filter: blur(50px);*/
+/*border-radius: 0 0 2rem 2rem;*/
+/*color: black;*/
+/*position: relative;*/
+/*top: 0;*/
+/*left: 0;*/
+/*height: 75vh;*/
+/*z-index: 1000;*/
+/*}*/

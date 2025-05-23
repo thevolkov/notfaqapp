@@ -12,19 +12,23 @@
 
   --dark: #131313;
   --light: #FFFFFF;
-  --danger: #CF0000;
-  --warning: #FF8C00;
-  --success: #00B707;
+  --danger: rgba(207, 0, 0, 0.5);
+  --warning: rgba(255, 140, 0, 0.5);
+  /*--success: rgba(0, 183, 7, 0.5);*/
+  --success: rgba(124, 252, 0, 0.4);
 
-  /*--opacity-dark: rgba(0, 0, 0, 0.5);*/
-  /*--opacity-light: rgba(255, 255, 255, 0.25);*/
+  --dark-alpha-075: rgba(0, 0, 0, 0.75);
 
-  --dark-alpha-05: rgba(0, 0, 0, 0.5);
+  --dark-alpha-025: rgba(0, 0, 0, 0.25);
   --light-alpha-025: rgba(255, 255, 255, 0.25);
 
+  --dark-alpha-0025: rgba(0, 0, 0, 0.025);
   --light-alpha-0025: rgba(255, 255, 255, 0.025);
 
-  --shadow: 0 10px 20px var(--dark-alpha-05);
+  --shadow: 0 10px 15px var(--dark-alpha-025);
+
+  --light-boarder: 1px solid var(--light-alpha-025);
+  --dark-boarder: 1px solid var(--dark-alpha-025);
 }
 
 *, *::before, *::after {
@@ -44,11 +48,11 @@ html {
 }
 
 body {
+  position: relative;
   min-height: 100%;
   font-family: 'Inter', sans-serif;
-  background: url("/imgs/bg/blur-bg.jpg") no-repeat 0 0 #131313 fixed;
-  background-size: cover;
-  color: white;
+  background: #131313;
+  color: var(--light);
 }
 
 html, body {
@@ -58,6 +62,7 @@ html, body {
 a {
   color: inherit;
   text-decoration: none;
+  position: relative;
 }
 
 img {
@@ -73,22 +78,51 @@ img {
   outline-offset: 2px;
 }
 
-input, textarea, button, select {
+input, textarea, select {
+  font: inherit;
+  background: none;
+  caret-color: var(--light-alpha-025);
+  color: var(--light);
+  border: none;
+  /*width: 100%;*/
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--light-alpha-025);
+}
+
+input[type=text], textarea {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+  padding-right: .5rem;
+}
+
+button {
   font: inherit;
   border: none;
   background: none;
   line-height: 90%;
+  color: var(--light);
+}
+
+i {
+  display: block;
+  line-height: 90%;
+  font-style: normal;
+  user-select: none;
 }
 
 @media (max-width: 768px) {
   html {
     font-size: 15px;
   }
+}
 
-  body {
-    min-height: 100%;
-    font-family: 'Inter', sans-serif;
-    background: url("/imgs/bg/blur-bg.jpg") no-repeat 0 0 #131313 fixed;
-    background-size: contain;
+@media (max-width: 350px) {
+  html {
+    font-size: 12px;
   }
 }

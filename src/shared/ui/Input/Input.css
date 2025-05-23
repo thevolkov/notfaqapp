@@ -1,0 +1,24 @@
+.input {
+  display: inline-flex;
+  gap: .5rem;
+  align-items: center;
+  padding: 1rem;
+  background: var(--light-alpha-0025);
+  border: var(--dark-boarder);
+  border-radius: 1rem;
+  opacity: .75;
+  transition: border 1s ease, opacity 1s ease;
+  /*width: 100%;*/
+}
+
+.input:focus-within, .input:hover {
+  border: var(--light-boarder);
+  opacity: 1;
+}
+
+/*.input i {*/
+/*  transition:opacity 1s ease;*/
+/*}*/
+
+/*.input:focus-within i {*/
+/*}*/

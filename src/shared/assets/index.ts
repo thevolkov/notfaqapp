@@ -7,5 +7,7 @@ import notPixel from './tgs/notPixel.json';
 import voidGame from './tgs/void.json';
 
 import rabbit from './tgs/thinkingRabbit.json';
+import squidWork from './tgs/squidWork.json';
+import pepe from './tgs/pepe.json';
 
-export {notcoin, stickerPack, dogs, earn, community, notPixel, rabbit, voidGame};
+export {notcoin, stickerPack, dogs, earn, community, notPixel, rabbit, voidGame, squidWork, pepe};

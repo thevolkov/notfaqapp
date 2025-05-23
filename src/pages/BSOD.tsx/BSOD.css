@@ -1,0 +1,51 @@
+.bsod {
+  font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  flex-direction: column;
+  user-select: none;
+  text-wrap: balance;
+}
+
+.bsod-content {
+  max-width: 600px;
+}
+
+.bsod-emoji {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bsod-emoji .squid-work {
+  max-width: 40%;
+  justify-content: center;
+}
+
+.bsod-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem auto;
+}
+
+.bsod-error {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.bsod-code {
+  background: var(--danger);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.bsod-solution {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

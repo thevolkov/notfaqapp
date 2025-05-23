@@ -1,17 +1,11 @@
-export const users = [
+import type {User} from './userSlice';
+
+export const users: User[] = [
   {
     id: '0',
     name: 'Ebalanga',
     role: 'godmode',
     allowedProjects: [],
-    // achievement: {
-    //   isPremium: true,
-    //   isPlatinumTier: true,
-    //   isGoldenTier: false,
-    //   isSilverBone: true,
-    //   isGoldenBone: false,
-    //   isGoldenPixel: true,
-    // },
   },
   {
     id: '1',

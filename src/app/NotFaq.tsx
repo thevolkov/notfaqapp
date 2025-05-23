@@ -1,20 +1,37 @@
 import './NotFaq.css';
-import {Routes, Route} from 'react-router-dom';
-import ProjectsListPage from '../pages/ProjectsListPage';
-import ProjectPage from '../pages/ProjectPage';
-import UserPage from '../pages/UserPage';
-import DashboardPage from '../pages/DashboardPage';
-import Footer from '../shared/ui/Footer';
+import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
+import ScrollToTop from '../shared/ui/ScrollToTop';
+import {Footer} from '../shared/ui';
+import {
+  DashboardPage,
+  ProjectListPage,
+  ProjectPage,
+  UserPage
+} from '../pages';
+import ProjectForm from '../features/project-form/ProjectForm';
+import BSOD from '../pages/BSOD.tsx/BSOD';
+import {trackRoute} from '../shared/lib/routeCheat';
+import {useEffect} from 'react';
 
 const routeLinks = [
   {
     path: '/',
-    component: <ProjectsListPage />,
+    component: <ProjectListPage />,
     class: '',
   },
   {
     path: '/project/:id',
     component: <ProjectPage />,
+    class: '',
+  },
+  {
+    path: '/project/create',
+    component: <ProjectForm />,
+    class: '',
+  },
+  {
+    path: '/project/edit/:id',
+    component: <ProjectForm />,
     class: '',
   },
   {
@@ -27,15 +44,37 @@ const routeLinks = [
     component: <DashboardPage />,
     class: 'dashboard-wrapper',
   },
+  {
+    path: '/666',
+    component: <BSOD />,
+    class: 'full-with p-0 m-0',
+  },
 ];
 
 export default function NotFaq() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const noFooterRoutes = ['/666'];
+
+  const hideFooter = noFooterRoutes.some((path) =>
+    location.pathname.startsWith(path)
+  );
+
+  useEffect(() => {
+    const matched = trackRoute(location.pathname);
+    if (matched) {
+      navigate('/money');
+    }
+  }, [location.pathname]);
+
   return (
     <>
+      <ScrollToTop />
       <Routes>
         {
           routeLinks.map((route) => (
             <Route
+              key={route.path}
               path={route.path}
               element={
                 <div className={`content ${route.class}`}>
@@ -45,8 +84,16 @@ export default function NotFaq() {
             />
           ))
         }
+        <Route
+          path="/money"
+          element={
+            <div className="content">
+              <BSOD />
+            </div>
+          }
+        />
       </Routes>
-      <Footer />
+      {!hideFooter && <Footer />}
     </>
   );
 }

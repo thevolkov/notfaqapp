@@ -1,0 +1,63 @@
+.icon-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+  width: fit-content;
+  color: var(--light);
+  opacity: .75;
+  transition: opacity 1s ease;
+  padding: .75rem;
+  border: 1px solid var(--dark-alpha-025);
+}
+
+.icon-button:hover {
+  opacity: 1;
+}
+
+.icon-button--light-alpha {
+  background: var(--light-alpha-0025);
+}
+
+.icon-button--dark-alpha {
+  background: var(--dark-alpha-025);
+}
+
+.icon-button--success {
+  background: var(--success);
+}
+
+.icon-button--warning {
+  background: var(--warning);
+}
+
+.icon-button--danger {
+  background: var(--danger);
+}
+
+.icon-button--round {
+  /*padding: .5rem;*/
+}
+
+.icon-button__icon {
+  transform: rotate(0deg);
+  transition: transform .5s ease;
+}
+
+.icon-button__icon--rotate {
+  transform: rotate(45deg);
+}
+
+.icon-button__icon--half {
+  width: 50%;
+}
+
+.icon-button__icon--full {
+  width: 100%;
+}
+
+.icon-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

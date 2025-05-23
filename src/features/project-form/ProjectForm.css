@@ -1,100 +1,59 @@
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.popup-content {
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.popup-content form {
+.project-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-}
-
-.popup-content label {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: fit-content;
-}
-
-.popup-content input,
-.popup-content textarea {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.popup-content textarea {
-  resize: vertical;
-}
-
-.form-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.form-row {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.links-row {
-  flex-direction: row;
-  flex-wrap: wrap;
+  row-gap: 1rem;
+  margin-top: 2rem;
 }
 
 .faq-row {
-  flex-wrap: wrap;
+  position: relative;
+  display: inline-flex;
+  justify-content: space-between;
+  /*align-items: start;*/
+  width: 100%;
+  gap: 1rem;
 }
 
-.faq-row input {
-  flex: 1;
-  min-width: 150px;
+.faq-row-buttons {
+  /*width: 100%;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .form-actions {
+  /*width: 75%;*/
+  display: inline-flex;
+  gap: 1rem;
+  /*justify-content: center;*/
+}
+
+.form-section {
+  /*width: 100%;*/
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  flex: 1;
+  row-gap: .5rem;
 }
 
-.popup-content button {
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.links-row {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /*row-gap: .5rem;*/
+  gap: .5rem;
 }
 
-/*.popup-content button[type="button"] {*/
-/*  background: #6c757d;*/
+.links-row .input {
+  flex: auto;
+}
+
+/*.form-row {*/
+/*  float: left;*/
 /*}*/
 
-.popup-content button.remove-button {
-  background: #dc3545;
-  position: relative;
-}
-
-/*.popup-content button:hover {*/
-/*  opacity: 0.9;*/
+/*@media (max-width: 768px) {*/
+/*  .links-row .input {*/
+/*    width: 100%;*/
+/*  }*/
 /*}*/

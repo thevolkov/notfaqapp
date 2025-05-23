@@ -1,0 +1,21 @@
+.toasty-container {
+  position: fixed;
+  bottom: 0;
+  right: -250px;
+  width: 200px;
+  transition: right 0.3s ease-in;
+  z-index: 9999;
+}
+
+.toasty-container.show {
+  right: 0;
+  transition: right 0.15s ease-out;
+}
+
+.toasty-container img {
+  width: 100%!important;
+  height: 100%!important;
+  display: block!important;
+  aspect-ratio: auto!important;
+  box-shadow: none!important;
+}

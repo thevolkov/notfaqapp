@@ -1,5 +1,6 @@
-import { useState, type FormEvent } from 'react';
-import { useDispatch } from 'react-redux';
+import './ProjectForm.css';
+import {useState, useEffect, type FormEvent} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   addProject,
   updateProject,
@@ -7,118 +8,208 @@ import {
   type FAQ,
   type Links
 } from '../../entities/project/projectSlice';
-import FileInput from '../../shared/ui/FileInput';
-import Title from '../../shared/ui/Title';
-import './ProjectForm.css';
+import FileInput from '../../shared/ui/FileInput/FileInput';
+import Title from '../../shared/ui/Title/Title';
+import IconButton from '../../shared/ui/IconButton/IconButton';
+import {useBackButton} from '../../shared/lib';
+import Input from '../../shared/ui/Input/Input';
+import Textarea from '../../shared/ui/Textarea/Textarea';
+import {type RootState} from '../../app/store';
+import {useParams} from 'react-router-dom';
+import {linksAlias} from '../../shared/constants';
 
-interface ProjectFormProps {
-  project?: Project;
-  onClose: () => void;
-}
-
-export default function ProjectForm({ project, onClose }: ProjectFormProps) {
+export default function ProjectForm() {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(project?.title || '');
-  const [image, setImage] = useState(project?.image || '');
-  const [desc, setDesc] = useState(project?.desc || '');
-  const [links, setLinks] = useState<Links>(project?.links || { tg: '', x: '', web: '', supp: '' });
-  const [faq, setFaq] = useState<FAQ[]>(project?.faq || [{ question: '', answer: '' }]);
+  const {id} = useParams<{id: string}>();
+  const projects = useSelector((state: RootState) => state.projects.projects);
+
+  const {handleBack} = useBackButton();
+
+  const [title, setTitle] = useState('');
+  const [image, setImage] = useState('');
+  const [desc, setDesc] = useState('');
+  const [links, setLinks] = useState<Links>({
+    telegram: '',
+    community: '',
+    x: '',
+    web: '',
+    support: ''
+  });
+  const [faq, setFaq] = useState<FAQ[]>([{id: '', question: '', answer: ''}]);
+
+  useEffect(() => {
+    if (!id) return;
+    const projectData = projects.find((p) => p.id === id);
+    if (projectData) {
+      console.log(projectData.image)
+
+      setTitle(projectData.title);
+      setImage(projectData.image);
+      setDesc(projectData.desc);
+      setLinks(projectData.links);
+      setFaq(projectData.faq);
+    }
+  }, [id, projects]);
+
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+
     const newProject: Project = {
-      id: project?.id || '',
+      id: id || String(Date.now()),
       title,
       image,
       desc,
       links,
-      faq: faq.filter((item) => item.question.trim() !== '' && item.answer.trim() !== ''),
+      faq: faq.filter((item) => item.question.trim() && item.answer.trim())
     };
-    if (project) {
+
+    if (id) {
       dispatch(updateProject(newProject));
     } else {
       dispatch(addProject(newProject));
     }
-    onClose();
+
+    handleBack();
+    // onClose?.();
   };
 
-  const updateLink = (link: string, value: string) => {
-    setLinks(prev => ({ ...prev, [link]: value }));
+  const updateLink = (key: string, value: string) => {
+    setLinks((prev) => ({...prev, [key]: value}));
   };
 
-  const addFaq = () => setFaq([...faq, { question: '', answer: '' }]);
+  const addFaq = () => {
+    setFaq((prev) => [...prev, {id: '', question: '', answer: ''}]);
+  };
+
   const updateFaq = (
     index: number,
     field: 'question' | 'answer',
     value: string
   ) => {
-    const newFaq = [...faq];
-    newFaq[index] = { ...newFaq[index], [field]: value };
-    setFaq(newFaq);
+    setFaq((prev) =>
+      prev.map((item, i) =>
+        i === index ? {...item, [field]: value} : item
+      )
+    );
   };
+
   const removeFaq = (index: number) => {
-    setFaq(faq.filter((_, i) => i !== index));
+    setFaq((prev) => prev.filter((_, i) => i !== index));
   };
 
   return (
-    <div className="popup">
-      <div className="popup-content">
-        <Title text={project ? 'Edit Project' : 'Create Project'} />
-        <form onSubmit={handleSubmit}>
+    <>
+      <Title text={id ? 'Edit' : '+[n:fə]'} size="4xl" shadow shadowText={title} />
+      <form className="project-form" onSubmit={handleSubmit}>
+        <div className="form-section dark-bg-wrapper">
+          <Input
+            value={title}
+            placeholder="Title"
+            onChange={setTitle}
+            required
+          />
+          <Textarea
+            value={desc}
+            placeholder="Description..."
+            onChange={setDesc}
+            required
+          />
+          <FileInput
+            // buttonText="Image"
+            onChange={setImage}
+            initialPreview={image}
+          />
+        </div>
 
-            <input value={title} onChange={(e) => setTitle(e.target.value)} required />
+        <Title text="Links" size="xl" />
+        <div className="form-section links-row dark-bg-wrapper">
+          {
+            Object.entries(links).map(([key, value]) => (
+              <Input
+                key={key}
+                iconId={linksAlias[key as keyof typeof linksAlias]}
+                value={value}
+                onChange={(val) => updateLink(key, val)}
+                placeholder={key}
+              />
+            ))
+          }
+        </div>
 
-            <FileInput
-              buttonText="Choose Image"
-              onChange={setImage}
-              initialPreview={image}
+        <Title text="FAQ's" size="xl" />
+        {
+          !faq.length && (
+            <IconButton
+              iconId="plus-lg"
+              variant="light-alpha"
+              onClick={addFaq}
+              full
             />
-            <textarea value={desc} onChange={(e) => setDesc(e.target.value)} required />
-          <div className="form-section links-row">
-            <Title text={'Links'} />
-            {Object.entries(links).map((link, index) => (
-              <div key={index} className="form-row">
-                <input
-                  value={link[1]}
-                  onChange={(e) => updateLink(link[0], e.target.value)}
-                  placeholder={link[0]}
-                />
+          )
+        }
+        <div className="form-section">
+          {
+            faq.map((item, index) => (
+              <div key={index} className="form-row faq-row dark-bg-wrapper">
+                <div className="faq-row-buttons">
+                  <IconButton
+                    className="remove-faq-button"
+                    iconId="trash"
+                    variant="danger"
+                    onClick={() => removeFaq(index)}
+                  />
+                  {
+                    index === faq.length - 1 && (
+                      <IconButton
+                        iconId="plus-lg"
+                        variant="light-alpha"
+                        onClick={addFaq}
+                        full
+                      />
+                    )
+                  }
+                </div>
+                <div className="form-section">
+                  <Input
+                    iconId="question-lg"
+                    value={item.question}
+                    onChange={(value) => updateFaq(index, 'question', value)}
+                    placeholder="Question"
+                    required
+                  />
+                  <Textarea
+                    iconId="card-text"
+                    value={item.answer}
+                    placeholder="Answer..."
+                    onChange={(value) => updateFaq(index, 'answer', value)}
+                    required
+                  />
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="form-section">
-            <Title text={'FAQ'} />
-            {faq.map((item, index) => (
-              <div key={index} className="form-row faq-row">
-                <input
-                  value={item.question}
-                  onChange={(event) => updateFaq(index, 'question', event.target.value)}
-                  placeholder="Question"
-                  required
-                />
-                <input
-                  value={item.answer}
-                  onChange={(event) => updateFaq(index, 'answer', event.target.value)}
-                  placeholder="Answer"
-                  required
-                />
-                <button type="button" onClick={() => removeFaq(index)} className="remove-button">
-                  Remove FAQ
-                </button>
-              </div>
-            ))}
-            <button type="button" onClick={addFaq}>
-              Add FAQ
-            </button>
-          </div>
-          <div className="form-actions">
-            <button type="submit">Save</button>
-            <button type="button" onClick={onClose}>
-              Cancel
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+            ))
+          }
+        </div>
+
+        <div className="form-actions">
+          <IconButton
+            text={id ? 'save' : 'create'}
+            type="submit"
+            iconId="check-lg"
+            variant="dark-alpha"
+            className="blur-bg"
+            // half
+          />
+          <IconButton
+            text="cancel"
+            iconId="x-lg"
+            variant="light-alpha"
+            onClick={handleBack}
+            className="blur-bg"
+            // half
+          />
+        </div>
+      </form>
+    </>
   );
 }

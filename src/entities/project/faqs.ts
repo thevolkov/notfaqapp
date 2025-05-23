@@ -48,5 +48,10 @@ export const faqsData = [
     id: '10',
     question: 'Can I make my own Notcoin?',
     answer: 'Technically yes. Telegram lets you build Mini Apps. Just bring code, caffeine, and questionable life choices.'
-  }
+  },
+  {
+    id: '666',
+    question: '⛔️ Don\'t open this tab. Ok? OK?????',
+    answer: ''
+  },
 ];
