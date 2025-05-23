@@ -12,6 +12,7 @@ import ProjectForm from '../features/ProjectForm/ProjectForm';
 import BSOD from '../pages/BSOD.tsx/BSOD';
 import {trackRoute} from '../shared/lib/routeCheat';
 import {useEffect} from 'react';
+import SecretRoom from '../pages/SecretRoom';
 
 const routeLinks = [
   {
@@ -63,7 +64,7 @@ export default function NotFaq() {
   useEffect(() => {
     const matched = trackRoute(location.pathname);
     if (matched) {
-      navigate('/money');
+      navigate('/secret');
     }
   }, [location.pathname]);
 
@@ -85,10 +86,10 @@ export default function NotFaq() {
           ))
         }
         <Route
-          path="/money"
+          path="/secret"
           element={
             <div className="content">
-              <BSOD />
+              <SecretRoom />
             </div>
           }
         />

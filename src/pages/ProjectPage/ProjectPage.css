@@ -23,7 +23,7 @@
 
 .project-page img {
   /* height: 275px; */
-  width: 100%;
+  max-width: 50vw;
   height: 300px;
   object-fit: cover;
   margin-bottom: .5rem;

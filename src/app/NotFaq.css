@@ -4,6 +4,7 @@
   background-size: contain;
   margin: 0 auto;
   padding: 10rem 2.5rem;
+  position: relative;
 }
 
 .content.animate-bg {

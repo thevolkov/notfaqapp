@@ -1,7 +1,7 @@
 import './ProjectListPage.css';
 import {useEffect, useState, useRef} from 'react';
 import {useSelector} from 'react-redux';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
 import {type RootState} from '../../app/store';
 import {Input, Title, IconButton, AnimatedBlock} from '../../shared/ui';
 import Lottie from 'lottie-react';
@@ -17,6 +17,7 @@ const createAudio = (src: string, volume = 0.5): HTMLAudioElement => {
 };
 
 export default function ProjectListPage() {
+  const navigate = useNavigate();
   const projects = useSelector((state: RootState) => state.projects.projects);
   const inputRef = useRef<HTMLInputElement>(null);
   const consoleRef = useRef<HTMLInputElement>(null);
@@ -56,9 +57,12 @@ export default function ProjectListPage() {
   const handleSearch = (value: string) => setSearchValue(value);
   const handleConsole = (value: string) => setConsoleValue(value);
   const handleConsoleEnter = () => {
+    consoleRef.current?.focus();
+
     if (consoleValue.trim() === '') return;
 
     setConsoleOutput(prev => [...prev, `> ${consoleValue}`]);
+
     setConsoleValue('');
   };
 
@@ -174,6 +178,17 @@ export default function ProjectListPage() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    const content = document.querySelector('#root');
+
+    if (consoleOutput[consoleOutput.length - 1].slice(2).toLowerCase() === 'whereismyvoucher'){
+
+      content?.classList.remove('no-scroll');
+      navigate('/project/666');
+    }
+
+  }, [consoleOutput])
 
   useEffect(() => {
     if (clickCount === 3) {
@@ -300,7 +315,8 @@ export default function ProjectListPage() {
         <div className="projects-grid">
           {
             filteredProjects.length > 0 ? (
-              filteredProjects.map((project) => (
+              filteredProjects.map((project) =>
+                project.id === '666' ? null : (
                 <Link
                   className="project-card"
                   to={`/project/${project.id}`}

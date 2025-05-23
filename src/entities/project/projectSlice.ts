@@ -1,6 +1,6 @@
 import {createSlice, type PayloadAction} from '@reduxjs/toolkit';
 import {v4 as uuidv4} from 'uuid';
-import {faqsData} from './faqs';
+import {projectsData} from './constants';
 
 export interface FAQ {
   id: string;
@@ -26,134 +26,7 @@ interface ProjectsState {
 
 const loadFromLocalStorage = (): Project[] => {
   const data = localStorage.getItem('projects');
-  return data ? JSON.parse(data) : [
-    {
-      id: '0001',
-      title: 'Notcoin',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/notcoin.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: 'https://x.com',
-        web: 'https://ton.org',
-        support: 'https://t.me/supp',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '0002',
-      title: 'Dogs',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/dogs.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: 'https://x.com',
-        web: 'https://ton.org',
-        support: 'https://t.me/supp',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '0003',
-      title: 'Community',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/community.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: 'https://x.com',
-        web: 'https://ton.org',
-        support: 'https://t.me/supp',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '0004',
-      title: 'Not Pixel',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/not-pixel.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: 'https://x.com',
-        web: 'https://ton.org',
-        support: 'https://t.me/supp',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '0005',
-      title: 'Sticker Pack',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/sticker-pack.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: '',
-        web: 'https://ton.org',
-        support: '',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '0006',
-      title: 'Earn',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/earn.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: '',
-        web: 'https://ton.org',
-        support: '',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '0007',
-      title: 'Not Games',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/not-games.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: 'https://x.com',
-        web: '',
-        support: '',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '0008',
-      title: 'Void',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '/imgs/projects/void.jpg',
-      links: {
-        telegram: 'https://t.me',
-        community: 'https://t.me',
-        x: 'https://x.com',
-        web: '',
-        support: '',
-      },
-      faq: faqsData,
-    },
-    {
-      id: '9999',
-      title: 'Empty',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      image: '',
-      links: {
-        telegram: 'https://t.me',
-        community: '',
-        x: '',
-        web: '',
-        support: '',
-      },
-      faq: [],
-    },
-  ];
+  return data ? JSON.parse(data) : projectsData;
 };
 
 const initialState: ProjectsState = {
