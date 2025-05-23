@@ -7,18 +7,41 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+build/
+dist-ssr/
+ssr-manifest.json
+
+# Local env files
+.env
+.env.*.local
 *.local
 
-# Editor directories and files
-.vscode/*
+# Editor configs
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Optional: Mac system & OS-specific
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Optional: test coverage
+coverage/
+
+# Optional: lockfiles (если ты не хочешь пушить их)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
