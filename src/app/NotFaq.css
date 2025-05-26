@@ -10,7 +10,7 @@
 
 .content.animate-bg {
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-  url("public/imgs/bg/coin.webp") 50% 50%;
+  url("imgs/bg/coin.webp") 50% 50%;
   background-size: 5vw auto;
   animation: scroll-down .75s linear infinite;
 }

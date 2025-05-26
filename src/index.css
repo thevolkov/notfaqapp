@@ -17,14 +17,14 @@
 
   /* DARK THEME */
   --bg-color: var(--primary-color);
-  --bg-image: url("public/imgs/bg/blur-bg.jpg");
+  --bg-image: url("imgs/bg/blur-bg.jpg");
   --alpha-color: var(--primary-color-alpha);
 
   --text-color: var(--secondary-color);
 }
 
 .light-theme {
-  --bg-image: url("public/imgs/bg/blur-bg-light.jpg");
+  --bg-image: url("imgs/bg/blur-bg-light.jpg");
 }
 
 *, *::before, *::after {

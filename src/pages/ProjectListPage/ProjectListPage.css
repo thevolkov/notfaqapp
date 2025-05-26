@@ -150,10 +150,6 @@
   padding: .5rem 0;
 }
 
-.console .input input {
-  padding-bottom: .25rem;
-}
-
 .console-output {
   padding-right: 1rem;
   width: 95%;
