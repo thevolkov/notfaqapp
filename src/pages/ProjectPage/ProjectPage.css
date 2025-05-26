@@ -3,7 +3,7 @@
   /*margin: 0 auto;*/
   display: flex;
   flex-direction: column;
-  row-gap: var(--xl);
+  row-gap: 2.5rem;
 }
 
 .project-title {
@@ -13,20 +13,25 @@
 
 .project-desc {
   gap: 2rem;
+  z-index: 1;
 }
 
 .project-desc-info {
-  padding: 1rem 0;
+  /*padding: 0 0 1rem;*/
   gap: 1rem;
   text-wrap: balance
 }
 
 .project-page img {
-  /* height: 275px; */
-  max-width: 50vw;
-  height: 300px;
+  width: 100%;
+  /*max-width: 60vw;*/
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  margin-bottom: .5rem;
+  border-radius: 2rem;
+  border: 1px solid var(--primary-color-alpha);
+  /* height: 275px; */
+  /*height: 300px;*/
+  margin: 1rem 0;
   transition: box-shadow 1s ease;
   object-position: center;
   display: block;
@@ -54,7 +59,7 @@
 }
 
 .project-page .not-rocket-shake {
-  animation: rocket-shake 0.25s infinite, rocket-opacity 10s ease;
+  animation: rocket-shake 0.25s infinite, rocket-opacity 3s ease;
   box-shadow: none;
   width: 200px;
   aspect-ratio: 1;
@@ -81,22 +86,24 @@
 }
 
 .links, .links a, .links a i {
-  display: inline-flex;
+  /*display: inline-flex;*/
   height: fit-content;
 }
 
 .links {
   /*margin: 1rem 0;*/
-  gap: 1rem;
+  gap: .5rem;
 }
 
 .admin-links{
-  margin-top: 1rem;
-  height: 100%;
-  align-items: end;
+  gap: .5rem
+  /*margin-top: 1rem;*/
+  /*height: 100%;*/
+  /*align-items: end;*/
 }
 
 .links a {
+  display: block;
   /*width: 2rem;*/
   /*aspect-ratio: 1;*/
   /*padding: .5rem;*/

@@ -1,18 +1,18 @@
 .content {
-  /*width: 1190px;*/
-  background: url("/imgs/bg/blur-bg.jpg") no-repeat 0 0 fixed;
-  background-size: contain;
-  margin: 0 auto;
-  padding: 10rem 2.5rem;
   position: relative;
+  background: var(--bg-image) no-repeat 0 0 fixed;
+  background-size: cover;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10rem;
 }
 
 .content.animate-bg {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-  url("/imgs/bg/coin.webp") 50% 50%;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+  url("public/imgs/bg/coin.webp") 50% 50%;
   background-size: 5vw auto;
   animation: scroll-down .75s linear infinite;
-  /*pointer-events: none;*/
 }
 
 .animate-bg::before {
@@ -22,7 +22,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--dark-alpha-025) !important;
+  background: var(--primary-color-alpha)!important;
   z-index: -1;
 }
 
@@ -35,19 +35,6 @@
   }
 }
 
-/*.dashboard-wrapper {*/
-/*  width: 100%;*/
-/*  padding: 0 0 6rem 0;*/
-/*}*/
-
-.b-radius {
-  border-radius: 2rem;
-}
-
-.shadow {
-  box-shadow: 0 .25rem .75rem var(--dark-alpha-025);
-}
-
 .blur-bg {
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
@@ -58,25 +45,54 @@
   height: 100%!important;
 }
 
+.relative {
+  position: relative;
+}
+
 .absolute {
   position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 .d-flex {
   display: flex;
 }
 
+.align-c {
+  align-items: center;
+}
+
+.justify-c {
+  justify-content: center;
+}
+
+.justify-sa {
+  justify-content: space-around;
+}
+
+.justify-sb {
+  justify-content: space-between;
+}
+
 .flex-column {
   flex-direction: column;
 }
 
-.row-gap {
-
+.flex-row {
+  flex-direction: row;
 }
 
 .p-0 {
   padding: 0!important;
 }
+
 
 .m-0 {
   margin: 0!important;
@@ -86,38 +102,38 @@
   border: none!important;
 }
 
-.full-with {
-  width: 100%;
-}
-
 .pointer {
   cursor: pointer;
 }
 
-.dark-bg-wrapper {
+.faded-image {
+  opacity: .05;
+}
+
+.element-wrapper {
+  background: var(--primary-color-alpha);
   padding: 1rem;
-  background: var(--dark-alpha-025);
   border-radius: 1.5rem;
-  border: var(--dark-boarder);
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
 }
 
 .matrix-input {
   font-family: 'Courier New', Courier, monospace;
   color: var(--success);
   caret-color: var(--success);
-  /*border-color: var(--success)!important;*/
-  background: none!important;
-  /*padding: .25rem 0!important;*/
-  border: none!important;
-  /*border-bottom: 1px solid var(--success)!important;*/
-  border-radius: 0!important;
 }
 
-.matrix-input input {
+.matrix-input .input {
   border: none!important;
-  border-bottom: 1px solid var(--success)!important;
+  border-radius: 0!important;
+  background: none!important;
+  box-shadow: none!important;
+  opacity: 1;
+}
+
+.matrix-input .input input {
+  color: var(--success);
+  border-bottom: 1px solid var(--success);
+  caret-color: var(--success);
 }
 
 /*.lottie-icon {*/

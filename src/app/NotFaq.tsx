@@ -13,6 +13,8 @@ import BSOD from '../pages/BSOD.tsx/BSOD';
 import {trackRoute} from '../shared/lib/routeCheat';
 import {useEffect} from 'react';
 import SecretRoom from '../pages/SecretRoom';
+import type {RootState} from './store';
+import {useSelector} from 'react-redux';
 
 const routeLinks = [
   {
@@ -60,6 +62,12 @@ export default function NotFaq() {
   const hideFooter = noFooterRoutes.some((path) =>
     location.pathname.startsWith(path)
   );
+
+  const theme = useSelector((state: RootState) => state.theme.theme);
+
+  useEffect(() => {
+    document.documentElement.className = theme === 'light' ? 'light-theme' : '';
+  }, [theme]);
 
   useEffect(() => {
     const matched = trackRoute(location.pathname);

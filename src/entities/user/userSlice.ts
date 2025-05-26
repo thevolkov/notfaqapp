@@ -1,14 +1,16 @@
 import {createSlice, type PayloadAction} from '@reduxjs/toolkit';
-import {users} from './users';
+import {constants} from './constants';
 
 export type Role = 'user' | 'editor' | 'godmode';
 
 export interface User {
   id: string;
   name: string;
+  avatar: string;
   role: Role;
-  allowedProjects: string[];
-  // achievement: Badges;
+  allowedProjects?: string[];
+  achievements: string[];
+  isPremium: boolean;
 }
 
 interface UserState {
@@ -17,8 +19,8 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  currentUser: users[0],
-  users: users,
+  currentUser: constants[0],
+  users: constants,
 };
 
 const userSlice = createSlice({

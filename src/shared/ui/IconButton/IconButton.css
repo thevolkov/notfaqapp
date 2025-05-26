@@ -1,63 +1,61 @@
 .icon-button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: .5rem;
-  cursor: pointer;
   width: fit-content;
-  color: var(--light);
-  opacity: .75;
-  transition: opacity 1s ease;
+  background: var(--primary-color);
+  font-size: .75rem;
+  gap: .5rem;
   padding: .75rem;
-  border: 1px solid var(--dark-alpha-025);
+  opacity: .75;
+  border-radius: 2rem;
+  border: 1px solid var(--secondary-color-alpha);
+  box-shadow: inset 0 0 4px var(--primary-color-alpha);
+  transition: opacity 1s ease,
+  background 1s ease,
+  text-shadow 1s ease,
+  scale .02s ease;
+  /*backdrop-filter: blur(1px);*/
+  z-index: 1;
 }
 
 .icon-button:hover {
   opacity: 1;
+  text-shadow: 0 0 2px var(--secondary-color-alpha);
 }
 
-.icon-button--light-alpha {
-  background: var(--light-alpha-0025);
-}
-
-.icon-button--dark-alpha {
-  background: var(--dark-alpha-025);
-}
-
-.icon-button--success {
-  background: var(--success);
-}
-
-.icon-button--warning {
-  background: var(--warning);
-}
-
-.icon-button--danger {
-  background: var(--danger);
-}
-
-.icon-button--round {
-  /*padding: .5rem;*/
-}
-
-.icon-button__icon {
-  transform: rotate(0deg);
-  transition: transform .5s ease;
-}
-
-.icon-button__icon--rotate {
-  transform: rotate(45deg);
-}
-
-.icon-button__icon--half {
-  width: 50%;
-}
-
-.icon-button__icon--full {
-  width: 100%;
+.icon-button:active {
+  scale: .95;
 }
 
 .icon-button:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+.icon-button-color-base {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: none;
+  backdrop-filter: none;
+}
+
+.icon-button-color-alpha {
+  /*padding: 0;*/
+  /*border: none;*/
+  box-shadow: none;
+  background: none;
+}
+
+.icon-button-color-success {
+  background: var(--primary-color-alpha);
+  /*border: 1px solid var(--success);*/
+}
+
+.icon-button-color-success {
+  background: var(--success);
+  border: 1px solid var(--success);
+}
+
+.icon-button-color-danger {
+  background: var(--danger);
+  border: 1px solid var(--danger);
 }

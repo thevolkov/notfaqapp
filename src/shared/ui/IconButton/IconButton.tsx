@@ -4,55 +4,37 @@ import './IconButton.css';
 interface IconButtonProps {
   text?: string;
   iconId?: string;
-  iconSize?: string;
-  variant?: 'success' | 'warning' | 'danger' | 'light-alpha' | 'dark-alpha';
+  variant?: 'base' | 'primary' | 'success' | 'warning' | 'danger' | 'alpha';
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
-  rotate?: boolean;
-  half?: boolean;
-  full?: boolean;
 }
 
 export default function IconButton({
   text,
   iconId,
-  iconSize,
   variant,
   type = 'button',
   onClick,
   disabled = false,
-  className = '',
-  rotate = false,
-  half = false,
-  full = false,
+  className,
 }: IconButtonProps) {
-
-  const getIconButtonClass = (variant?: string, text?: string) => {
-    const classes = []
-
-    if (!variant) classes.push('p-0 border-none')
-    else classes.push(`icon-button--${variant}`)
-
-    if (!text) classes.push('icon-button--round')
-    if (full) classes.push('icon-button__icon--full')
-    if (half) classes.push('icon-button__icon--half')
-
-
-    return classes.join(' ')
-  }
 
   return (
     <button
-      className={`b-radius icon-button ${getIconButtonClass(variant, text)} ${className}`}
+      className={`icon-button pointer b-radius blur-bg d-flex align-c ${className} ${
+        !variant
+          ? 'p-0'
+          : `icon-button-color-${variant}`
+      }`}
       type={type}
       onClick={onClick}
       disabled={disabled}
     >
       {
         iconId &&
-          <i style={{fontSize: `${iconSize}rem`}} className={`bi bi-${iconId} icon-button__icon ${rotate && 'icon-button__icon--rotate'}`} />
+          <i className={`bi-${iconId} icon-button__icon`} />
       }
       {text}
     </button>

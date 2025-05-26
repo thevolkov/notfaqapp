@@ -4,6 +4,7 @@ import {type RootState} from '../../app/store';
 import IconButton from '../../shared/ui/IconButton/IconButton';
 import {useBackButton} from '../../shared/lib';
 import Title from '../../shared/ui/Title/Title.tsx'
+import ThemeToggle from '../../shared/ui/ThemeToggle/ThemeToggle';
 
 export default function UserPage() {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
@@ -13,9 +14,10 @@ export default function UserPage() {
 
   return (
     <div className="user-page">
-      <Title text={currentUser.name} size="4xl" shadow />
+      <Title text={currentUser.name} size="2xl" shadow />
       <div>ID: {currentUser.id}</div>
       <div>Role: {currentUser.role}</div>
+      <div className="d-flex align-c gap-05">Theme: <ThemeToggle /></div>
       <IconButton
         iconId="arrow-90deg-left"
         text="Back"

@@ -51,7 +51,7 @@ const faqsData = [
   },
   {
     id: '666',
-    question: '⛔️ Don\'t open this tab. Ok? OK?????',
+    question: `Wen CEX??? Wen PUMP???`,
     answer: ''
   },
 ];

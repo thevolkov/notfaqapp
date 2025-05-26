@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import './Title.css';
 
 interface TitleProps {
@@ -10,53 +9,35 @@ interface TitleProps {
   shadowText?: string;
 }
 
-export default function Title({ text = '', size = 'l', color = '', subtitle, shadow, shadowText = '' }: TitleProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    const resize = () => {
-      const container = containerRef.current;
-      const textEl = textRef.current;
-
-      if (container && textEl) {
-        const containerWidth = container.offsetWidth;
-        const textWidth = textEl.scrollWidth;
-
-        if (textWidth > containerWidth) {
-          const ratio = containerWidth / textWidth;
-          setScale(Math.max(ratio * 0.95, 0.7));
-        } else {
-          setScale(1);
-        }
-      }
-    };
-
-    resize();
-
-    const observer = new ResizeObserver(resize);
-    if (containerRef.current) observer.observe(containerRef.current);
-
-    window.addEventListener('resize', resize);
-
-    return () => {
-      window.removeEventListener('resize', resize);
-      observer.disconnect();
-    };
-  }, [text]);
+export default function Title({
+  text = '',
+  size = 'xl',
+  subtitle,
+  shadow,
+  shadowText = '',
+}: TitleProps) {
 
   return (
-    <div className="title" ref={containerRef}>
-      <div
-        ref={textRef}
-        className={`title-wrapper title-${size} ${color}`}
-        style={{ transform: `scale(${scale})`, transformOrigin: 'left center' }}
-      >
+    <div className="title relative">
+      <div className={`title-size-${size}`}>
         {text}
       </div>
-      {subtitle && <div className="title-s">{subtitle}</div>}
-      {shadow && <div className="title-huge">{shadowText ? shadowText : text}</div>}
+      {
+        subtitle && (
+          <div className="subtitle">
+            {subtitle}
+          </div>
+        )}
+      {
+        shadow && (
+          <div className="title-shadow absolute">
+            {
+              shadowText
+                ? shadowText
+                : text
+            }
+          </div>
+        )}
     </div>
   );
 }

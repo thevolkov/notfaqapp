@@ -95,11 +95,13 @@ export default function ProjectForm() {
     setFaq((prev) => prev.filter((_, i) => i !== index));
   };
 
+  console.log(faq)
+
   return (
     <>
-      <Title text={id ? 'Edit' : '+[n:fə]'} size="4xl" shadow shadowText={title} />
+      <Title text={id ? `Edit ${title}` : '+[n:fə]'} size="2xl" shadow shadowText={title} />
       <form className="project-form" onSubmit={handleSubmit}>
-        <div className="form-section dark-bg-wrapper">
+        <div className="form-section element-wrapper">
           <Input
             value={title}
             placeholder="Title"
@@ -120,7 +122,7 @@ export default function ProjectForm() {
         </div>
 
         <Title text="Links" size="xl" />
-        <div className="form-section links-row dark-bg-wrapper">
+        <div className="form-section links-row element-wrapper">
           {
             Object.entries(links).map(([key, value]) => (
               <Input
@@ -138,20 +140,22 @@ export default function ProjectForm() {
         {
           !faq.length && (
             <IconButton
+              text="add FAQ"
               iconId="plus-lg"
-              variant="light-alpha"
+              variant="alpha"
               onClick={addFaq}
-              full
             />
           )
         }
         <div className="form-section">
           {
             faq.map((item, index) => {
-              if (item.id === '666') return null;
+              // if (item.id === '666') return null;
+
+              const isLast = index === faq.length - 1;
 
               return (
-                <div key={item.id} className="form-row faq-row dark-bg-wrapper">
+                <div key={item.id} className="form-row faq-row element-wrapper">
                   <div className="faq-row-buttons">
                     <IconButton
                       className="remove-faq-button"
@@ -159,12 +163,15 @@ export default function ProjectForm() {
                       variant="danger"
                       onClick={() => removeFaq(index)}
                     />
-                    <IconButton
-                      iconId="plus-lg"
-                      variant="light-alpha"
-                      onClick={addFaq}
-                      full
-                    />
+                    {
+                      isLast && (
+                        <IconButton
+                          iconId="plus-lg"
+                          variant="success"
+                          onClick={addFaq}
+                        />
+                      )
+                    }
                   </div>
                   <div className="form-section">
                     <Input
@@ -193,14 +200,14 @@ export default function ProjectForm() {
             text={id ? 'save' : 'create'}
             type="submit"
             iconId="check-lg"
-            variant="dark-alpha"
+            variant="alpha"
             className="blur-bg"
             // half
           />
           <IconButton
             text="cancel"
             iconId="x-lg"
-            variant="light-alpha"
+            variant="alpha"
             onClick={handleBack}
             className="blur-bg"
             // half

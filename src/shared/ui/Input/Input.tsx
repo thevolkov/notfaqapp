@@ -1,5 +1,5 @@
 import './Input.css';
-import {forwardRef, type KeyboardEvent} from 'react';
+import {forwardRef, type KeyboardEvent, type Ref} from 'react';
 
 type InputProps = {
   value: string;
@@ -8,49 +8,51 @@ type InputProps = {
   placeholder?: string;
   type?: string;
   required?: boolean;
-  name?: string;
-  className?: string;
   iconId?: string;
   colon?: boolean;
+  disabled?: boolean;
+  className?: string;
 };
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      value,
-      onChange,
-      onKeyDown,
-      placeholder = '',
-      type = 'text',
-      required = false,
-      name,
-      className,
-      iconId,
-      colon = false,
-    },
-    ref
-  ) => {
-    return (
-      <div className={`input ${className}`}>
-        {
-          iconId &&
-            <i className={`bi bi-${iconId} ${colon && 'd-flex'}`}>
-              {colon && ':'}
-            </i>}
-        <input
-          ref={ref}
-          type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          onKeyDown={(e) => onKeyDown?.(e)}
-          placeholder={placeholder}
-          required={required}
-          name={name}
-          className={className}
-        />
-      </div>
-    );
-  }
-);
+function InputComponent(
+  {
+    value,
+    onChange,
+    onKeyDown,
+    placeholder = '',
+    type = 'text',
+    required = false,
+    iconId,
+    colon = false,
+    disabled = false,
+    className,
+  }: InputProps,
+  ref: Ref<HTMLInputElement>
+) {
+
+  return (
+    <div className={`input d-flex align-c ${className}`}>
+      {
+        iconId && (
+          <i className={`bi bi-${iconId} ${colon && 'd-flex'}`}>
+            {colon && ':'}
+          </i>
+        )
+      }
+      <input
+        ref={ref}
+        type={type}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        onKeyDown={(event) => onKeyDown?.(event)}
+        placeholder={placeholder}
+        required={required}
+        disabled={disabled}
+      />
+    </div>
+  );
+}
+
+const Input = forwardRef(InputComponent);
 
 export default Input;

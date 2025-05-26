@@ -1,14 +1,14 @@
 import './ProjectListPage.css';
 import {useEffect, useState, useRef} from 'react';
 import {useSelector} from 'react-redux';
-import {Link, NavLink, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {type RootState} from '../../app/store';
 import {Input, Title, IconButton, AnimatedBlock} from '../../shared/ui';
 import Lottie from 'lottie-react';
 import ReactConfetti from 'react-confetti';
 import Bomb from '../../shared/assets/imgs/cs-bomb.webp';
-// import Noob from '../../shared/assets/imgs/noob.gif';
 import rabbit from '../../shared/assets/tgs/thinkingRabbit.json';
+import {getProjectImageSrc} from '../../shared/lib/imageHelpers';
 
 const createAudio = (src: string, volume = 0.5): HTMLAudioElement => {
   const audio = new Audio(src);
@@ -27,7 +27,6 @@ export default function ProjectListPage() {
   const [loopRabbit, setLoopRabbit] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [showBomb, setShowBomb] = useState(false);
-  // const [showNoob, setShowNoob] = useState(false);
   const [showConsole, setShowConsole] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [consoleOutput, setConsoleOutput] = useState([
@@ -52,7 +51,6 @@ export default function ProjectListPage() {
     "[INFO] Portal gun detected in inventory. Cake is a lie.",
     "[SYS] Initiating self-destruct sequence... JK, just kidding! :D"
   ]);
-  // const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleSearch = (value: string) => setSearchValue(value);
   const handleConsole = (value: string) => setConsoleValue(value);
@@ -143,22 +141,6 @@ export default function ProjectListPage() {
         }, beepInterval);
       });
     }
-
-    // if (!showNoob && !showBomb && consoleValue.toLowerCase() === 'noob') {
-    //   setShowNoob(true)
-    //
-    //   const audio1 = createAudio('/sounds/noob-saibot.mp3');
-    //   const audio2 = createAudio('/sounds/shaos-laughter.mp3');
-    //
-    //   audio1.play()
-    //
-    //   setTimeout(() => {
-    //     audio1.pause();
-    //     audio1.currentTime = 0;
-    //
-    //     audio2.play();
-    //   }, 1750);
-    // }
   }, [consoleValue]);
 
   useEffect(() => {
@@ -180,9 +162,9 @@ export default function ProjectListPage() {
   }, []);
 
   useEffect(() => {
-    const content = document.querySelector('#root');
+    const content = document.querySelector('.content');
 
-    if (consoleOutput[consoleOutput.length - 1].slice(2).toLowerCase() === 'whereismyvoucher'){
+    if (consoleOutput[consoleOutput.length - 1].slice(2).toLowerCase() === 'whereismyvoucher') {
 
       content?.classList.remove('no-scroll');
       navigate('/project/666');
@@ -226,7 +208,7 @@ export default function ProjectListPage() {
   }, [clickCount]);
 
   useEffect(() => {
-    const content = document.querySelector('#root');
+    const content = document.querySelector('.content');
     if (!content) return;
 
     if (showConsole) {
@@ -240,9 +222,9 @@ export default function ProjectListPage() {
     if (!showConsole) return;
 
     const timeout = setTimeout(() => {
-      const el = consoleOutputRef.current;
-      if (el) {
-        el.scrollTop = el.scrollHeight;
+      const element = consoleOutputRef.current;
+      if (element) {
+        element.scrollTop = element.scrollHeight;
       }
     }, 0);
 
@@ -259,25 +241,23 @@ export default function ProjectListPage() {
           />
         )
       }
-      <div className="projects-list">
-        <div className="projects-header">
+      <div className="project-list">
+        <div className="project-list-header d-flex align-c">
           <Title
             text="not faq"
             subtitle="there's nothing here ¯\_(ツ)_/¯"
-            size="4xl"
+            size="2xl"
             shadow
             shadowText="[n:fə]"
           />
-          <NavLink to="/project/create">
-            <IconButton
-              // text="[n:fə]"
-              className="b-radius blur-bg"
-              iconId="plus-lg"
-              variant="dark-alpha"
-            />
-          </NavLink>
+          <IconButton
+            text="ADD"
+            iconId="plus-lg"
+            variant="success"
+            onClick={() => navigate("/project/create")}
+          />
         </div>
-        <div className="project-search dark-bg-wrapper">
+        <div className="project-search relative element-wrapper">
           <Lottie
             className="absolute"
             style={{
@@ -294,16 +274,6 @@ export default function ProjectListPage() {
               setClickCount((prev) => (prev >= 3 ? 0 : prev + 1))
             }
           />
-          {/*<Lottie*/}
-          {/*  className="absolute"*/}
-          {/*  style={{*/}
-          {/*    maxWidth: '2rem',*/}
-          {/*    left: '.9rem',*/}
-          {/*    top: '-7.7rem',*/}
-          {/*  }}*/}
-          {/*  animationData={pepe}*/}
-          {/*  loop={false}*/}
-          {/*/>*/}
           <Input
             ref={inputRef}
             value={searchValue}
@@ -312,32 +282,29 @@ export default function ProjectListPage() {
             onChange={handleSearch}
           />
         </div>
-        <div className="projects-grid">
+        <div className="project-list-grid">
           {
             filteredProjects.length > 0 ? (
               filteredProjects.map((project) =>
                 project.id === '666' ? null : (
-                <Link
-                  className="project-card"
-                  to={`/project/${project.id}`}
-                  key={project.id}
-                >
-                  <img
-                    className="b-radius"
-                    src={
-                      project.image
-                        ? project.image.startsWith('data:image')
-                          ? project.image
-                          : `${import.meta.env.BASE_URL}${project.image}`
-                        : `${import.meta.env.BASE_URL}imgs/no_image.png`
-                    }
-                    style={!project.image ? {opacity: 0.025} : undefined}
-                  />
-                  <Title text={project.title} size="l" />
-                </Link>
-              ))
+                  <div
+                    className="project-list-card"
+                    onClick={() => navigate(`/project/${project.id}`)}
+                    key={project.id}
+                  >
+                    <img
+                      className={`b-radius ${!project.image ? 'faded-image' : ''}`}
+                      src={getProjectImageSrc(project.image)}
+                      alt={project.title || 'no_image'}
+                    />
+                    <Title text={project.title} size="s" />
+                  </div>
+                ))
             ) : (
-              <div>Nothing found :(</div>
+              <Title
+                text="Nothing found (ʘ‿ʘ)"
+                size="s"
+              />
             )
           }
         </div>
@@ -349,18 +316,10 @@ export default function ProjectListPage() {
           </div>
         )
       }
-      {/*{*/}
-      {/*  // showNoob && (*/}
-      {/*  <div className={`noob-saibot ${showNoob && 'launch'}`}>*/}
-      {/*    <img src={Noob} alt="NOOB!" />*/}
-      {/*  </div>*/}
-      {/*  // )*/}
-      {/*}*/}
       <AnimatedBlock
         className="console shadow matrix-input"
         visible={showConsole}
         direction="bottom"
-        // preserveMount={false}
       >
         <div className="console-output" ref={consoleOutputRef}>
           {
@@ -373,8 +332,7 @@ export default function ProjectListPage() {
         </div>
         <Input
           ref={consoleRef}
-          className="matrix-input"
-          iconId="code-slash"
+          iconId="chevron-right"
           onChange={handleConsole}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -385,16 +343,15 @@ export default function ProjectListPage() {
           colon
         />
         <IconButton
-          className="console-close"
-          // variant="success"
+          className="absolute console-close"
+          variant="base"
           onClick={() => {
             setShowConsole(false)
             consoleRef.current?.blur()
           }}
-          iconId="x-lg"
+          text="[X]"
         />
       </AnimatedBlock>
     </>
   );
 }
-

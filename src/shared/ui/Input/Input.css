@@ -1,24 +1,15 @@
 .input {
-  display: inline-flex;
-  gap: .5rem;
-  align-items: center;
+  background: var(--tertiary-color-alpha);
   padding: 1rem;
-  background: var(--light-alpha-0025);
-  border: var(--dark-boarder);
+  border: 1px solid var(--primary-color-alpha);
   border-radius: 1rem;
-  opacity: .75;
+  gap: .5rem;
+  box-shadow: 0 0 2px var(--primary-color);
+  opacity: .5;
   transition: border 1s ease, opacity 1s ease;
-  /*width: 100%;*/
 }
 
 .input:focus-within, .input:hover {
-  border: var(--light-boarder);
+  border: 1px solid var(--secondary-color-alpha);
   opacity: 1;
 }
-
-/*.input i {*/
-/*  transition:opacity 1s ease;*/
-/*}*/
-
-/*.input:focus-within i {*/
-/*}*/

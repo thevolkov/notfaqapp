@@ -11,9 +11,6 @@ interface FileInputProps {
 export default function FileInput({buttonText, onChange, initialPreview}: FileInputProps) {
   const [preview, setPreview] = useState(initialPreview || '');
 
-  console.log(initialPreview)
-  console.log(preview)
-
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return
@@ -74,7 +71,7 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
       {
         !preview && (
           <>
-            <label className="file-label">
+            <label className="file-label d-flex align-c">
               <i className="bi bi-image" />
               {buttonText}
               <input
@@ -82,9 +79,8 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
                 accept=".jpg,.jpeg,.png"
                 onChange={handleFileChange}
                 hidden
-              />
+              /> FAQ image
             </label>
-            <div>: FAQ Image</div>
           </>
         )
       }

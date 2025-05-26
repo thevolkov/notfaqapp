@@ -9,7 +9,7 @@
 //
 // export default function UserSwitcherModal({ onClose }: UserSwitcherModalProps) {
 //   const dispatch = useDispatch();
-//   const users = useSelector((state: RootState) => state.user.users);
+//   const constants = useSelector((state: RootState) => state.user.constants);
 //
 //   const handleSelectUser = (userId: string) => {
 //     dispatch(setCurrentUser(userId));
@@ -19,8 +19,8 @@
 //   return (
 //     <div className="modal-overlay">
 //       <div className="modal-content">
-//         <div className="users-list">
-//           {users.map((user) => (
+//         <div className="constants-list">
+//           {constants.map((user) => (
 //             <div key={user.id} className="user-item">
 //               <IconButton
 //                 text={user.role}

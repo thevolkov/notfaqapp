@@ -1,43 +1,28 @@
 import './Footer.css';
 import {NavLink} from 'react-router-dom';
-
-const footerLinks = [
-  {
-    path: '/',
-    icon: 'bi-journal',
-    text: '[n:fə]',
-  },
-  {
-    path: '/user',
-    icon: 'bi-person-circle',
-    text: '[ˈprəʊfaɪl]',
-  },
-  {
-    path: '/dashboard',
-    icon: 'bi-gear',
-    text: '[ˈsetɪŋz]',
-  },
-];
+import {footerLinks} from './constants';
 
 export default function Footer() {
 
   return (
-    <div className="footer blur-bg">
-      <div className="content">
-        <div className="footer--links">
-          {
-            footerLinks.map((link) => (
-              <NavLink
-                to={link.path}
-                className={({ isActive }) => isActive ? 'active' : ''}
-                key={link.path}
-              >
-                <i className={`bi ${link.icon}`} />
-                {link.text}
-              </NavLink>
-            ))
-          }
-        </div>
+    <div className="footer w-100 fixed blur-bg p-1">
+      <div className="d-flex justify-sa">
+        {
+          footerLinks.map((link) => (
+            <NavLink
+              className={({isActive}) =>
+                isActive
+                  ? 'active'
+                  : ''
+              }
+              to={link.path}
+              key={link.path}
+            >
+              <i className={`bi ${link.icon}`} />
+              {link.text}
+            </NavLink>
+          ))
+        }
       </div>
     </div>
   );

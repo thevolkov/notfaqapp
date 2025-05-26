@@ -1,24 +1,16 @@
 .title {
-  width: fit-content;
-  color: var(--light);
-  position: relative;
-  text-wrap: balance;
+  color: var(--text-color);
   z-index: 1;
-  text-shadow: var(--shadow);
+  text-wrap: balance;
 }
 
-/*.title-wrapper {*/
-/*  display: inline-flex;*/
-/*  align-items: center;*/
-/*}*/
-
-.title-huge {
-  font-size: calc(var(--4xl) * 3);
+.title-shadow {
   width: 500%;
+  font-size: 35vw;
+  line-height: 30vw;
   font-weight: 900;
-  line-height: calc(var(--4xl) * 2.5);
-  color: var(--dark-alpha-025);
-  position: absolute;
+  text-wrap: nowrap;
+  color: var(--primary-color-alpha);
   bottom: 0;
   z-index: -1;
   pointer-events: none;
@@ -26,39 +18,40 @@
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  text-shadow: none;
 }
 
-.title-4xl {
-  font-size: var(--4xl);
-  font-weight: 900;
-  line-height: calc(var(--4xl) - 15%);
-}
-
-.title-3xl {
-  font-size: var(--3xl);
+.title-size-2xl {
+  font-size: 10vw;
   font-weight: 800;
-  line-height: calc(var(--3xl) - 15%);
+  line-height: calc(10vw - 15%);
+  /*background: linear-gradient(90deg, #FF9800, #FFC107);*/
 }
 
-.title-2xl {
-  font-size: var(--2xl);
-  font-weight: 800;
-  line-height: calc(var(--2xl) - 15%);
-}
-
-.title-xl {
-  font-size: var(--xl);
+.title-size-xl {
+  font-size: 4rem;
   font-weight: 700;
+  line-height: calc(4rem - 10%);
 }
 
-.title-l {
-  font-size: var(--l);
+.title-size-l {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: calc(3rem - 5%);
+}
+
+.title-size-m {
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
-.title-s {
-  font-size: var(--s);
+.title-size-s {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: .75rem;
   font-weight: normal;
-  color: var(--light-alpha-025);
+  color: var(--secondary-color-alpha);
+  position: relative;
 }

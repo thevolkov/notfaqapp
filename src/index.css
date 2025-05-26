@@ -2,32 +2,29 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 :root {
-  --s: .75rem; /* 15 */
-  --m: 1rem; /* html = font-size 20px -> 20 */
-  --l: 1.5rem; /* 30 */
-  --xl: 2rem; /* 40 */
-  --2xl: 3rem; /* 60 */
-  --3xl: 4rem; /* 60 */
-  --4xl: 5rem; /* 100 */
+  /* BASE */
+  /* colors */
+  --primary-color: #000000;
+  --secondary-color: #ECECEC;
 
-  --dark: #131313;
-  --light: #FFFFFF;
+  --primary-color-alpha: rgba(0, 0, 0, .25);
+  --secondary-color-alpha: rgba(255, 255, 255, .25);
+  --tertiary-color-alpha: rgba(255, 255, 255, .05);
+
   --danger: rgba(207, 0, 0, 0.5);
   --warning: rgba(255, 140, 0, 0.5);
   --success: rgba(124, 252, 0, 0.4);
 
-  --dark-alpha-075: rgba(0, 0, 0, 0.75);
+  /* DARK THEME */
+  --bg-color: var(--primary-color);
+  --bg-image: url("public/imgs/bg/blur-bg.jpg");
+  --alpha-color: var(--primary-color-alpha);
 
-  --dark-alpha-025: rgba(0, 0, 0, 0.25);
-  --light-alpha-025: rgba(255, 255, 255, 0.25);
+  --text-color: var(--secondary-color);
+}
 
-  --dark-alpha-0025: rgba(0, 0, 0, 0.025);
-  --light-alpha-0025: rgba(255, 255, 255, 0.025);
-
-  --shadow: 0 10px 15px var(--dark-alpha-025);
-
-  --light-boarder: 1px solid var(--light-alpha-025);
-  --dark-boarder: 1px solid var(--dark-alpha-025);
+.light-theme {
+  --bg-image: url("public/imgs/bg/blur-bg-light.jpg");
 }
 
 *, *::before, *::after {
@@ -42,27 +39,19 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  height: 100%;
   font-size: 20px;
 }
 
 body {
   position: relative;
-  min-height: 100%;
   font-family: 'Inter', sans-serif;
-  background: #131313;
-  color: var(--light);
+  background: var(--primary-color);
+  color: var(--text-color);
 }
 
 html, body {
   height: 100%;
   overflow: hidden;
-}
-
-#root {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 a {
@@ -72,7 +61,7 @@ a {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
   user-drag: none;
@@ -87,14 +76,14 @@ img {
 input, textarea, select {
   font: inherit;
   background: none;
-  caret-color: var(--light-alpha-025);
-  color: var(--light);
+  caret-color: var(--secondary-color-alpha);
+  color: var(--secondary-color);
   border: none;
-  /*width: 100%;*/
+  width: 100%;
 }
 
 input::placeholder, textarea::placeholder {
-  color: var(--light-alpha-025);
+  /*color: var(--light-alpha-025);*/
 }
 
 input[type=text], textarea {
@@ -111,7 +100,7 @@ button {
   border: none;
   background: none;
   line-height: 90%;
-  color: var(--light);
+  color: var(--secondary-color);
 }
 
 i {

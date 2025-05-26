@@ -18,4 +18,6 @@
   display: block!important;
   aspect-ratio: auto!important;
   box-shadow: none!important;
+  margin: 0!important;
+  border-radius: 0!important;
 }
