@@ -5,6 +5,7 @@ import {HashRouter} from 'react-router-dom';
 // import {BrowserRouter} from 'react-router-dom';
 import NotFaq from './app/NotFaq.tsx';
 import {store} from './app/store.ts';
+import {miniApp} from '@telegram-apps/sdk';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <>
@@ -15,3 +16,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </Provider>
   </>
 );
+
+miniApp.setHeaderColor('#048100');
