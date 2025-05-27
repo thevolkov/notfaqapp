@@ -28,6 +28,9 @@
 .icon-button:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+  scale: 1;
+  filter: saturate(0);
+  -webkit-filter: saturate(0);
 }
 
 .icon-button-color-base {

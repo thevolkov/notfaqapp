@@ -1,67 +1,41 @@
 .user-page {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  /*max-width: 800px;*/
-  /*margin: 0 auto;*/
-  /*padding: 20px;*/
+  gap: 1rem;
 }
 
-/*.user-header {*/
-/*  !*margin-bottom: 20px;*!*/
-/*}*/
+.user-page-avatar {
+  align-self: flex-start;
+}
 
-/*.permissions-section {*/
-/*  !*margin-top: 20px;*!*/
-/*}*/
+.user-page-role {
+  bottom: -.25rem;
+}
 
-/*.constants-list {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  gap: 10px;*/
-/*  margin-bottom: 20px;*/
-/*}*/
+.user-page-header {
+  gap: 1.5rem;
+  color: var(--secondary-color-alpha);
+}
 
-/*.user-item {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*  padding: 10px;*/
-/*  border-bottom: 1px solid #eee;*/
-/*}*/
+.user-page-name {
+  margin-bottom: .5rem;
+}
 
-/*.edit-user-section {*/
-/*  margin-top: 20px;*/
-/*  padding: 20px;*/
-/*  background: #f8f8f8;*/
-/*  border-radius: 8px;*/
-/*}*/
+.user-page-premium {
+  width: fit-content;
+  top: .5rem;
+  left: .5rem;
+  height: 1rem;
+  z-index: 3;
+  box-shadow: none;
+}
 
-/*.edit-user-section label {*/
-/*  display: block;*/
-/*  margin-bottom: 10px;*/
-/*}*/
+.user-page-achivs {
+  gap: .25rem;
+}
 
-/*.edit-user-section select {*/
-/*  margin-left: 10px;*/
-/*  padding: 5px;*/
-/*}*/
-
-/*!*.projects-list {*!*/
-/*!*  display: flex;*!*/
-/*!*  flex-direction: column;*!*/
-/*!*  gap: 10px;*!*/
-/*!*  margin-bottom: 20px;*!*/
-/*!*}*!*/
-
-/*!*.projects-list label {*!*/
-/*!*  display: flex;*!*/
-/*!*  align-items: center;*!*/
-/*!*  gap: 10px;*!*/
-/*!*}*!*/
-
-/*.edit-user-actions {*/
-/*  display: flex;*/
-/*  gap: 10px;*/
-/*  margin-top: 20px;*/
-/*}*/
+.user-page-achiv {
+  z-index: 2;
+  box-shadow: none;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
+  object-fit: contain;
+}

@@ -158,6 +158,7 @@ export default function ProjectPage() {
             variant="danger"
             className="blur-bg"
             onClick={() => navigate(`/project/delete/${project.id}`)}
+            disabled
           />
           {/*<div className="d-flex admin-links">*/}
           {/*</div>*/}

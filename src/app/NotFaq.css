@@ -65,6 +65,10 @@
   display: flex;
 }
 
+.d-inline-flex {
+  display: inline-flex;
+}
+
 .align-c {
   align-items: center;
 }

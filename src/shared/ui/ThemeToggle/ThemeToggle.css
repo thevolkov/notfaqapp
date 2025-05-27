@@ -1,8 +1,13 @@
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: var(--s);
+  gap: .5rem;
   cursor: pointer;
+  z-index: 2;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .theme-toggle input {
@@ -11,10 +16,10 @@
 
 .theme-toggle .slider {
   position: relative;
-  width: calc(var(--l) * 2);
-  height: var(--l);
-  background-color: var(--dark-alpha-075);
-  border-radius: var(--l);
+  width: calc(2rem * 2);
+  height: 2rem;
+  background-color: var(--secondary-color-alpha);
+  border-radius: 2rem;
   transition: background-color 0.3s ease;
 }
 
@@ -23,22 +28,22 @@
   position: absolute;
   top: 0.25rem;
   left: 0.25rem;
-  width: calc(var(--l) - 0.5rem);
-  height: calc(var(--l) - 0.5rem);
-  background-color: var(--light);
+  width: calc(2rem - 0.5rem);
+  height: calc(2rem - 0.5rem);
+  background-color: var(--primary-color);
   border-radius: 50%;
   transition: transform 0.3s ease;
 }
 
 .theme-toggle input:checked + .slider {
-  background-color: var(--success);
+  background-color: var(--secondary-color);
 }
 
 .theme-toggle input:checked + .slider::before {
-  transform: translateX(var(--l));
+  transform: translateX(2rem);
 }
 
 .theme-toggle .label {
-  font-size: var(--s);
-  color: var(--light-alpha-025);
+  font-size: 1rem;
+  color: var(--secondary-color-alpha);
 }

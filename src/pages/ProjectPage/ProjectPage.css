@@ -31,7 +31,7 @@
   border: 1px solid var(--primary-color-alpha);
   /* height: 275px; */
   /*height: 300px;*/
-  margin: 1rem 0;
+  margin-top: 1rem;
   transition: box-shadow 1s ease;
   object-position: center;
   display: block;
@@ -46,6 +46,7 @@
   right: 80%;
   top: 65%;
   z-index: 999999;
+  border: none!important;
 }
 
 .not-rocket {
@@ -122,17 +123,22 @@
     gap: 1rem;
   }
 
+  .links {
+    flex-wrap: wrap;
+  }
+
   .project-desc-info {
     padding: 0;
   }
 
   .project-page img {
-    width: calc(100% + 1rem);
+    /*width: calc(100% + 1rem);*/
     max-width: max-content;
+    aspect-ratio: 4/3;
     /*min-height: 220px;*/
-    border-radius: 0 2rem 2rem 0;
-    position: relative;
-    left: -1rem;
+    /*border-radius: 0 2rem 2rem 0;*/
+    /*position: relative;*/
+    /*left: -1rem;*/
   }
 
   .project-page .not-rocket {

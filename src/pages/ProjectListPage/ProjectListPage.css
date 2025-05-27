@@ -66,12 +66,14 @@
   aspect-ratio: 1;
   overflow: hidden;
   /*left: calc(50% - 100px);*/
-  left: 5rem;
+  left: 10rem;
+  z-index: 1;
 }
 
 .cs-bomb img {
   position: relative;
   mix-blend-mode: lighten;
+  width: auto;
   max-width: 200px;
   left: -48px;
 }

@@ -6,7 +6,7 @@ import {
   type RootState,
   updateUser,
   // deleteProject,
-  setCurrentUser
+  // setCurrentUser
 } from '../../app/store';
 import {type Role} from '../../entities/user/userSlice';
 // import {useBackButton} from '../../shared/lib';
@@ -38,11 +38,11 @@ export default function DashboardPage() {
   let menuItems: TabKey[] = [];
 
   if (isGodmode) {
-    menuItems = ['users', 'projects', 'roles'];
+    menuItems = ['users', 'projects'];
   } else if (isEditor) {
-    menuItems = ['projects', 'roles'];
+    menuItems = ['projects'];
   } else if (isUser) {
-    menuItems = ['roles'];
+    menuItems = [];
   }
 
   if (!menuItems.includes(activeTab)) {
@@ -82,12 +82,7 @@ export default function DashboardPage() {
   //   setIsDeleteConfirmOpen(null);
   // };
 
-  const handleSwitchRole = (role: Role) => {
-    const userToSwitch = users.find((user) => user.role === role);
-    if (userToSwitch) {
-      dispatch(setCurrentUser(userToSwitch.id));
-    }
-  };
+
 
   return (
     <div className="dashboard-page">
@@ -111,13 +106,13 @@ export default function DashboardPage() {
                 key={item}
                 className={`menu-item ${activeTab === item ? 'active' : ''}`}
                 onClick={() => {
-                  setActiveTab(item as 'users' | 'projects' | 'roles')
+                  setActiveTab(item as 'users' | 'projects')
                   setShow(!show)
                 }}
               >
                 {item === 'users' && 'Users'}
                 {item === 'projects' && 'Projects'}
-                {item === 'roles' && 'Permissions'}
+                {/*{item === 'roles' && 'Permissions'}*/}
               </button>
             ))
           }
@@ -188,30 +183,6 @@ export default function DashboardPage() {
                     <div className="no-projects">No available projects</div>
                   )
                 }
-              </div>
-            )
-          }
-          {
-            activeTab === 'roles' && (
-              <div className="roles-section">
-                <Title
-                  text="Permissions"
-                  size="4xl"
-                  shadow
-                />
-                <div className="roles-list">
-                  {
-                    ['user', 'editor', 'godmode'].map((role) => (
-                      <div
-                        key={role}
-                        className={`role-item ${currentUser.role === role ? 'selected' : ''}`}
-                        onClick={() => handleSwitchRole(role as Role)}
-                      >
-                        {role}
-                      </div>
-                    ))
-                  }
-                </div>
               </div>
             )
           }

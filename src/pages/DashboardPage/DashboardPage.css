@@ -102,8 +102,8 @@ width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    padding: 1rem;
+    border-bottom: 1px solid var(--secondary-color-alpha);
     width: 100%;
     box-sizing: border-box;
   }
@@ -118,7 +118,7 @@ width: 100%;
   }
 
   .role-item.selected {
-    background: #e0e0e0;
+    background: var(--primary-color-alpha);
     font-weight: bold;
   }
 

@@ -1,5 +1,5 @@
 import './ToastyEasterEgg.css';
-import { useEffect, useState, useRef } from 'react';
+import {useEffect, useState, useRef} from 'react';
 import toastImg from './toasty.gif';
 import toastSound from './toasty.mp3';
 
@@ -22,8 +22,7 @@ export default function ToastyEasterEgg () {
       }
 
       if (JSON.stringify(keysPressed.current) === JSON.stringify(keySequence)) {
-        setVisible(true);
-        new Audio(toastSound).play();
+        new Audio(toastSound).play().then(() => setVisible(true));
 
         timeoutRef.current = window.setTimeout(() => {
           setVisible(false);

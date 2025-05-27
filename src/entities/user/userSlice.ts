@@ -6,6 +6,7 @@ export type Role = 'user' | 'editor' | 'godmode';
 export interface User {
   id: string;
   name: string;
+  userName?: string;
   avatar: string;
   role: Role;
   allowedProjects?: string[];

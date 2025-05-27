@@ -1,0 +1,26 @@
+.user-avatar {
+  width: 7.5rem;
+  height: 7.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/*.user-avatar:before {*/
+/*  content: "";*/
+/*  width: .75rem;*/
+/*  height: .75rem;*/
+/*  border-radius: 100%;*/
+/*  position: absolute;*/
+/*  top: 10%;*/
+/*  right: 10%;*/
+/*  z-index: 11;*/
+/*  background: var(--success);*/
+/*  box-shadow: 0 0 .5rem var(--success);*/
+/*  border: 1px solid var(--success);*/
+/*}*/
+
+.user-avatar img {
+  height: inherit;
+  object-fit: cover;
+  border-radius: 100%;
+}

@@ -7,6 +7,7 @@ interface TitleProps {
   subtitle?: string;
   shadow?: boolean;
   shadowText?: string;
+  className?: string;
 }
 
 export default function Title({
@@ -15,10 +16,11 @@ export default function Title({
   subtitle,
   shadow,
   shadowText = '',
+  className,
 }: TitleProps) {
 
   return (
-    <div className="title relative">
+    <div className={`${className} title relative`}>
       <div className={`title-size-${size}`}>
         {text}
       </div>
