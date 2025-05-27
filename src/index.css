@@ -4,7 +4,7 @@
 :root {
   /* BASE */
   /* colors */
-  --primary-color: #000000;
+  --primary-color: #131313;
   --secondary-color: #ECECEC;
 
   --primary-color-alpha: rgba(0, 0, 0, .25);
@@ -24,6 +24,17 @@
 }
 
 .light-theme {
+  --primary-color: #ECECEC;
+  --secondary-color: #131313;
+
+  --primary-color-alpha: rgba(255, 255, 255, .5);
+  --secondary-color-alpha: rgba(0, 0, 0, .25);
+  --tertiary-color-alpha: rgba(0, 0, 0, 0.05);
+
+  --danger: rgba(207, 0, 0, 1);
+  --warning: rgba(255, 140, 0, 1);
+  --success: rgba(124, 252, 0, 1);
+
   --bg-image: url("imgs/bg/blur-bg-light.jpg");
 }
 

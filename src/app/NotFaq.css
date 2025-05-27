@@ -116,6 +116,10 @@
   border-radius: 1.5rem;
 }
 
+.bg-warn {
+  background: var(--warning);
+}
+
 .matrix-input {
   font-family: 'Courier New', Courier, monospace;
   color: var(--success);

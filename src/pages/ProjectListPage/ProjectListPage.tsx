@@ -9,6 +9,7 @@ import ReactConfetti from 'react-confetti';
 import Bomb from '../../shared/assets/imgs/cs-bomb.webp';
 import rabbit from '../../shared/assets/tgs/thinkingRabbit.json';
 import {getProjectImageSrc} from '../../shared/lib/imageHelpers';
+import {useDeepSearch} from '../../shared/lib/useDeepSearch';
 
 const createAudio = (src: string, volume = 0.5): HTMLAudioElement => {
   const audio = new Audio(src);
@@ -51,6 +52,9 @@ export default function ProjectListPage() {
     "[INFO] Portal gun detected in inventory. Cake is a lie.",
     "[SYS] Initiating self-destruct sequence... JK, just kidding! :D"
   ]);
+
+  const results = useDeepSearch(projects, searchValue);
+
 
   const handleSearch = (value: string) => setSearchValue(value);
   const handleConsole = (value: string) => setConsoleValue(value);
@@ -302,7 +306,7 @@ export default function ProjectListPage() {
                 ))
             ) : (
               <Title
-                text="Nothing found (ʘ‿ʘ)"
+                text="Title not found (ʘ‿ʘ)"
                 size="s"
               />
             )
@@ -352,6 +356,32 @@ export default function ProjectListPage() {
           text="[X]"
         />
       </AnimatedBlock>
+      {
+        searchValue && (
+          <div>
+            <ul>
+              {results.map(({item, highlights}) => (
+                <li key={item.id}>
+                  <div>
+                    {Object.entries(highlights).map(([path, parts]) => (
+                      <div key={path}>
+                        <strong>{path}</strong>:&nbsp;
+                        {parts.map((part, i) => (
+                          <span key={i} className={part.match ? 'bg-warn' : ''}>
+                    {part.text}
+                  </span>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <br />
+                  {/*<pre>{JSON.stringify(item, null, 2)}</pre>*/}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
     </>
   );
 }

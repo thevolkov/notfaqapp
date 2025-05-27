@@ -6,6 +6,10 @@
   box-shadow: 0 -.5rem 1rem var(--primary-color-alpha);
 }
 
+.light-theme .footer {
+  box-shadow: none;
+}
+
 .footer a {
   text-align: center;
   width: calc(100% / 3);
