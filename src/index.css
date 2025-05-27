@@ -17,7 +17,7 @@
 
   /* DARK THEME */
   --bg-color: var(--primary-color);
-  --bg-image: url("imgs/bg/blur-bg.jpg");
+  --bg-image: url("/imgs/bg/blur-bg.jpg");
   --alpha-color: var(--primary-color-alpha);
 
   --text-color: var(--secondary-color);
@@ -35,7 +35,7 @@
   --warning: rgba(255, 140, 0, 1);
   --success: rgba(124, 252, 0, 1);
 
-  --bg-image: url("imgs/bg/blur-bg-light.jpg");
+  --bg-image: url("/imgs/bg/blur-bg-light.jpg");
 }
 
 *, *::before, *::after {

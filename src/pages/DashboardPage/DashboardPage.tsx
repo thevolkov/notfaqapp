@@ -50,7 +50,7 @@ export default function DashboardPage() {
   }
 
   const availableProjects = isEditor
-    ? projects.filter((project) => currentUser.allowedProjects.includes(project.id))
+    ? projects.filter((project) => currentUser.allowedProjects?.includes(project.id))
     : projects;
 
   const handleCheckboxChange = (projectId: string) => {
@@ -94,7 +94,7 @@ export default function DashboardPage() {
       <div style={{top: '1rem', zIndex: '9999999999', borderRadius: '2rem'}} className="absolute blur-bg ">
         <IconButton
           iconId={show ? 'x-lg' : 'list'}
-          variant="light-alpha"
+          variant="alpha"
           onClick={() => setShow((prev) => !prev)}
         />
       </div>
@@ -144,7 +144,7 @@ export default function DashboardPage() {
                           onClick={() => {
                             setSelectedUserId(user.id);
                             setSelectedRole(user.role);
-                            setSelectedProjects(user.allowedProjects);
+                            setSelectedProjects(user.allowedProjects || []);
                             setEditUser(!editUser);
                           }}
                         />
@@ -253,13 +253,13 @@ export default function DashboardPage() {
             <IconButton
               text="Save"
               iconId="pencil"
-              variant="dark-alpha"
+              variant="alpha"
               onClick={handleAssignRole}
             />
             <IconButton
               text="Cancel"
               iconId="x-lg"
-              variant="dark-alpha"
+              variant="alpha"
               onClick={() => {
                 setEditUser(!editUser);
                 setSelectedUserId(null);
