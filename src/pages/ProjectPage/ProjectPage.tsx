@@ -12,6 +12,13 @@ import {linksAlias} from '../../shared/constants';
 import Rocket from '../../shared/assets/imgs/notRock.png';
 import {ToastyEasterEgg} from '../../shared/ui';
 import {getProjectImageSrc} from '../../shared/lib/imageHelpers';
+import Lottie from 'lottie-react';
+import Notcoin from '../../shared/assets/tgs/notcoin.json';
+import Community from '../../shared/assets/tgs/community.json';
+import Dogs from '../../shared/assets/tgs/dogs.json';
+import NotPixel from '../../shared/assets/tgs/notPixel.json';
+import Earn from '../../shared/assets/tgs/earn.json';
+import StickerPack from '../../shared/assets/tgs/stickerPack.json';
 
 export default function ProjectPage() {
   const navigate = useNavigate();
@@ -85,7 +92,15 @@ export default function ProjectPage() {
 
   return (
     <>
-      <Title text={project.title} size="2xl" shadow />
+      <div className="project-title d-inline-flex align-c">
+        <Title text={project.title} size="2xl" shadow />
+        <Lottie className="lottie-icon" animationData={Notcoin} loop />
+        <Lottie className="lottie-icon" animationData={Community} loop />
+        <Lottie className="lottie-icon" animationData={Dogs} loop />
+        <Lottie className="lottie-icon" animationData={NotPixel} loop />
+        <Lottie className="lottie-icon" animationData={Earn} loop />
+        <Lottie className="lottie-icon" animationData={StickerPack} loop />
+      </div>
       <div className="project-page">
         <div className="project-desc">
           <img

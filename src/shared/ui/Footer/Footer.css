@@ -4,6 +4,7 @@
   background: var(--primary-color-alpha);
   z-index: 999;
   box-shadow: 0 -.5rem 1rem var(--primary-color-alpha);
+  border-top: 1px solid var(--primary-color-alpha);
 }
 
 .light-theme .footer {

@@ -9,6 +9,9 @@
 .project-title {
   position: relative;
   /*width: fit-content;*/
+  align-items: start;
+  width: max-content;
+  gap: .5rem;
 }
 
 .project-desc {
@@ -116,6 +119,19 @@
 /*.links a:hover {*/
 /*  opacity: 1;*/
 /*}*/
+
+.lottie-icon {
+  width: 2.5rem;
+  z-index: 1;
+}
+
+.lottie-icon svg path {
+  stroke: var(--secondary-color);
+}
+
+.lottie-icon svg g path {
+  fill: var(--secondary-color);
+}
 
 @media (max-width: 768px) {
   .project-desc {

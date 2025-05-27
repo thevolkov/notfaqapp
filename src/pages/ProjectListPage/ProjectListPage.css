@@ -23,7 +23,7 @@
   object-fit: cover;
   border-radius: 2rem;
   transition: transform 0.2s ease;
-  border: 1px solid var(--primary-color-alpha)
+  border: 1px solid var(--tertiary-color-alpha)
 }
 
 .project-list-card:hover img {
