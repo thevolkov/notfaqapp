@@ -48,8 +48,13 @@
   background: none;
 }
 
-.icon-button-color-success {
+.icon-button-color-primary {
   background: var(--primary-color-alpha);
+  /*border: 1px solid var(--success);*/
+}
+
+.icon-button-color-secondary {
+  background: var(--secondary-color-alpha);
   /*border: 1px solid var(--success);*/
 }
 

@@ -2,7 +2,7 @@
   position: relative;
   background: var(--bg-image) no-repeat 0 0 fixed;
   background-size: cover;
-  height: 100%;
+  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 10rem;

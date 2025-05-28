@@ -58,11 +58,11 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--primary-color);
   color: var(--text-color);
+  overflow: hidden;
 }
 
 html, body {
   height: 100%;
-  overflow: auto;
 }
 
 a {

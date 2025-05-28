@@ -6,7 +6,7 @@ import IconButton from './IconButton/IconButton';
 import Input from './Input/Input';
 import Textarea from './Textarea/Textarea';
 import Title from './Title/Title';
-import ToastyEasterEgg from './ToastyEasterEgg/ToastyEasterEgg';
+import Toasty from './EasterEggs/Toasty/Toasty';
 
 export {
   AnimatedBlock,
@@ -17,5 +17,5 @@ export {
   Input,
   Textarea,
   Title,
-  ToastyEasterEgg,
+  Toasty,
 };

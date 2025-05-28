@@ -4,7 +4,7 @@ import './IconButton.css';
 interface IconButtonProps {
   text?: string;
   iconId?: string;
-  variant?: 'base' | 'primary' | 'success' | 'warning' | 'danger' | 'alpha';
+  variant?: 'base' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'alpha';
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   disabled?: boolean;

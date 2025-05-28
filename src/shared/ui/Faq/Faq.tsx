@@ -55,7 +55,7 @@ export default function Faq({project, faqData}: {
                   {
                     item.id !== '666'
                       ? <IconButton
-                        variant="success"
+                        variant="secondary"
                         iconId={isOpen ? "dash-lg" : "plus-lg"}
                         className="b-radius blur-bg"
                       />

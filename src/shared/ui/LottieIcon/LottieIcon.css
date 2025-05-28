@@ -1,0 +1,10 @@
+.lottie-icon {
+  width: 3rem;
+  z-index: 1;
+}
+
+/*.light-theme .lottie-icon {*/
+/*  filter: invert();*/
+/*  -webkit-filter: invert();*/
+/*  -ms-filter: invert();*/
+/*}*/

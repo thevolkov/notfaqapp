@@ -1,11 +1,11 @@
-import './ToastyEasterEgg.css';
+import './Toasty.css';
 import {useEffect, useState, useRef} from 'react';
 import toastImg from './toasty.gif';
 import toastSound from './toasty.mp3';
 
 const keySequence = ['a', 'c', 'ArrowUp', 'b', 'ArrowUp', 'b', 'a', 'ArrowDown'];
 
-export default function ToastyEasterEgg () {
+export default function Toasty () {
   const [visible, setVisible] = useState(false);
   const keysPressed = useRef<string[]>([]);
   const timeoutRef = useRef<number | null>(null);
