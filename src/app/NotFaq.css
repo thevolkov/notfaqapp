@@ -161,6 +161,11 @@
   color: var(--secondary-color-alpha);
 }
 
+.sidebar-toggle {
+  top: 1rem;
+  left: -2.5rem;
+}
+
 .bg-warn {
   background: var(--warning);
 }
@@ -223,7 +228,7 @@
 @media (max-width: 768px) {
   .content {
     width: 100%;
-    padding: 7.5rem 1rem;
+    padding: 4rem 1rem 7.5rem 1rem;
   }
 
   .content.animate-bg {

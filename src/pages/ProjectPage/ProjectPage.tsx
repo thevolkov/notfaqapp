@@ -67,7 +67,7 @@ export default function ProjectPage() {
 
   return (
     <div className="project-page d-flex flex-column relative">
-      <div className="project-page-navigate d-flex absolute">
+      <div className="project-page-navigate d-flex">
         <IconButton
           variant="alpha"
           iconId="arrow-90deg-left"

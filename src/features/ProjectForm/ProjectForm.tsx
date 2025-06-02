@@ -120,53 +120,59 @@ export default function ProjectForm() {
 
   return (
     <div className="project-form relative">
+      <IconButton
+        variant="alpha"
+        iconId="arrow-90deg-left"
+        text="Back"
+        onClick={handleBack}
+      />
       <Title text={id ? `Edit ${title}` : '+[n:fə]'} size="2xl" shadow shadowText={title} />
-
-      <IconButton iconId="list" variant="alpha" onClick={() => setShowSidebar(!showSidebar)}/>
       <form ref={formRef} className="d-flex" onSubmit={handleSubmit}>
-
-        <AnimatedBlock visible={!showSidebar} direction="right">
-        <div className="sidebar d-flex flex-column p-1">
-          <FileInput buttonText=": Image" onChange={setImage} initialPreview={image} />
-
-          <div className="d-flex align-c">
+        <AnimatedBlock
+          hideWithoutUnmount={true}
+          visible={!showSidebar}
+          direction="right"
+        >
+          <div className="sidebar d-flex flex-column p-1">
             <IconButton
-              variant={published ? 'success' : 'secondary'}
-              onClick={togglePublished}
-              iconId={published ? 'eye' : 'eye-slash'}
-            /> : {published ? 'Published' : 'Draft'}
-          </div>
-
-          {
-            id && (
-              <div className="d-flex align-c">
-                <IconButton
-                  iconId="trash"
-                  variant="danger"
-                  onClick={() => setShowDeleteConfirm(true)}
-                /> : Delete
-              </div>
-            )
-          }
-
-          <hr />
-
-          <div className="d-flex">
-            <IconButton
-              text={id ? 'save' : 'create'}
-              iconId={id ? 'floppy' : 'check-lg'}
+              className="sidebar-toggle absolute"
+              iconId={!showSidebar ? 'x-lg' : 'list'}
               variant="alpha"
-              onClick={() => setShowFormConfirm(true)}
-              disabled={!isFormValid}
+              onClick={() => setShowSidebar(!showSidebar)}
             />
-            <IconButton
-              variant="alpha"
-              iconId="arrow-90deg-left"
-              text="Back"
-              onClick={handleBack}
-            />
+            <FileInput buttonText=": Image" onChange={setImage} initialPreview={image} />
+            <div className="d-flex align-c">
+              <IconButton
+                variant={published ? 'success' : 'secondary'}
+                onClick={togglePublished}
+                iconId={published ? 'eye' : 'eye-slash'}
+              /> : {published ? 'Published' : 'Draft'}
+            </div>
+
+            {
+              id && (
+                <div className="d-flex align-c">
+                  <IconButton
+                    iconId="trash"
+                    variant="danger"
+                    onClick={() => setShowDeleteConfirm(true)}
+                  /> : Delete
+                </div>
+              )
+            }
+
+            <hr />
+
+            <div className="d-flex">
+              <IconButton
+                text={id ? 'save' : 'create'}
+                iconId={id ? 'floppy' : 'check-lg'}
+                variant="alpha"
+                onClick={() => setShowFormConfirm(true)}
+                disabled={!isFormValid}
+              />
+            </div>
           </div>
-        </div>
         </AnimatedBlock>
 
         <div className="d-flex flex-column element-wrapper">

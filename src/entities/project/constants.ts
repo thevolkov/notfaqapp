@@ -7,7 +7,7 @@ const faqsData = [
   },
   {
     id: '2',
-    published: true,
+    published: false,
     question: 'So I just… tap the screen?',
     answer: 'Yes. That’s the game. Just tap. Like your rent depends on it. Like your ex is watching. Like you’re mining Bitcoin manually.'
   },
@@ -31,7 +31,7 @@ const faqsData = [
   },
   {
     id: '6',
-    published: true,
+    published: false,
     question: 'Why does my energy run out like my motivation on Mondays?',
     answer: 'Because life isn’t fair. But you can recharge it. Just like your phone. Or your will to live after Monday meetings.'
   },
@@ -49,7 +49,7 @@ const faqsData = [
   },
   {
     id: '9',
-    published: true,
+    published: false,
     question: 'What happens after the tapping ends?',
     answer: 'The prophecy says: token launch, airdrops, maybe staking, maybe world domination. We wait. And we tap.'
   },

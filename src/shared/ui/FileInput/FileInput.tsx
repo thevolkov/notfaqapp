@@ -76,7 +76,7 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
             <IconButton
               className="absolute"
               onClick={handleRemove}
-              iconId="x-lg"
+              iconId="dash-lg"
               variant="primary"
             />
           </div>
