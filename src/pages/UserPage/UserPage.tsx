@@ -1,34 +1,32 @@
 import './UserPage.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState, setCurrentUser} from '../../app/store';
-import IconButton from '../../shared/ui/IconButton/IconButton';
-import {useBackButton} from '../../shared/lib';
 import Title from '../../shared/ui/Title/Title.tsx'
-import ThemeToggle from '../../shared/ui/ThemeToggle/ThemeToggle';
+import ThemeToggle from '../../features/ThemeToggle/ThemeToggle';
 import UserAvatar from '../../shared/ui/UserAvatar/UserAvatar';
-import UserRole from '../../shared/ui/UserRole/UserRole';
+import UserRoleMark from '../../shared/ui/UserRoleMark/UserRoleMark';
 import premiumCheckMark from '../../shared/assets/icons/premium-check.svg'
 import silverBone from '../../shared/assets/icons/dogs-silver-bone.png'
 import goldenBone from '../../shared/assets/icons/dogs-golden-bone.png'
 import notPlatinum from '../../shared/assets/icons/not-platinum.png'
 import goldenPx from '../../shared/assets/icons/golden-px.png'
-import {type Role} from '../../entities/user/userSlice';
 
-const achivAlias = {
+type AchievementKey = 'not-platinum' | 'dogs-silver-bone' | 'dogs-gold-bone' | 'golden-px';
+
+const achievementAlias = {
   'not-platinum': notPlatinum,
   'dogs-silver-bone': silverBone,
   'dogs-gold-bone': goldenBone,
   'golden-px': goldenPx,
-}
+};
 
 export default function UserPage() {
   const dispatch = useDispatch();
   const users = useSelector((state: RootState) => state.user.users);
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
-  const {handleBack} = useBackButton();
 
-  const handleSwitchRole = (role: Role) => {
-    const userToSwitch = users.find((user) => user.role === role);
+  const handleSwitchRole = (id: string) => {
+    const userToSwitch = users.find((user) => user.id === id);
     if (userToSwitch) {
       dispatch(setCurrentUser(userToSwitch.id));
     }
@@ -49,8 +47,8 @@ export default function UserPage() {
               />
             )
           }
-          <UserAvatar img={currentUser?.avatar || 'no-avatar'} />
-          <UserRole
+          <UserAvatar img={currentUser?.avatar} />
+          <UserRoleMark
             className="user-page-role absolute"
             role={currentUser.role}
           />
@@ -73,12 +71,12 @@ export default function UserPage() {
                 className="user-page-achivs absolute d-inline-flex"
               >
                 {
-                  currentUser.achievements.map((achiv) => (
+                  currentUser.achievements.map((achievement) => (
                     <img
                       className="user-page-achiv"
-                      src={achivAlias[achiv]}
+                      src={achievementAlias[achievement as AchievementKey]}
                       alt="tg-premium"
-                      key={achiv}
+                      key={achievement}
                     />
                   ))
                 }
@@ -90,28 +88,27 @@ export default function UserPage() {
         <div>id: {currentUser.id}</div>
       </div>
       <Title
-        text="Permissions"
+        text="All users"
         size="s"
       />
       <div className="user-page-permissions">
         {
-          ['godmode', 'editor', 'user'].map((role) => (
+          users.map((user) => (
             <div
-              key={role}
-              className={`role-item ${currentUser.role === role ? 'selected' : ''}`}
-              onClick={() => handleSwitchRole(role as Role)}
+              key={user.id}
+              className={`d-flex justify-sb align-c role-item ${currentUser.id === user.id ? 'selected' : ''}`}
+              onClick={() => handleSwitchRole(user.id)}
             >
-              {role}
+              <div className="d-flex align-c">
+                <UserAvatar variant="mini" img={user?.avatar} />
+                {user.name}
+              </div>
+              <UserRoleMark role={user.role} />
             </div>
           ))
         }
+
       </div>
-      <IconButton
-        variant="alpha"
-        iconId="arrow-90deg-left"
-        text="Back"
-        onClick={handleBack}
-      />
     </div>
   );
 }

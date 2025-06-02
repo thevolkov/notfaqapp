@@ -9,6 +9,7 @@ type TextAreaProps = {
   name?: string;
   className?: string;
   iconId?: string;
+  title?: string;
 };
 
 const textareaHeightAutoResize = (el: HTMLTextAreaElement) => {
@@ -32,6 +33,7 @@ export default function Textarea({
   name,
   className,
   iconId,
+  title,
 }: TextAreaProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -48,6 +50,7 @@ export default function Textarea({
           <i className={`bi bi-${iconId}`} />
         )
       }
+      {title}
       <textarea
         ref={textareaRef}
         value={value}

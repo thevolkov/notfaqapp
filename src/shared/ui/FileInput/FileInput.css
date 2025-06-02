@@ -1,56 +1,27 @@
-.file-input {
-  display: inline-flex;
-  /* flex-direction: column; */
-  align-items: center;
-  gap: .5rem;
-}
-
-.preview-block {
-  display: inline-flex;
-  flex: auto;
+.file-input-preview {
   align-items: start;
-  gap: 1rem;
 }
 
-.remove-button {
-  /*position: absolute;*/
-  /*top: 0;*/
-  /*right: -2rem;*/
-}
-
-.file-preview {
-  flex: 1;
-  /*width: 0;*/
-  /*width: 100%;*/
-  max-width: 50vw;
-  aspect-ratio: 16 / 9;
-  border-radius: 1rem;
+.file-input-preview img {
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  /*box-shadow: var(--shadow);*/
+  border-radius: .95rem;
+  border: 1px solid var(--tertiary-color-alpha);
 }
 
-.file-label {
+.file-input-label i {
   width: fit-content;
-  padding: .75rem 1rem;
-  font-size: .75rem;
-  gap: .5rem;
-  /*background: var(--light-alpha-0025);*/
-  border-radius: 2rem;
-  cursor: pointer;
-  text-align: center;
-  opacity: .75;
+  padding: .5rem;
+  color: var(--secondary-color);
+  opacity: .8;
   transition: opacity 1s ease;
   border: 1px solid var(--secondary-color-alpha);
 }
 
-.file-label:hover {
+.file-input-label:active i {
+  transform: scale(.95);
+}
+
+.file-input-label:hover i {
   opacity: 1;
 }
-
-.file-label i {
-  /*margin-right: .5rem;*/
-}
-
-/*.file-label:hover {*/
-/*  background: #0056b3;*/
-/*}*/

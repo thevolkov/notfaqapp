@@ -44,12 +44,26 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
   }, [initialPreview]);
 
   return (
-    <div className="file-input">
+    <>
+      {
+        !preview && (
+          <label className="file-input-label d-flex align-c pointer">
+            <i className="bi bi-image b-radius" />
+            <input
+              type="file"
+              accept=".jpg,.jpeg,.png"
+              onChange={handleFileChange}
+              hidden
+            />
+            {buttonText}
+          </label>
+        )
+      }
       {
         preview && (
-          <div className="preview-block">
+          <div className="file-input-preview d-flex">
             <img
-              className="file-preview b-radius"
+              className="b-radius"
               src={
                 preview
                   ? preview.startsWith('data:image')
@@ -60,30 +74,14 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
               alt="Preview"
             />
             <IconButton
-              className="remove-button blur-bg"
+              className="absolute"
               onClick={handleRemove}
               iconId="x-lg"
-              variant="danger"
+              variant="primary"
             />
           </div>
         )
       }
-      {
-        !preview && (
-          <>
-            <label className="file-label d-flex align-c">
-              <i className="bi bi-image" />
-              {buttonText}
-              <input
-                type="file"
-                accept=".jpg,.jpeg,.png"
-                onChange={handleFileChange}
-                hidden
-              /> FAQ image
-            </label>
-          </>
-        )
-      }
-    </div>
+    </>
   );
 }

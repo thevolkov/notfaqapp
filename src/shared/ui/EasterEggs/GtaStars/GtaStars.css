@@ -1,0 +1,32 @@
+.gta-stars {
+  top: 0;
+  right: 0;
+  width: 100%;
+   font-size: 1.5rem;
+  padding: 2rem;
+  text-align: right;
+}
+
+.gta-stars span {
+  transition: all 0.5s ease;
+}
+
+.gta-stars.active span {
+  animation: flash 0.5s ease-in-out infinite;
+  color: gold;
+  text-shadow: 0 0 15px gold;
+}
+
+.gta-stars.solid span {
+  animation: none;
+  -webkit-text-stroke: 0 transparent;
+}
+
+@keyframes flash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

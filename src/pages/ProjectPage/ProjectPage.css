@@ -1,61 +1,45 @@
 .project-page {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2.5rem;
-}
-
-.project-title {
-  position: relative;
-  align-items: start;
-  width: max-content;
-  gap: .5rem;
-}
-
-.project-desc {
   gap: 2rem;
-  z-index: 1;
 }
 
-.project-desc-info {
-  gap: 1rem;
-  text-wrap: balance
+.project-page-navigate {
+  top: -3rem;
 }
 
-.project-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
+.project-page-title {
+  align-items: center;
+}
+
+.project-page-title .title {
+  text-wrap: nowrap;
+}
+
+.project-page-image {
+  width: calc(100% / 3);
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 2rem;
   border: 1px solid var(--primary-color-alpha);
-  margin-top: 1rem;
-  transition: box-shadow 1s ease;
-  object-position: center;
-  display: block;
+  filter: saturate(1.25);
 }
 
-.project-support a {
-  cursor: pointer;
-  font-weight: 900;
+.project-page-links {
+  width: 90%;
+  flex-wrap: wrap;
 }
-
-.links, .links a, .links a i {
-  height: fit-content;
-}
-
-.links {
-  gap: .5rem;
-}
-
-.admin-links{
-  gap: .5rem
-}
-
-.links a {
-  display: block;
-}
-
 
 @media (max-width: 768px) {
+  .project-page {
+    gap: 1rem;
+  }
+
+  .project-page-head {
+    flex-wrap: wrap;
+  }
+
+  .project-page-image {
+    width: 100%;
+  }
+
   .project-desc {
     flex-direction: column;
     gap: 1rem;
@@ -67,10 +51,5 @@
 
   .project-desc-info {
     padding: 0;
-  }
-
-  .project-image {
-    max-width: max-content;
-    aspect-ratio: 4/3;
   }
 }

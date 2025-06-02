@@ -1,59 +1,20 @@
-.project-form {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-  margin-top: 2rem;
+.project-form .title {
+  margin-left: 1rem;
 }
 
-.faq-row {
-  position: relative;
-  display: inline-flex;
-  justify-content: space-between;
-  /*align-items: start;*/
-  width: 100%;
-  gap: 1rem;
+.sidebar .file-input-preview {
+  max-width: 10rem;
 }
 
-.faq-row-buttons {
-  /*width: 100%;*/
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.form-actions {
-  /*width: 75%;*/
-  display: inline-flex;
-  gap: 1rem;
-  /*justify-content: center;*/
-}
-
-.form-section {
-  /*width: 100%;*/
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 1rem;
-}
-
-.links-row {
-  display: inline-flex;
-  flex-direction: row;
+.project-form-links {
   flex-wrap: wrap;
-  /*row-gap: .5rem;*/
-  /*gap: .5rem;*/
 }
 
-.links-row .input {
-  flex: auto;
+.project-form-links .input {
+  width: calc((100% - 1rem) / 3);
 }
 
-/*.form-row {*/
-/*  float: left;*/
-/*}*/
-
-/*@media (max-width: 768px) {*/
-/*  .links-row .input {*/
-/*    width: 100%;*/
-/*  }*/
-/*}*/
+.project-form-confirm {
+  background: var(--primary-color-alpha);
+  height: 35vh;
+}

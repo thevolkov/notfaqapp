@@ -26,10 +26,11 @@ export default function Title({
       </div>
       {
         subtitle && (
-          <div className="subtitle">
+          <div className="subtitle absolute">
             {subtitle}
           </div>
-        )}
+        )
+      }
       {
         shadow && (
           <div className="title-shadow absolute">

@@ -4,7 +4,13 @@ import './IconButton.css';
 interface IconButtonProps {
   text?: string;
   iconId?: string;
-  variant?: 'base' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'alpha';
+  variant?: 'base'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'alpha';
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   disabled?: boolean;
@@ -19,15 +25,17 @@ export default function IconButton({
   onClick,
   disabled = false,
   className,
+  ...rest
 }: IconButtonProps) {
 
   return (
     <button
-      className={`icon-button pointer b-radius blur-bg d-flex align-c ${className} ${
+      className={`icon-button pointer b-radius blur-bg d-flex align-c ${text && 'px-1'} ${className} ${
         !variant
           ? 'p-0'
           : `icon-button-color-${variant}`
       }`}
+      {...rest}
       type={type}
       onClick={onClick}
       disabled={disabled}

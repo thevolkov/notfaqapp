@@ -3,8 +3,8 @@
   background: var(--primary-color);
   font-size: .75rem;
   gap: .5rem;
-  padding: .75rem;
-  opacity: .75;
+  padding: .5rem;
+  opacity: .8;
   border-radius: 2rem;
   border: 1px solid var(--secondary-color-alpha);
   box-shadow: inset 0 0 4px var(--primary-color-alpha);
@@ -66,4 +66,9 @@
 .icon-button-color-danger {
   background: var(--danger);
   border: 1px solid var(--danger);
+}
+
+.light-theme .icon-button-color-danger {
+  color: var(--primary-color);
+  box-shadow: inset 0 0 2px #810000;
 }

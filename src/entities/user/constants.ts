@@ -5,7 +5,7 @@ export const constants: User[] = [
     id: '000000000',
     name: 'Ebalanga',
     userName: '@ebalanga',
-    avatar: 'imgs/users/what.jpg',
+    avatar: 'imgs/users/Peralta.jpg',
     role: 'godmode',
     achievements: ['not-platinum'],
     isPremium: true,

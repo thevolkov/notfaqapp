@@ -1,0 +1,20 @@
+.noob-saibot {
+  height: 20vh;
+  aspect-ratio: 1;
+  position: fixed;
+  left: -20vh;
+  bottom: 110px;
+  z-index: 999999;
+  /*transform: translateX(0);*/
+  transition: transform 10s linear;
+}
+
+.noob-saibot img {
+  position: relative;
+  max-width: 300px;
+  height: 20vh;
+}
+
+.noob-saibot.launch {
+  transform: translateX(120vw);
+}

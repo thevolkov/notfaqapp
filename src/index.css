@@ -7,13 +7,13 @@
   --primary-color: #131313;
   --secondary-color: #ECECEC;
 
-  --primary-color-alpha: rgba(0, 0, 0, .25);
+  --primary-color-alpha: rgba(0, 0, 0, .5);
   --secondary-color-alpha: rgba(255, 255, 255, .25);
   --tertiary-color-alpha: rgba(255, 255, 255, .05);
 
-  --danger: rgba(207, 0, 0, 0.5);
-  --warning: rgba(255, 140, 0, 0.5);
-  --success: rgba(124, 252, 0, 0.4);
+  --danger: rgba(207, 0, 0, 0.8);
+  --warning: rgba(255, 140, 0, 0.8);
+  --success: rgba(4, 193, 0, 0.8);
 
   /* DARK THEME */
   --bg-color: var(--primary-color);
@@ -29,11 +29,11 @@
 
   --primary-color-alpha: rgba(255, 255, 255, .5);
   --secondary-color-alpha: rgba(0, 0, 0, .25);
-  --tertiary-color-alpha: rgba(0, 0, 0, 0.05);
+  --tertiary-color-alpha: rgba(0, 0, 0, 0.025);
 
-  --danger: rgba(207, 0, 0, 1);
-  --warning: rgba(255, 140, 0, 1);
-  --success: rgba(124, 252, 0, 1);
+  /*--danger: rgba(207, 0, 0, 1);*/
+  /*--warning: rgba(255, 140, 0, 1);*/
+  /*--success: rgba(124, 252, 0, 1);*/
 
   --bg-image: url("/imgs/bg/blur-bg-light.jpg");
 }
@@ -77,7 +77,6 @@ img {
   display: block;
   user-drag: none;
   -webkit-user-drag: none;
-  box-shadow: 0 .5rem 2rem var(--primary-color);
 }
 
 :focus-visible {
@@ -120,6 +119,13 @@ i {
   line-height: 90%;
   font-style: normal;
   user-select: none;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--tertiary-color-alpha);
+  margin: .25rem 0;
 }
 
 @media (max-width: 768px) {

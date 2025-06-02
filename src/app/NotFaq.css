@@ -5,7 +5,7 @@
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 10rem;
+  padding: 7.5rem;
 }
 
 .content.animate-bg {
@@ -22,7 +22,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--primary-color-alpha)!important;
+  background: var(--primary-color-alpha) !important;
   z-index: -1;
 }
 
@@ -63,10 +63,15 @@
 
 .d-flex {
   display: flex;
+  gap: .5rem;
 }
 
-.d-inline-flex {
-  display: inline-flex;
+.flex-auto {
+  flex: auto;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .align-c {
@@ -97,9 +102,26 @@
   padding: 0!important;
 }
 
-
 .m-0 {
   margin: 0!important;
+}
+
+.p-1 {
+  padding: 1rem!important;
+}
+
+.px-1 {
+  padding-left: 1rem!important;
+  padding-right: 1rem!important;
+}
+
+.py-1 {
+  padding-top: 1rem!important;
+  padding-bottom: 1rem!important;
+}
+
+.b-radius {
+  border-radius: 2rem;
 }
 
 .border-none {
@@ -110,51 +132,93 @@
   cursor: pointer;
 }
 
+.link {
+  color: #0077ff;
+
+}
+
 .faded-image {
-  opacity: .05;
+  filter: saturate(0) brightness(50%);
 }
 
 .element-wrapper {
   background: var(--primary-color-alpha);
   padding: 1rem;
   border-radius: 1.5rem;
+  z-index: 1;
+}
+
+.popup {
+  height: 30vh;
+  padding: 2rem;
+  background: var(--primary-color-alpha);
+  text-align: center;
+  gap: 1rem;
+}
+
+.sidebar {
+  font-size: .75rem;
+  color: var(--secondary-color-alpha);
 }
 
 .bg-warn {
   background: var(--warning);
 }
 
-.matrix-input {
-  font-family: 'Courier New', Courier, monospace;
-  color: var(--success);
-  caret-color: var(--success);
+.tooltip {
+  font-size: .75rem;
+  cursor: help;
 }
 
-.matrix-input .input {
-  border: none!important;
-  border-radius: 0!important;
-  background: none!important;
-  box-shadow: none!important;
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  /*width: 7.5rem;*/
+  bottom: 125%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
+  background: var(--secondary-color);
+  box-shadow: inset 0 0 2px var(--primary-color-alpha);
+  border: 1px double var(--primary-color-alpha);
+  color: var(--primary-color-alpha);
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+}
+
+.tooltip:hover::after {
   opacity: 1;
+  visibility: visible;
 }
 
-.matrix-input .input input {
-  color: var(--success);
-  border-bottom: 1px solid var(--success);
-  caret-color: var(--success);
+/* pending... */
+
+.pending-ellipsis:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 0;
+  content: "...";
+  animation: ellipsis steps(4, end) 1000ms infinite;
 }
 
-/*.lottie-icon {*/
-/*  !*position: absolute;*!*/
-/*  width: 1.5rem;*/
-/*  !*right: -1.5rem;*!*/
-/*  !*top: 0;*!*/
-/*  filter: invert(1) grayscale(1) brightness(100);*/
-/*}*/
+@keyframes ellipsis {
+  to {
+    width: 2.5rem;
+  }
+}
 
-/*.filter-off {*/
-/*  filter: none;*/
-/*}*/
+.head-shadow {
+  background: linear-gradient(90deg, #CC3C2A, #294F8C);
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .content {

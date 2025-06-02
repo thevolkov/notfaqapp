@@ -1,4 +1,4 @@
-.user-role {
+.user-role-mark {
   width: fit-content;
   font-size: .5rem;
   padding: .25rem 1rem;
@@ -13,24 +13,24 @@
   -ms-user-select: none;
 }
 
-.light-theme .user-role {
-  color: var(--primary-color);
-  box-shadow: none;
+.light-theme .user-role-mark {
+  /*color: var(--primary-color);*/
+  /*box-shadow: none;*/
 }
 
-.user-role-user {
+.user-role-mark-user {
   background: var(--success);
   border: 1px solid var(--success);
   box-shadow: 0 0 .5rem var(--success);
 }
 
-.user-role-editor {
+.user-role-mark-editor {
   background: var(--warning);
   border: 1px solid var(--warning);
   box-shadow: 0 0 .5rem var(--warning);
 }
 
-.user-role-godmode {
+.user-role-mark-godmode {
   background: var(--danger);
   border: 1px solid var(--danger);
   box-shadow: 0 0 .5rem var(--danger);

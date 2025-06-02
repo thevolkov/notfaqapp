@@ -1,9 +1,9 @@
 .bsod {
   font-family: 'Courier New', Courier, monospace;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
   padding: 2rem;
   text-align: center;
   flex-direction: column;
@@ -16,8 +16,8 @@
 }
 
 .bsod-emoji {
-  display: flex;
-  justify-content: center;
+  /*display: flex;*/
+  /*justify-content: center;*/
   width: 100%;
 }
 

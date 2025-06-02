@@ -1,5 +1,5 @@
 import './Faq.css';
-import {useState, useEffect} from 'react';
+import {useState, useCallback, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {type FAQ} from '../../../entities/project/projectSlice';
 import {Title, IconButton} from '../';
@@ -12,13 +12,13 @@ export default function Faq({project, faqData}: {
   const navigate = useNavigate();
   const [openIds, setOpenIds] = useState<string[]>([]);
 
-  const handleAnswerToggle = (id: string) => {
+  const handleAnswerToggle = useCallback((id: string) => {
     setOpenIds(prev =>
       prev.includes(id)
         ? prev.filter(openId => openId !== id)
         : [...prev, id]
     );
-  };
+  }, []);
 
   useEffect(() => {
     if (faqData.length > 0 && openIds.length === 0) {
@@ -32,13 +32,14 @@ export default function Faq({project, faqData}: {
       <div className="faq-list">
         {
           faqData.map((item) => {
-            if (item.id === '666' && project.toLowerCase() !== 'not pixel') {
-              return null;
-            }
 
             const isOpen = openIds.includes(item.id);
             return (
-              <div id={`${project.toLowerCase()}-faq-${item.id}`} className="faq" key={item.id}>
+              <div
+                id={`${project.toLowerCase()}-faq-${item.id}`}
+                className={`faq relative ${!item.published && 'faq-draft'}`}
+                key={item.id}
+              >
                 <div
                   className="faq-question pointer"
                   onClick={() =>
@@ -49,25 +50,30 @@ export default function Faq({project, faqData}: {
                 >
                   <Title
                     text={item.question}
-                    subtitle={item.id === '666' && "☠️ Don't open this tab. Ok? OK?????" || ''}
                     size="l"
                   />
+
                   {
-                    item.id !== '666'
-                      ? <IconButton
+                    !item.published ? (
+                      <IconButton
                         variant="secondary"
+                        iconId="eye-slash"
+                        className="tooltip"
+                        data-tooltip="draft"
+                      />
+                    ) : (
+                      <IconButton
+                        variant="primary"
                         iconId={isOpen ? "dash-lg" : "plus-lg"}
-                        className="b-radius blur-bg"
                       />
-                      : <IconButton
-                        variant="danger"
-                        iconId="plus-lg"
-                        className="b-radius blur-bg"
-                        onClick={() => navigate("/666")}
-                      />
+                    )
                   }
                 </div>
-                {isOpen && <div className="faq-answer">{item.answer}</div>}
+                {
+                  isOpen && (
+                    <div className="faq-answer">{item.answer}</div>
+                  )
+                }
               </div>
             );
           })

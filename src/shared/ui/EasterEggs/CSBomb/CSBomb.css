@@ -1,0 +1,59 @@
+.cs-bomb {
+  mix-blend-mode: lighten;
+  position: absolute;
+  top: 1rem;
+  width: 10rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  left: 10rem;
+  z-index: 1;
+}
+
+.cs-bomb img {
+  position: relative;
+  mix-blend-mode: lighten;
+  width: auto;
+  max-width: 10rem;
+  left: -48px;
+}
+
+.cs-bomb::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: red;
+  box-shadow: 0 0 15px red;
+  border-radius: 100%;
+  border: 1px solid var(--primary-color-alpha);
+  left: 22px;
+  top: 33px;
+  animation: blink 1s ease infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.6;
+    box-shadow: 0 0 5px red;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px red;
+  }
+  100% {
+    opacity: 0.6;
+    box-shadow: 0 0 5px red;
+  }
+}
+
+@media (max-width: 768px) {
+  .cs-bomb {
+    top: .5rem;
+    left: 1rem;
+  }
+
+  .cs-bomb::before {
+    width: 5px;
+    height: 5px;
+  }
+}

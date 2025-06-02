@@ -4,6 +4,7 @@ import {projectsData} from './constants';
 
 export interface FAQ {
   id: string;
+  published: boolean;
   question: string;
   answer: string;
 }
@@ -16,6 +17,7 @@ export interface Project {
   title: string;
   image: string;
   desc: string;
+  published: boolean;
   links: Links;
   faq: FAQ[];
 }

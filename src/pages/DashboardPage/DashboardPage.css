@@ -19,10 +19,10 @@
 }
 
 .dashboard-content {
-  display: flex;
-  gap: 20px;
+  /*display: flex;*/
+  /*gap: 20px;*/
   width: 100%;
-  align-items: flex-start;
+  /*align-items: flex-start;*/
 }
 
 .dashboard-menu-block {
@@ -57,7 +57,7 @@
   cursor: pointer;
   border-radius: 4px;
   box-sizing: border-box;
-  color: var(--light-alpha-025);
+  /*color: var(--light-alpha-025);*/
 }
 
 .menu-item:hover {
@@ -65,7 +65,7 @@
 }
 
 .menu-item.active {
-  background: var(--light-alpha-0025);
+  /*background: var(--light-alpha-0025);*/
   color: white;
 }
 
@@ -99,18 +99,20 @@ width: 100%;
   .user-item,
   .project-item,
   .role-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid var(--secondary-color-alpha);
+    padding: .5rem 1rem;
+    opacity: .75;
+    color: var(--secondary-color-alpha);
+    /*border: 1px solid var(--tertiary-color-alpha);*/
+    /*box-shadow: inset 0 0 2px black;*/
     width: 100%;
     box-sizing: border-box;
+    border-radius: 2rem;
+    transition: opacity 1s ease, background 1s ease, color 1s ease;
   }
 
   .project-actions {
-    display: flex;
-    gap: 10px;
+    /*display: flex;*/
+    /*gap: 10px;*/
   }
 
   .role-item {
@@ -119,13 +121,14 @@ width: 100%;
 
   .role-item.selected {
     background: var(--primary-color-alpha);
-    font-weight: bold;
+    opacity: 1;
+    color: var(--secondary-color);
   }
 
   .dashboard-projects-list label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*gap: 10px;*/
   }
 
   .no-projects {

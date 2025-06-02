@@ -4,11 +4,11 @@
   /*width: 100%;*/
   padding: 1rem .5rem 1rem 1rem;
   background: var(--tertiary-color-alpha);
-  border: 1px solid var(--primary-color-alpha);
+  border: 1px solid var(--tertiary-color-alpha);
   box-shadow: 0 0 2px var(--primary-color);
   border-radius: 1rem;
   transition: border 1s ease, opacity 1s ease;
-  opacity: .5;
+  opacity: .75;
 }
 
 .textarea:focus-within, .textarea:hover  {

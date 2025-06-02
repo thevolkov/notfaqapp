@@ -11,12 +11,12 @@ export default function Toasty () {
   const timeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-        e.preventDefault();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        event.preventDefault();
       }
 
-      keysPressed.current.push(e.key);
+      keysPressed.current.push(event.key);
       if (keysPressed.current.length > keySequence.length) {
         keysPressed.current.shift();
       }

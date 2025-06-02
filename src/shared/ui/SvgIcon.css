@@ -1,12 +1,5 @@
 .svg-icon {
-  display: inline-block;
-  vertical-align: middle;
   fill: currentColor;
-  stroke: currentColor;
-}
-
-.white {
-  color: var(--light);
 }
 
 .success {

@@ -1,11 +1,11 @@
 .input {
   background: var(--tertiary-color-alpha);
   padding: 1rem;
-  border: 1px solid var(--primary-color-alpha);
+  border: 1px solid var(--tertiary-color-alpha);
   border-radius: 1rem;
   gap: .5rem;
   box-shadow: 0 0 2px var(--primary-color);
-  opacity: .5;
+  opacity: .75;
   transition: border 1s ease, opacity 1s ease;
 }
 

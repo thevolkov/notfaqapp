@@ -1,5 +1,5 @@
 import './NotRocket.css'
-import Rocket from '../../../assets/imgs/notRock.png';
+import Rocket from './notRock.png';
 import {useEffect} from 'react';
 
 interface NotRocketProps {

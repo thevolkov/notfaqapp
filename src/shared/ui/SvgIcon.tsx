@@ -1,4 +1,5 @@
 import './SvgIcon.css';
+import svgSprite from '../assets/icons/sprite.svg'
 
 interface IconProps {
   id: string;
@@ -7,15 +8,15 @@ interface IconProps {
   className?: string;
 }
 
-export default function SvgIcon({ id, size = 24, color = '', className = '' }: IconProps) {
+export default function SvgIcon({ id, size = 30, color = '', className = '' }: IconProps) {
   return (
     <svg
       className={`svg-icon ${className} ${color}`}
       width={size}
       height={size}
-      style={color && !['white', 'success', 'warning', 'danger'].includes(color) ? { color } : {}}
+      style={color && !['success', 'warning', 'danger'].includes(color) ? { color } : {}}
     >
-      <use href={`/src/shared/assets/icons/sprite.svg#${id}`} />
+      <use href={`${svgSprite}#${id}`} />
     </svg>
   );
 }

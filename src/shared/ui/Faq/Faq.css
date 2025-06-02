@@ -1,12 +1,12 @@
 .faq {
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid var(--secondary-color-alpha);
+  border-bottom: 1px solid var(--tertiary-color-alpha);
 }
 
 .faq:last-child {
   margin-bottom: 0;
-  border: none;
+  /*border: none;*/
 }
 
 .faq-question {
@@ -22,4 +22,9 @@
   width: 90%;
   border-top: var(--secondary-color-alpha);
   opacity: .75;
+}
+
+.faq-draft .title,
+.faq-draft .faq-answer {
+  opacity: .1;
 }

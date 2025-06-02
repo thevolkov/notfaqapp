@@ -13,6 +13,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.1",
     "@telegram-apps/sdk": "^3.10.0",
+    "html2canvas": "^1.4.1",
     "lottie-react": "^2.4.1",
     "react": "^19.1.0",
     "react-confetti": "^6.4.0",
