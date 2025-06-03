@@ -195,10 +195,11 @@ export default function ProjectForm() {
           <Title text="FAQs" size="s" />
           {
             !faq.length && (
-              <IconButton text="add FAQ" iconId="plus-lg" variant="alpha" onClick={addFaq} />
+              <div className="element-wrapper">
+                <IconButton text="add FAQ" iconId="plus-lg" variant="alpha" onClick={addFaq} />
+              </div>
             )
           }
-
           {
             faq.map((item, index) => {
               const isLast = index === faq.length - 1;
