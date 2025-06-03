@@ -3,6 +3,9 @@
 
 :root {
   /* BASE */
+
+  --font: 'Inter';
+
   /* colors */
   --primary-color: #131313;
   --secondary-color: #ECECEC;
@@ -24,6 +27,8 @@
 }
 
 .light-theme {
+  --font: 'Courier New', Courier, monospace;
+
   --primary-color: #ECECEC;
   --secondary-color: #131313;
 
@@ -55,7 +60,7 @@ html {
 
 body {
   position: relative;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font), serif;
   background: var(--primary-color);
   color: var(--text-color);
   overflow: hidden;

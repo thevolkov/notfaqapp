@@ -60,10 +60,8 @@ export default function CSBomb({
   }, [active])
 
   return (
-    <>
-      <div className="cs-bomb">
-        <img src={Bomb} alt="BOOM!" />
-      </div>
-    </>
+    <div className="cs-bomb">
+      <img src={Bomb} alt="BOOM!" />
+    </div>
   )
 }

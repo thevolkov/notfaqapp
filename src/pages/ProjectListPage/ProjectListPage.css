@@ -23,12 +23,16 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border: 1px solid var(--tertiary-color-alpha);
+  border: none;
   transition: filter 1s ease;
 }
 
 .project-list-page-card:hover img {
   filter: saturate(1.25);
+}
+
+.light-theme .project-list-page-card img {
+  border: 1px solid var(--tertiary-color-alpha);
 }
 
 .project-list-page-card .title {

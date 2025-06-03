@@ -6,10 +6,6 @@
   top: -3rem;
 }
 
-.project-page-title {
-  align-items: center;
-}
-
 .project-page-title .title {
   text-wrap: nowrap;
 }
@@ -23,8 +19,9 @@
 }
 
 .project-page-links {
-  width: 90%;
+  align-self: start;
   flex-wrap: wrap;
+  gap: .25rem;
 }
 
 @media (max-width: 768px) {

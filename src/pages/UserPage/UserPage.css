@@ -2,16 +2,12 @@
   gap: 1rem;
 }
 
-.user-page-avatar {
-  align-self: flex-start;
-}
-
 .user-page-role {
   bottom: -.25rem;
 }
 
 .user-page-header {
-  gap: 1.5rem;
+  /*gap: 1.5rem;*/
   color: var(--secondary-color-alpha);
 }
 

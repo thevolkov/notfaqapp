@@ -106,8 +106,8 @@ export default function ProjectForm() {
     return JSON.stringify(currentProject) !== JSON.stringify(initialProjectRef.current);
   }, [id, title, desc, image, currentProject]);
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
 
     if (id) {
       dispatch(updateProject(currentProject));
@@ -119,7 +119,7 @@ export default function ProjectForm() {
   };
 
   return (
-    <div className="project-form relative">
+    <div className="project-form d-flex flex-column">
       <IconButton
         variant="alpha"
         iconId="arrow-90deg-left"
@@ -127,7 +127,7 @@ export default function ProjectForm() {
         onClick={handleBack}
       />
       <Title text={id ? `Edit ${title}` : '+[n:fə]'} size="2xl" shadow shadowText={title} />
-      <form ref={formRef} className="d-flex" onSubmit={handleSubmit}>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <AnimatedBlock
           hideWithoutUnmount={true}
           visible={!showSidebar}
@@ -137,18 +137,16 @@ export default function ProjectForm() {
             <IconButton
               className="sidebar-toggle absolute"
               iconId={!showSidebar ? 'x-lg' : 'list'}
-              variant="alpha"
+              variant="primary"
               onClick={() => setShowSidebar(!showSidebar)}
             />
-            <FileInput buttonText=": Image" onChange={setImage} initialPreview={image} />
             <div className="d-flex align-c">
               <IconButton
                 variant={published ? 'success' : 'secondary'}
                 onClick={togglePublished}
                 iconId={published ? 'eye' : 'eye-slash'}
-              /> : {published ? 'Published' : 'Draft'}
+              />{published ? 'published' : 'draft'}
             </div>
-
             {
               id && (
                 <div className="d-flex align-c">
@@ -156,27 +154,24 @@ export default function ProjectForm() {
                     iconId="trash"
                     variant="danger"
                     onClick={() => setShowDeleteConfirm(true)}
-                  /> : Delete
+                  />delete
                 </div>
               )
             }
-
+            <FileInput buttonText="image" onChange={setImage} initialPreview={image} />
             <hr />
-
-            <div className="d-flex">
+            <div className="d-flex align-c">
               <IconButton
-                text={id ? 'save' : 'create'}
                 iconId={id ? 'floppy' : 'check-lg'}
                 variant="alpha"
                 onClick={() => setShowFormConfirm(true)}
                 disabled={!isFormValid}
-              />
+              />{id ? 'save' : 'create'}
             </div>
           </div>
         </AnimatedBlock>
 
         <div className="d-flex flex-column element-wrapper">
-          <Title text="Title+Desc" size="s" />
           <div className="d-flex flex-column element-wrapper">
             <Input className="w-100" value={title} placeholder="Title" onChange={setTitle} required />
             <Textarea value={desc} placeholder="Description..." onChange={setDesc} required />
@@ -184,65 +179,70 @@ export default function ProjectForm() {
 
           <Title text="Links" size="s" />
           <div className="project-form-links d-flex element-wrapper">
-            {Object.entries(links).map(([key, value]) => (
-              <Input
-                key={key}
-                iconId={linksAlias[key as keyof typeof linksAlias]}
-                value={value}
-                onChange={val => updateLink(key, val)}
-                placeholder={key}
-              />
-            ))}
+            {
+              Object.entries(links).map(([key, value]) => (
+                <Input
+                  key={key}
+                  iconId={linksAlias[key as keyof typeof linksAlias]}
+                  value={value}
+                  onChange={val => updateLink(key, val)}
+                  placeholder={key}
+                />
+              ))
+            }
           </div>
 
           <Title text="FAQs" size="s" />
-          {!faq.length && (
-            <IconButton text="add FAQ" iconId="plus-lg" variant="alpha" onClick={addFaq} />
-          )}
+          {
+            !faq.length && (
+              <IconButton text="add FAQ" iconId="plus-lg" variant="alpha" onClick={addFaq} />
+            )
+          }
 
-          {faq.map((item, index) => {
-            const isLast = index === faq.length - 1;
-            return (
-              <div key={index} className="element-wrapper d-flex align-c">
-                <div className="d-flex flex-column">
-                  <IconButton
-                    variant={item.published ? 'primary' : 'secondary'}
-                    onClick={() => publishFaq(index)}
-                    iconId={item.published ? 'eye' : 'eye-slash'}
-                  />
-                  <IconButton
-                    className="remove-faq-button"
-                    iconId="trash"
-                    variant="primary"
-                    onClick={() => removeFaq(index)}
-                  />
-                  {isLast && (
-                    <IconButton iconId="plus-lg" variant="primary" onClick={addFaq} />
-                  )}
+          {
+            faq.map((item, index) => {
+              const isLast = index === faq.length - 1;
+              return (
+                <div key={index} className="element-wrapper d-flex align-c">
+                  <div className="d-flex flex-column">
+                    <IconButton
+                      variant={item.published ? 'primary' : 'secondary'}
+                      onClick={() => publishFaq(index)}
+                      iconId={item.published ? 'eye' : 'eye-slash'}
+                    />
+                    <IconButton
+                      className="remove-faq-button"
+                      iconId="trash"
+                      variant="primary"
+                      onClick={() => removeFaq(index)}
+                    />
+                    {isLast && (
+                      <IconButton iconId="plus-lg" variant="primary" onClick={addFaq} />
+                    )}
+                  </div>
+                  <div className="d-flex flex-auto flex-column">
+                    <Input
+                      iconId="question-lg"
+                      value={item.question}
+                      onChange={val => updateFaq(index, 'question', val)}
+                      placeholder="Question"
+                      required
+                    />
+                    <Textarea
+                      iconId="card-text"
+                      value={item.answer}
+                      placeholder="Answer..."
+                      onChange={val => updateFaq(index, 'answer', val)}
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="d-flex flex-auto flex-column">
-                  <Input
-                    iconId="question-lg"
-                    value={item.question}
-                    onChange={val => updateFaq(index, 'question', val)}
-                    placeholder="Question"
-                    required
-                  />
-                  <Textarea
-                    iconId="card-text"
-                    value={item.answer}
-                    placeholder="Answer..."
-                    onChange={val => updateFaq(index, 'answer', val)}
-                    required
-                  />
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          }
         </div>
       </form>
 
-      {/* Confirm Form */}
       <AnimatedBlock visible={showFormConfirm} direction="bottom">
         <div className="popup d-flex flex-column align-c justify-c">
           <Title text="ARE YOU SURE???" size="l" />
@@ -263,27 +263,7 @@ export default function ProjectForm() {
         </div>
       </AnimatedBlock>
 
-      {/* Confirm Delete */}
       <AnimatedBlock visible={showDeleteConfirm} direction="bottom">
-        <div className="popup d-flex flex-column align-c justify-c">
-          <Title text={`Delete ${title}?`} size="l" />
-          <div className="d-flex">
-            <IconButton
-              text="yep"
-              iconId="check-lg"
-              variant="alpha"
-              onClick={handleDelete}
-            />
-            <IconButton
-              text="nope"
-              iconId="x-lg"
-              variant="alpha"
-              onClick={() => setShowDeleteConfirm(false)}
-            />
-          </div>
-        </div>
-      </AnimatedBlock>
-      <AnimatedBlock visible={showDeleteConfirm} direction="right">
         <div className="popup d-flex flex-column align-c justify-c">
           <Title text={`Delete ${title}?`} size="l" />
           <div className="d-flex">

@@ -1,10 +1,7 @@
 .theme-toggle {
-  /*display: flex;*/
-  /*align-items: center;*/
-  /*gap: .5rem;*/
-  /*cursor: pointer;*/
-  z-index: 2;
+  z-index: 1;
   user-select: none;
+  flex-direction: column-reverse;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -15,12 +12,10 @@
 }
 
 .theme-toggle .slider {
-  position: relative;
   width: calc(2rem * 2);
   height: 2rem;
-  background-color: var(--secondary-color-alpha);
-  border-radius: 2rem;
-  transition: background-color 0.3s ease;
+  background: var(--secondary-color-alpha);
+  transition: background 0.3s ease;
 }
 
 .theme-toggle .slider::before {

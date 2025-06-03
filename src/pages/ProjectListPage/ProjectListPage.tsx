@@ -62,7 +62,7 @@ export default function ProjectListPage() {
 
   useEffect(() => {
     if (clickCount === 3) {
-      const phrase = 'Follow the White Rabbit... -console || `';
+      const phrase = 'Follow the White Rabbit... -console';
       let index = 0;
       let currentText = '';
 

@@ -18,7 +18,7 @@ const ProjectCard = ({project}: {project: Project}) => {
         !project.published && (
           <IconButton
             className="project-list-page-card-status absolute tooltip"
-            data-tooltip="unpublished"
+            data-tooltip="draft"
             variant="primary"
             iconId="eye-slash"
           />

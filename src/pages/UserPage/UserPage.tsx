@@ -35,55 +35,54 @@ export default function UserPage() {
   if (!currentUser) return <div>User not found</div>;
 
   return (
-    <div className="user-page d-flex flex-column">
-      <div className="d-flex justify-sb">
-        <div className="user-page-avatar relative d-inline-flex justify-c">
-          {
-            currentUser.isPremium && (
-              <img
-                className="user-page-premium absolute"
-                src={premiumCheckMark}
-                alt="tg-premium"
-              />
-            )
-          }
-          <UserAvatar img={currentUser?.avatar} />
-          <UserRoleMark
-            className="user-page-role absolute"
-            role={currentUser.role}
-          />
-        </div>
-        <ThemeToggle />
-      </div>
+    <div className="user-page d-flex flex-column align-c">
+      <ThemeToggle />
 
-      <div className="user-page-header">
-        <div className="d-inline-flex relative">
-          <Title
-            className="user-page-name"
-            text={currentUser.name}
-            size="2xl"
-            shadow
-          />
-          {
-            currentUser.achievements.length >= 1 && (
-              <div
-                style={{right: `-${currentUser?.achievements.length * 1.5 + .5}rem`}}
-                className="user-page-achivs absolute d-inline-flex"
-              >
-                {
-                  currentUser.achievements.map((achievement) => (
-                    <img
-                      className="user-page-achiv"
-                      src={achievementAlias[achievement as AchievementKey]}
-                      alt="tg-premium"
-                      key={achievement}
-                    />
-                  ))
-                }
-              </div>
-            )
-          }
-        </div>
+      <div className="user-page-avatar relative d-flex justify-c">
+        {
+          currentUser.isPremium && (
+            <img
+              className="user-page-premium absolute"
+              src={premiumCheckMark}
+              alt="tg-premium"
+            />
+          )
+        }
+        <UserAvatar img={currentUser?.avatar} />
+
+        {
+          (currentUser.role === 'godmode' || currentUser.role === 'editor') && (
+            <UserRoleMark
+              className="user-page-role absolute"
+              role={currentUser.role}
+            />
+          )
+        }
+      </div>
+      <div className="user-page-header d-flex flex-column align-c">
+        {
+          currentUser.achievements.length >= 1 && (
+            <div
+              style={{right: `-${currentUser?.achievements.length * 1.5 + .5}rem`}}
+              className="user-page-achivs d-flex justify-c"
+            >
+              {
+                currentUser.achievements.map((achievement) => (
+                  <img
+                    className="user-page-achiv"
+                    src={achievementAlias[achievement as AchievementKey]}
+                    alt="tg-premium"
+                    key={achievement}
+                  />
+                ))
+              }
+            </div>
+          )
+        }
+        <Title
+          text={currentUser.name}
+          size="l"
+        />
         <div>username: {currentUser.userName || '-netu-'}</div>
         <div>id: {currentUser.id}</div>
       </div>

@@ -88,7 +88,7 @@ export default function ProjectPage() {
           !project.published && (
             <IconButton
               className="tooltip"
-              data-tooltip="unpublished"
+              data-tooltip="draft"
               variant="secondary"
               iconId="eye-slash"
             />
@@ -101,54 +101,63 @@ export default function ProjectPage() {
           src={getProjectImageSrc(projectImage)}
           alt={project.title || 'no_image'}
         />
-        <div className="project-page-title d-flex">
-          <Title text={project.title} size="2xl" shadow />
-          <LottieIcon
-            className={projectTitleLower === 'notcoin' ? 'pointer' : ''}
-            iconId={project.title}
-            onClick={projectTitleLower === 'notcoin' ? handleShowRocket : undefined}
+        <div className="project-page-title d-flex flex-column justify-c">
+          <div className="d-flex">
+            <Title text={project.title} size="2xl" shadow />
+            <LottieIcon
+              className={projectTitleLower === 'notcoin' ? 'pointer' : ''}
+              iconId={project.title}
+              onClick={projectTitleLower === 'notcoin' ? handleShowRocket : undefined}
+            />
+          </div>
+          <Title
+            text="not like other coins"
+            size="m"
+            draggable
           />
+          <div className="project-page-links d-flex">
+            {
+              Object.entries(project.links).map(([key, url]) =>
+                url ? (
+                  <a
+                    className="b-radius"
+                    key={key}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <IconButton
+                      text={key}
+                      iconId={linksAlias[key as keyof typeof linksAlias]}
+                      variant="alpha"
+                    />
+                  </a>
+                ) : null
+              )
+            }
+          </div>
         </div>
       </div>
       {project.desc}
-      <div className="project-page-links d-flex">
-        {
-          Object.entries(project.links).map(([key, url]) =>
-            url ? (
-              <a
-                className="b-radius"
-                key={key}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <IconButton
-                  text={key}
-                  iconId={linksAlias[key as keyof typeof linksAlias]}
-                  variant="alpha"
-                />
-              </a>
-            ) : null
-          )
-        }
-      </div>
       {
         project.faq.length > 0 && (
           <>
             <Faq project={project.title} faqData={project.faq} />
             {
               project.title.toLowerCase() === 'not pixel' && (
-                <div className="faq-question pointer" onClick={() => navigate("/666")}>
-                  <Title
-                    text="Wen CEX??? Wen PUMP???"
-                    subtitle="☠️ Don't open this tab. Ok? OK?????"
-                    size="l"
-                  />
-                  <IconButton
-                    variant="danger"
-                    iconId="plus-lg"
-                    className="b-radius blur-bg"
-                  />
+                <div className="faq relative border-none">
+                  <div className="faq-question pointer" onClick={() => navigate("/666")}>
+                    <Title
+                      text="Wen CEX??? Wen PUMP???"
+                      subtitle="☠️ Don't open this tab. Ok? OK?????"
+                      size="l"
+                    />
+                    <IconButton
+                      variant="danger"
+                      iconId="plus-lg"
+                      className="b-radius blur-bg"
+                    />
+                  </div>
                 </div>
               )
             }

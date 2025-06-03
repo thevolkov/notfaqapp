@@ -1,9 +1,13 @@
+.project-form {
+  gap: 1rem;
+}
+
 .project-form .title {
   margin-left: 1rem;
 }
 
 .sidebar .file-input-preview {
-  max-width: 13rem;
+  max-width: 8rem;
 }
 
 .project-form-links {
