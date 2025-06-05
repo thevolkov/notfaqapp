@@ -1,7 +1,6 @@
 .theme-toggle {
   z-index: 1;
   user-select: none;
-  flex-direction: column-reverse;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -12,9 +11,9 @@
 }
 
 .theme-toggle .slider {
-  width: calc(2rem * 2);
-  height: 2rem;
-  background: var(--secondary-color-alpha);
+  width: calc(1.5rem * 2);
+  height: 1.5rem;
+  background: var(--tertiary-color-alpha);
   transition: background 0.3s ease;
 }
 
@@ -23,22 +22,18 @@
   position: absolute;
   top: 0.25rem;
   left: 0.25rem;
-  width: calc(2rem - 0.5rem);
-  height: calc(2rem - 0.5rem);
-  background-color: var(--primary-color);
+  width: calc(1.5rem - 0.5rem);
+  height: calc(1.5rem - 0.5rem);
+  background-color: var(--secondary-color-alpha);
   border-radius: 50%;
   transition: transform 0.3s ease;
 }
 
 .theme-toggle input:checked + .slider {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 .theme-toggle input:checked + .slider::before {
-  transform: translateX(2rem);
+  transform: translateX(1.5rem);
 }
 
-.theme-toggle .label {
-  font-size: 1rem;
-  color: var(--secondary-color-alpha);
-}

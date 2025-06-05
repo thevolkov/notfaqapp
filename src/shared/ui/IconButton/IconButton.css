@@ -68,7 +68,13 @@
   border: 1px solid var(--danger);
 }
 
-.light-theme .icon-button-color-danger {
+/*.light-theme .icon-button-color-danger {*/
+/*  !*color: var(--primary-color);*!*/
+/*  !*box-shadow: inset 0 0 2px #810000;*!*/
+/*}*/
+
+.light-theme .icon-button {
   /*color: var(--primary-color);*/
-  box-shadow: inset 0 0 2px #810000;
+  /*box-shadow: inset 0 0 2px #810000;*/
+  box-shadow: none;
 }

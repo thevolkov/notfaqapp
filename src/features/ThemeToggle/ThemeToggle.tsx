@@ -7,7 +7,8 @@ export default function ThemeToggle() {
   const theme = useSelector((state: RootState) => state.theme.theme);
 
   return (
-    <label className="theme-toggle d-flex pointer">
+    <label className="theme-toggle d-flex align-c pointer">
+      <span>Theme:</span>
       <input
         type="checkbox"
         checked={theme === 'light'}

@@ -5,7 +5,9 @@
   text-transform: uppercase;
   text-align: center;
   border-radius: 2rem;
+  background: var(--primary-color-alpha);
   color: var(--secondary-color);
+    box-shadow: inset 0 0 2px var(--secondary-color-alpha);
   z-index: 2;
   user-select: none;
   -moz-user-select: none;
@@ -18,20 +20,20 @@
   /*box-shadow: none;*/
 }
 
-.user-role-mark-user {
-  background: var(--success);
-  border: 1px solid var(--success);
-  box-shadow: 0 0 .5rem var(--success);
-}
+/*.user-role-mark-user {*/
+/*  background: var(--success);*/
+/*  border: 1px solid var(--success);*/
+/*  box-shadow: 0 0 .5rem var(--success);*/
+/*}*/
 
-.user-role-mark-editor {
-  background: var(--warning);
-  border: 1px solid var(--warning);
-  box-shadow: 0 0 .5rem var(--warning);
-}
+/*.user-role-mark-editor {*/
+/*  color: var(--warning);*/
+/*  border: 1px solid var(--warning);*/
+/*  box-shadow: 0 0 .5rem var(--warning);*/
+/*}*/
 
-.user-role-mark-godmode {
-  background: var(--danger);
-  border: 1px solid var(--danger);
-  box-shadow: 0 0 .5rem var(--danger);
-}
+/*.user-role-mark-godmode {*/
+/*  background: var(--danger);*/
+/*  border: 1px solid var(--danger);*/
+/*  box-shadow: 0 0 .5rem var(--danger);*/
+/*}*/

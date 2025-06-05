@@ -33,7 +33,7 @@ export default function CSBomb({
       audio2.play();
 
       audio1.addEventListener('ended', () => {
-        const beepInterval = 900;
+        const beepInterval = 850;
         const beepDuration = 10000;
         const totalBeeps = Math.floor(beepDuration / beepInterval);
 
@@ -57,7 +57,7 @@ export default function CSBomb({
         }, beepInterval);
       });
     }
-  }, [active])
+  }, [active]);
 
   return (
     <div className="cs-bomb">

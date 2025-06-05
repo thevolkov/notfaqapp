@@ -7,7 +7,7 @@
 }
 
 .user-page-header {
-  /*gap: 1.5rem;*/
+  gap: 0;
   color: var(--secondary-color-alpha);
 }
 
@@ -31,7 +31,15 @@
 .user-page-achiv {
   z-index: 2;
   box-shadow: none;
-  max-width: 1.5rem;
-  max-height: 1.5rem;
+  max-width: 1rem;
+  max-height: 1rem;
   object-fit: contain;
+}
+
+.light-theme .user-page-achiv {
+  filter: drop-shadow(0 1px 2px gray);
+}
+
+.user-page-permissions {
+  width: 15rem;
 }

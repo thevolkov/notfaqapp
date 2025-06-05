@@ -5,7 +5,7 @@
   width: 10rem;
   aspect-ratio: 1;
   overflow: hidden;
-  left: 10rem;
+  left: 12.5rem;
   z-index: 1;
 }
 
@@ -28,7 +28,7 @@
   border: 1px solid var(--primary-color-alpha);
   left: 22px;
   top: 33px;
-  animation: blink 1s ease infinite;
+  animation: blink .85s ease infinite;
 }
 
 @keyframes blink {

@@ -39,4 +39,14 @@ export const constants: User[] = [
     allowedProjects: ['0006', '0007', '0008'],
     isPremium: true,
   },
+  {
+    id: '-1',
+    name: 'voucher',
+    userName: '@voucher',
+    avatar: 'imgs/projects/voucher.jpg',
+    role: 'voucher',
+    achievements: [],
+    allowedProjects: [],
+    isPremium: false,
+  },
 ];

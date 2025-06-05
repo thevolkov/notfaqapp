@@ -66,6 +66,7 @@
   font-size: .75rem;
   font-weight: normal;
   color: var(--secondary-color-alpha);
+  margin-left: .25rem;
 }
 
 @media (max-width: 768px) {

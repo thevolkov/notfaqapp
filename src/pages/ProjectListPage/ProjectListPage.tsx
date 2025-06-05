@@ -9,10 +9,11 @@ import {useDeepSearch} from '../../shared/lib/useDeepSearch';
 import rabbit from '../../shared/assets/tgs/thinkingRabbit.json';
 import CSBomb from '../../shared/ui/EasterEggs/CSBomb/CSBomb';
 import Console from '../../features/Console/Console';
-import {setShowBomb} from '../../entities/console/consoleSlice';
+import {setShowBomb, setShowGtaStars} from '../../entities/console/consoleSlice';
 import {GtaStars} from '../../shared/ui/EasterEggs/GtaStars/GtaStars';
 import {useSelector} from 'react-redux';
 import ProjectCard from './ProjectCard';
+import travolta from '../../shared/assets/travolta.webm';
 
 export default function ProjectListPage() {
   const dispatch = useAppDispatch();
@@ -20,8 +21,18 @@ export default function ProjectListPage() {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
   const projects = useAppSelector((state) => state.projects.projects);
   const showBomb = useAppSelector((state) => state.console.showBomb);
+  const showVouchers = useAppSelector((state) => state.console.vouchers);
   const showGtaStars = useAppSelector((state) => state.console.showGtaStars);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const titleText = showVouchers ? 'voucher???' : 'not faq';
+  const subtitleText = showVouchers
+    ? 'voucher voucher voucher voucher'
+    : "there's nothing here ¯\\_(ツ)_/¯";
+  const shadowLabel = showVouchers ? 'voucher' : '[n:fə]';
+  const inputPlaceholder = showVouchers ? 'voucher voucher voucher' : 'search...';
+  const followText = showVouchers ? 'Follow the voucher...' : 'Follow the White Rabbit... -console';
+  const rabbitTooltip = showVouchers ? 'voucher voucher voucher' : 'click click click';
 
   const [searchValue, setSearchValue] = useState('');
   const [loopRabbit, setLoopRabbit] = useState(false);
@@ -35,11 +46,15 @@ export default function ProjectListPage() {
     setSearchValue(value);
   };
 
-  const filteredProjects = clickCount === 3
-    ? projects
-    : projects.filter((project) =>
-      project.title.toLowerCase().includes(searchValue.trim().toLowerCase())
+  const filteredProjects = (() => {
+    if (clickCount === 3) return projects;
+    const trimmedSearch = searchValue.trim().toLowerCase();
+    if (!trimmedSearch || trimmedSearch.startsWith('-')) return projects;
+    return projects.filter(project =>
+      project.title.toLowerCase().includes(trimmedSearch)
     );
+  })();
+
 
   useEffect(() => {
     if (searchValue.toLowerCase() === '-console' && !showConsole) {
@@ -52,17 +67,33 @@ export default function ProjectListPage() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === 'Backquote') {
         event.preventDefault();
-        setShowConsole(!showConsole);
+        event.stopPropagation();
+        setShowConsole(prev => !prev);
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [showConsole]);
+    window.addEventListener('keydown', handleKeyDown, true);
+
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (showBomb) {
+        dispatch(setShowBomb(false));
+      }
+      if (showGtaStars) {
+        dispatch(setShowGtaStars(false));
+      }
+    };
+  }, [showBomb, showGtaStars]);
+
+  useEffect(() => {
+    if (showVouchers) setLoopRabbit(true);
+  }, [showVouchers])
 
   useEffect(() => {
     if (clickCount === 3) {
-      const phrase = 'Follow the White Rabbit... -console';
       let index = 0;
       let currentText = '';
 
@@ -71,8 +102,8 @@ export default function ProjectListPage() {
 
       const typeInterval = setInterval(() => {
         setLoopRabbit(true);
-        if (index < phrase.length) {
-          currentText += phrase.charAt(index);
+        if (index < followText.length) {
+          currentText += followText.charAt(index);
           setSearchValue(currentText);
           index++;
         } else {
@@ -95,17 +126,17 @@ export default function ProjectListPage() {
     <>
       <div className="project-list-page d-flex flex-column">
         <Title
-          text="not faq"
-          subtitle="there's nothing here ¯\_(ツ)_/¯"
+          text={titleText}
+          subtitle={subtitleText}
           size="2xl"
           shadow
-          shadowText="[n:fə]"
+          shadowText={shadowLabel}
           className="project-list-page-title"
         />
         <div className="relative element-wrapper">
           <Lottie
             className="absolute tooltip"
-            data-tooltip="click click click"
+            data-tooltip={rabbitTooltip}
             style={{
               maxWidth: '2rem',
               right: '2rem',
@@ -114,15 +145,33 @@ export default function ProjectListPage() {
             animationData={rabbit}
             autoplay={loopRabbit}
             loop={loopRabbit}
-            onMouseEnter={() => setLoopRabbit(true)}
-            onMouseLeave={() => setLoopRabbit(false)}
+            onMouseEnter={() => {
+              if (showVouchers) return
+              setLoopRabbit(true)
+            }}
+            onMouseLeave={() => {
+              if (showVouchers) return
+              setLoopRabbit(false)
+            }}
             onClick={() => setClickCount((prev) => (prev >= 3 ? 0 : prev + 1))}
           />
+          {
+            showVouchers && (
+              <video
+                className="travolta absolute"
+                src={travolta}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            )
+          }
           <Input
             ref={inputRef}
             value={searchValue}
             iconId="search"
-            placeholder="search..."
+            placeholder={inputPlaceholder}
             onChange={handleSearch}
           />
         </div>
@@ -154,7 +203,7 @@ export default function ProjectListPage() {
           }
         </div>
         {
-          searchValue && (
+          clickCount !== 3 && searchValue && (
             <div className="d-flex flex-column">
               <Title
                 text="Deep Search"

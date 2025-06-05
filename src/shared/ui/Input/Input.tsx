@@ -31,7 +31,7 @@ function InputComponent(
 ) {
 
   return (
-    <div className={`input d-flex align-c ${className}`}>
+    <div className={`input relative d-flex align-c ${className}`}>
       {
         iconId && (
           <i className={`bi bi-${iconId} ${colon && 'd-flex'}`}>

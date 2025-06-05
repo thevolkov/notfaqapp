@@ -1,8 +1,9 @@
 import {createSlice, createAsyncThunk, type PayloadAction} from '@reduxjs/toolkit';
 import {setProjects} from '../project/projectSlice';
 import {initialLogs} from './constants';
-import type {AppDispatch} from '../../app/store';
+import {type AppDispatch, setCurrentUser} from '../../app/store';
 import {vouchersData} from '../project/constants';
+import eggActivated from '../../shared/lib/eggActivated';
 
 const getRandomLogs = (count: number) =>
   [...initialLogs].sort(() => 0.5 - Math.random()).slice(0, count);
@@ -65,6 +66,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
           name: 'sv_cheats 1',
           handler: async(dispatch) => {
             await delay(2000);
+            eggActivated(true);
             dispatch(consoleSlice.actions.setShowBomb(true));
             return '[EASTEREGG] Fire in the hole! 💅';
           },
@@ -73,6 +75,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
           name: 'youwonttakemealive',
           handler: async(dispatch) => {
             await delay(2000);
+            eggActivated(true);
             dispatch(consoleSlice.actions.setShowGtaStars(true));
             return '[EASTEREGG] 🚨🚨🚨 BUSTED!';
           },
@@ -81,7 +84,10 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
           name: 'whereismyvoucher',
           handler: async(dispatch) => {
             await delay(2000);
+            dispatch(consoleSlice.actions.setVouchers(true));
             dispatch(setProjects(vouchersData));
+            eggActivated(true);
+            dispatch(setCurrentUser('-1'));
             return '[EASTEREGG] 🎟️ Voucher not found. Try checking under the couch?';
           },
         },
@@ -122,6 +128,9 @@ const consoleSlice = createSlice({
     setShowGtaStars(state, action: PayloadAction<boolean>) {
       state.showGtaStars = action.payload;
     },
+    setVouchers(state, action: PayloadAction<boolean>) {
+      state.vouchers = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -150,5 +159,5 @@ const consoleSlice = createSlice({
   },
 });
 
-export const {setInput, addLog, clearLogs, setShowBomb} = consoleSlice.actions;
+export const {setInput, addLog, clearLogs, setShowBomb, setShowGtaStars} = consoleSlice.actions;
 export default consoleSlice.reducer;

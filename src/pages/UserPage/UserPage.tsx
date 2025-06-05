@@ -53,7 +53,7 @@ export default function UserPage() {
         <UserAvatar img={currentUser?.avatar} />
 
         {
-          (currentUser.role === 'godmode' || currentUser.role === 'editor') && (
+          currentUser.role !== 'user' && (
             <UserRoleMark
               className="user-page-role absolute"
               role={currentUser.role}
@@ -83,10 +83,10 @@ export default function UserPage() {
         }
         <Title
           text={currentUser.name}
-          size="l"
+          size="m"
         />
-        <div>username: {currentUser.userName || '-netu-'}</div>
-        <div>id: {currentUser.id}</div>
+        <div className="subtitle">username: {currentUser.userName || '-netu-'}</div>
+        <div className="subtitle">id: {currentUser.id}</div>
       </div>
 
       <AnimatedBlock
@@ -100,6 +100,10 @@ export default function UserPage() {
             iconId={!showSidebar ? 'x-lg' : 'list'}
             variant="primary"
             onClick={() => setShowSidebar(!showSidebar)}
+          />
+          <Title
+            text="Temporary sidebar"
+            size="s"
           />
           <ThemeToggle />
           <Title

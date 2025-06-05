@@ -28,7 +28,7 @@ export default function Faq({project, faqData}: {
 
   return (
     <>
-      <Title text="Frequently asked questions:" size="xl" />
+      <Title className="faq-title" text="Frequently asked questions:" size="xl" />
       <div className="faq-list">
         {
           faqData.map((item) => {
@@ -37,7 +37,7 @@ export default function Faq({project, faqData}: {
             return (
               <div
                 id={`${project.toLowerCase()}-faq-${item.id}`}
-                className={`faq element-wrapper relative ${!item.published && 'faq-draft'}`}
+                className={`faq element-wrapper blur-bg relative ${!item.published && 'faq-draft'}`}
                 key={item.id}
               >
                 <div

@@ -22,7 +22,11 @@ export default function Console({showConsole}: ConsoleProps) {
 
   useEffect(() => {
     if (showConsole) {
-      consoleRef.current?.focus();
+      dispatch(setInput(''));
+      const timeout = setTimeout(() => {
+        consoleRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timeout);
     } else {
       consoleRef.current?.blur();
     }
@@ -39,9 +43,11 @@ export default function Console({showConsole}: ConsoleProps) {
         {
           logs.map((output, index, arr) => (
             <div className="console-log d-flex" key={index}>
-              {output}{pending && index === arr.length - 1 && (
-              <div className="pending-ellipsis">{'>>> pending'}</div>
-            )}
+              {output}{
+              pending && index === arr.length - 1 && (
+                <div className="pending-ellipsis">{'>>> pending'}</div>
+              )
+            }
             </div>
           ))
         }

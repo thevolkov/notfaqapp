@@ -1,7 +1,7 @@
 import {createSlice, type PayloadAction} from '@reduxjs/toolkit';
 import {constants} from './constants';
 
-export type Role = 'user' | 'editor' | 'godmode';
+export type Role = 'user' | 'editor' | 'godmode' | 'voucher';
 
 export interface User {
   id: string;

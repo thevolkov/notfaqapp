@@ -21,7 +21,7 @@
 
 .project-list-page-card img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1;
   object-fit: cover;
   border: none;
   transition: filter 1s ease;
@@ -42,6 +42,13 @@
 
 .project-list-page-card:hover .title {
   margin-left: .75rem;
+}
+
+.travolta {
+  width: 7rem;
+  height: 7rem;
+  z-index: 1;
+  top: calc(-5rem - 1px);
 }
 
 @media (max-width: 768px) {

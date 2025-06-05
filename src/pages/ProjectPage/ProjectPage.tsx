@@ -1,7 +1,7 @@
 import './ProjectPage.css';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {type RootState, deleteProject} from '../../app/store';
+import {type RootState, deleteProject, useAppSelector} from '../../app/store';
 import {useNavigate, useParams} from 'react-router-dom';
 import IconButton from '../../shared/ui/IconButton/IconButton';
 import {type Project} from '../../entities/project/projectSlice';
@@ -16,8 +16,11 @@ import NotRocket from '../../shared/ui/EasterEggs/NotRocket/NotRocket';
 
 export default function ProjectPage() {
   const {id} = useParams();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const showVouchers = useAppSelector((state) => state.console.vouchers);
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
+
   const {handleBack} = useBackButton();
 
   const [showRocket, setShowRocket] = useState(false);
@@ -31,8 +34,9 @@ export default function ProjectPage() {
 
   const projectTitleLower = project?.title.toLowerCase() || '';
 
-  const handleRocketLaunch = () => setRocketLaunch(true);
   const handleShowRocket = () => setShowRocket(true);
+  const handleRocketLaunch = () => setRocketLaunch(true);
+
 
   const handleDelete = () => {
     if (!id) return
@@ -52,13 +56,14 @@ export default function ProjectPage() {
   }, [project, rocketLaunch, projectTitleLower]);
 
   // useEffect(() => {
-  //   if (rocketLaunch) {
-  //     const timer = setTimeout(() => {
-  //       setRocketLaunch(false);
-  //       setShowRocket(false);
-  //     }, 10000);
-  //     return () => clearTimeout(timer);
-  //   }
+
+    // if (rocketLaunch) {
+      // const timer = setTimeout(() => {
+      //   setRocketLaunch(false);
+      //   setShowRocket(false);
+      // }, 10000);
+      // return () => clearTimeout(timer);
+    // }
   // }, [rocketLaunch]);
 
   if (!project) {
@@ -74,16 +79,22 @@ export default function ProjectPage() {
           text="Back"
           onClick={handleBack}
         />
-        <IconButton
-          iconId="pencil"
-          variant="alpha"
-          onClick={() => navigate(`/project/edit/${project.id}`)}
-        />
-        <IconButton
-          iconId="trash"
-          variant="alpha"
-          onClick={() => setShowDeleteConfirm(true)}
-        />
+        {
+          !showVouchers && currentUser?.role === 'godmode' && (
+            <>
+              <IconButton
+                iconId="pencil"
+                variant="alpha"
+                onClick={() => navigate(`/project/edit/${project.id}`)}
+              />
+              <IconButton
+                iconId="trash"
+                variant="alpha"
+                onClick={() => setShowDeleteConfirm(true)}
+              />
+            </>
+          )
+        }
         {
           !project.published && (
             <IconButton
@@ -133,7 +144,9 @@ export default function ProjectPage() {
           </div>
         </div>
       </div>
-      {project.desc}
+      {
+        project.desc
+      }
       {
         project.faq.length > 0 && (
           <div className="d-flex flex-column">
@@ -156,10 +169,14 @@ export default function ProjectPage() {
                 </div>
               )
             }
-            <div className="project-support">
-              Can’t find the answer you’re looking for? Reach out to our <span
-              className="link pointer">support</span> team 🥸
-            </div>
+            {
+              !showVouchers && (
+                <div className="project-support">
+                  Can’t find the answer you’re looking for? Reach out to our <span
+                  className="link pointer">support</span> team 🥸
+                </div>
+              )
+            }
           </div>
         )
       }
@@ -197,5 +214,5 @@ export default function ProjectPage() {
         </div>
       </AnimatedBlock>
     </div>
-  );
+  )
 }

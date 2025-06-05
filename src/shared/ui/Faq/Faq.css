@@ -5,6 +5,10 @@
   border-bottom: 1px solid var(--tertiary-color-alpha);
 }
 
+.faq-title {
+  margin-bottom: 2rem;
+}
+
 .faq:last-child {
   margin-bottom: 0;
   /*border: none;*/

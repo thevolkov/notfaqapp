@@ -60,7 +60,6 @@ const projectsSlice = createSlice({
     },
     setProjects(state, action: PayloadAction<Project[]>) {
       state.projects = action.payload;
-      saveToLocalStorage(state.projects);
     },
   },
 });

@@ -14,7 +14,7 @@
 
   --primary-color-alpha: rgba(0, 0, 0, .5);
   --secondary-color-alpha: rgba(255, 255, 255, .25);
-  --tertiary-color-alpha: rgba(255, 255, 255, .05);
+  --tertiary-color-alpha: rgba(255, 255, 255, .075);
 
   --danger: rgba(207, 0, 0, 0.8);
   --warning: rgba(255, 140, 0, 0.8);
@@ -34,9 +34,9 @@
   --primary-color: #ECECEC;
   --secondary-color: #131313;
 
-  --primary-color-alpha: rgba(255, 255, 255, .5);
-  --secondary-color-alpha: rgba(0, 0, 0, .25);
-  --tertiary-color-alpha: rgba(0, 0, 0, 0.025);
+  --primary-color-alpha: rgba(255, 255, 255, .75);
+  --secondary-color-alpha: rgba(0, 0, 0, .5);
+  --tertiary-color-alpha: rgba(0, 0, 0, 0.075);
 
   /*--danger: rgba(207, 0, 0, 1);*/
   /*--warning: rgba(255, 140, 0, 1);*/

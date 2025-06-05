@@ -120,7 +120,7 @@ width: 100%;
   }
 
   .role-item.selected {
-    background: var(--primary-color-alpha);
+    background: var(--tertiary-color-alpha);
     opacity: 1;
     color: var(--secondary-color);
   }
