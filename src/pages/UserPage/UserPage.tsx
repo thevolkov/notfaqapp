@@ -1,4 +1,5 @@
 import './UserPage.css';
+import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState, setCurrentUser} from '../../app/store';
 import Title from '../../shared/ui/Title/Title.tsx'
@@ -10,6 +11,8 @@ import silverBone from '../../shared/assets/icons/dogs-silver-bone.png'
 import goldenBone from '../../shared/assets/icons/dogs-golden-bone.png'
 import notPlatinum from '../../shared/assets/icons/not-platinum.png'
 import goldenPx from '../../shared/assets/icons/golden-px.png'
+import {AnimatedBlock} from '../../shared/ui';
+import IconButton from '../../shared/ui/IconButton/IconButton';
 
 type AchievementKey = 'not-platinum' | 'dogs-silver-bone' | 'dogs-gold-bone' | 'golden-px';
 
@@ -24,6 +27,7 @@ export default function UserPage() {
   const dispatch = useDispatch();
   const users = useSelector((state: RootState) => state.user.users);
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const handleSwitchRole = (id: string) => {
     const userToSwitch = users.find((user) => user.id === id);
@@ -36,8 +40,6 @@ export default function UserPage() {
 
   return (
     <div className="user-page d-flex flex-column align-c">
-      <ThemeToggle />
-
       <div className="user-page-avatar relative d-flex justify-c">
         {
           currentUser.isPremium && (
@@ -86,28 +88,43 @@ export default function UserPage() {
         <div>username: {currentUser.userName || '-netu-'}</div>
         <div>id: {currentUser.id}</div>
       </div>
-      <Title
-        text="All users"
-        size="s"
-      />
-      <div className="user-page-permissions">
-        {
-          users.map((user) => (
-            <div
-              key={user.id}
-              className={`d-flex justify-sb align-c role-item ${currentUser.id === user.id ? 'selected' : ''}`}
-              onClick={() => handleSwitchRole(user.id)}
-            >
-              <div className="d-flex align-c">
-                <UserAvatar variant="mini" img={user?.avatar} />
-                {user.name}
-              </div>
-              <UserRoleMark role={user.role} />
-            </div>
-          ))
-        }
 
-      </div>
+      <AnimatedBlock
+        hideWithoutUnmount={true}
+        visible={!showSidebar}
+        direction="right"
+      >
+        <div className="sidebar d-flex flex-column p-1">
+          <IconButton
+            className="sidebar-toggle absolute"
+            iconId={!showSidebar ? 'x-lg' : 'list'}
+            variant="primary"
+            onClick={() => setShowSidebar(!showSidebar)}
+          />
+          <ThemeToggle />
+          <Title
+            text="All users"
+            size="s"
+          />
+          <div className="user-page-permissions">
+            {
+              users.map((user) => (
+                <div
+                  key={user.id}
+                  className={`d-flex justify-sb align-c role-item ${currentUser.id === user.id ? 'selected' : ''}`}
+                  onClick={() => handleSwitchRole(user.id)}
+                >
+                  <div className="d-flex align-c">
+                    <UserAvatar variant="mini" img={user?.avatar} />
+                    {user.name}
+                  </div>
+                  <UserRoleMark role={user.role} />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </AnimatedBlock>
     </div>
   );
 }

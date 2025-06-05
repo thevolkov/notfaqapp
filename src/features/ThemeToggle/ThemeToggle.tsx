@@ -7,14 +7,14 @@ export default function ThemeToggle() {
   const theme = useSelector((state: RootState) => state.theme.theme);
 
   return (
-    <label className="theme-toggle d-flex align-c pointer">
+    <label className="theme-toggle d-flex pointer">
       <input
         type="checkbox"
         checked={theme === 'light'}
         onChange={() => dispatch(toggleTheme())}
       />
-      <span className="slider relative b-radius"></span>
-      <div className="label">{theme === 'dark' ? 'Dark' : 'Light'}</div>
+      <div className="slider relative b-radius"/>
+      <span className="label">{theme === 'dark' ? 'Dark' : 'Light'}</span>
     </label>
   );
 }

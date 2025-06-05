@@ -24,6 +24,10 @@
   gap: .25rem;
 }
 
+.project-support {
+  margin-top: 2rem;
+}
+
 @media (max-width: 768px) {
   .project-page {
     gap: 1rem;

@@ -21,7 +21,7 @@
 }
 
 .title-size-2xl {
-  font-size: 5rem;
+  font-size: 4.5rem;
   line-height: normal;
   font-weight: 800;
   color: transparent;
@@ -99,32 +99,4 @@
   .subtitle {
     font-size: .65rem;
   }
-}
-
-.drag-title {
-  /*display: flex;*/
-  /*gap: 8px;*/
-  /*flex-wrap: wrap;*/
-  cursor: grab;
-}
-
-.draggable-word {
-  /*padding: 4px 8px;*/
-  /*border: 1px solid var(--secondary-color-alpha);*/
-  /*border-radius: 6px;*/
-  user-select: none;
-  transition: transform 0.2s;
-}
-
-.draggable-word:active {
-  cursor: grabbing;
-  transform: scale(1.05);
-}
-
-.congrats-message {
-  top: 100%;
-  left: 0;
-  margin-top: 12px;
-  color: green;
-  font-weight: bold;
 }

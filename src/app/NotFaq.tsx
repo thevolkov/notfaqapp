@@ -9,7 +9,7 @@ import {
   UserPage
 } from '../pages';
 import ProjectForm from '../features/ProjectForm/ProjectForm';
-import BSOD from '../pages/BSOD.tsx/BSOD';
+import BSOD from '../pages/ErrorPage/ErrorPage';
 import {trackRoute} from '../shared/lib/routeCheat';
 import {useEffect} from 'react';
 import SecretRoom from '../pages/SecretRoom';

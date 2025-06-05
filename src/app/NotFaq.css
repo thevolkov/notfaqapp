@@ -2,10 +2,10 @@
   position: relative;
   background: var(--bg-image) no-repeat 0 0 fixed;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 7.5rem;
+  padding: 7.5rem 12.5rem;
 }
 
 .content.animate-bg {
@@ -163,7 +163,16 @@
 
 .sidebar-toggle {
   top: 1rem;
-  left: -2.5rem;
+  left: -2.25rem;
+}
+
+.slider-img {
+  width: auto;
+  height: 200px;
+  /*aspect-ratio: 4 / 3;*/
+  object-fit: cover;
+  padding: 0 .25rem;
+  border-radius: 1rem;
 }
 
 .bg-warn {

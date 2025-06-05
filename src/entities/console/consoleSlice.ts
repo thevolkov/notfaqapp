@@ -1,6 +1,8 @@
 import {createSlice, createAsyncThunk, type PayloadAction} from '@reduxjs/toolkit';
+import {setProjects} from '../project/projectSlice';
 import {initialLogs} from './constants';
 import type {AppDispatch} from '../../app/store';
+import {vouchersData} from '../project/constants';
 
 const getRandomLogs = (count: number) =>
   [...initialLogs].sort(() => 0.5 - Math.random()).slice(0, count);
@@ -24,6 +26,7 @@ interface ConsoleState {
   pending: boolean;
   showBomb: boolean;
   showGtaStars: boolean;
+  vouchers: boolean;
 }
 
 const initialState: ConsoleState = {
@@ -32,6 +35,7 @@ const initialState: ConsoleState = {
   pending: false,
   showBomb: false,
   showGtaStars: false,
+  vouchers: false,
 };
 
 export const executeCommand = createAsyncThunk<CommandResult, string>(
@@ -75,9 +79,10 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
         },
         {
           name: 'whereismyvoucher',
-          handler: async() => {
+          handler: async(dispatch) => {
             await delay(2000);
-            return '[EASTEREGG] Voucher not found. Try checking under the couch?';
+            dispatch(setProjects(vouchersData));
+            return '[EASTEREGG] 🎟️ Voucher not found. Try checking under the couch?';
           },
         },
       ];

@@ -110,11 +110,6 @@ export default function ProjectPage() {
               onClick={projectTitleLower === 'notcoin' ? handleShowRocket : undefined}
             />
           </div>
-          <Title
-            text="not like other coins"
-            size="m"
-            draggable
-          />
           <div className="project-page-links d-flex">
             {
               Object.entries(project.links).map(([key, url]) =>
@@ -141,11 +136,11 @@ export default function ProjectPage() {
       {project.desc}
       {
         project.faq.length > 0 && (
-          <>
+          <div className="d-flex flex-column">
             <Faq project={project.title} faqData={project.faq} />
             {
               project.title.toLowerCase() === 'not pixel' && (
-                <div className="faq relative border-none">
+                <div className="faq element-wrapper relative border-none">
                   <div className="faq-question pointer" onClick={() => navigate("/666")}>
                     <Title
                       text="Wen CEX??? Wen PUMP???"
@@ -165,7 +160,7 @@ export default function ProjectPage() {
               Can’t find the answer you’re looking for? Reach out to our <span
               className="link pointer">support</span> team 🥸
             </div>
-          </>
+          </div>
         )
       }
       {

@@ -10,4 +10,15 @@ import rabbit from './tgs/thinkingRabbit.json';
 import squidWork from './tgs/squidWork.json';
 import pepe from './tgs/pepe.json';
 
+import hiFive from './memes/HF.jpg';
+import notLisa from './memes/Not Lisa.jpg';
+import notMalevich from './memes/Not Malevich.jpg';
+import notDonald from './memes/notDonald.jpg';
+import notTime from './memes/NOTime.jpg';
+import notTrust from './memes/notTrust.jpg';
+import welcome from './memes/welcomeToUs.jpg';
+import notNot from './memes/notnot.jpg';
+
+
 export {notcoin, stickerPack, dogs, earn, community, notPixel, rabbit, voidGame, squidWork, pepe};
+export {hiFive, notLisa, notMalevich, notDonald, notTime, notTrust, welcome, notNot};

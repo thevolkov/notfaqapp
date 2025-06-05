@@ -58,8 +58,12 @@ const projectsSlice = createSlice({
       state.projects = state.projects.filter((p) => p.id !== action.payload);
       saveToLocalStorage(state.projects);
     },
+    setProjects(state, action: PayloadAction<Project[]>) {
+      state.projects = action.payload;
+      saveToLocalStorage(state.projects);
+    },
   },
 });
 
-export const {addProject, updateProject, deleteProject} = projectsSlice.actions;
+export const {addProject, updateProject, deleteProject, setProjects} = projectsSlice.actions;
 export default projectsSlice.reducer;

@@ -199,3 +199,46 @@ export const projectsData = [
     faq: [],
   },
 ];
+
+const voucherDesc = 'Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher...';
+
+const faqsVoucher = {
+  id: '000',
+  published: true,
+  question: 'Where is my voucher?',
+  answer: 'undefined'
+};
+
+const voucher = {
+  id: '000',
+  title: 'Voucher',
+  desc: voucherDesc,
+  image: '/imgs/projects/voucher.jpg',
+  published: true,
+  links: {
+    telegram: '',
+    community: '',
+    x: '',
+    web: '',
+    support: '',
+  },
+  faq: [
+    faqsVoucher,
+    faqsVoucher,
+    faqsVoucher,
+    faqsVoucher,
+    faqsVoucher,
+  ],
+};
+
+export const vouchersData = [
+  voucher,
+  voucher,
+  voucher,
+  voucher,
+  voucher,
+  voucher,
+  voucher,
+  voucher,
+  voucher,
+];
