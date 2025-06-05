@@ -707,3 +707,8 @@
   }
 }
 
+@media (max-width: 768px) {
+  .glitch__img {
+    background-size: 50%;
+  }
+}

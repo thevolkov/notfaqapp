@@ -14,6 +14,7 @@ import {GtaStars} from '../../shared/ui/EasterEggs/GtaStars/GtaStars';
 import {useSelector} from 'react-redux';
 import ProjectCard from './ProjectCard';
 import travolta from '../../shared/assets/travolta.webm';
+import travoltaHVC from '../../shared/assets/travolta-hvc.mp4';
 
 export default function ProjectListPage() {
   const dispatch = useAppDispatch();
@@ -155,6 +156,17 @@ export default function ProjectListPage() {
             }}
             onClick={() => setClickCount((prev) => (prev >= 3 ? 0 : prev + 1))}
           />
+          <video
+            className="travolta absolute"
+            autoPlay
+            loop
+            muted
+            playsInline
+            id="ambientVideo"
+          >
+            <source src={travoltaHVC} type='video/mp4;codecs=hvc1' />
+            <source src={travolta} type="video/webm" />
+          </video>
           {
             showVouchers && (
               <video
