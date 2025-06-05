@@ -39,8 +39,8 @@
   color: var(--success);
 }
 
-/*@media (max-width: 768px) {*/
-/*  .console {*/
-/*    height: 15rem;*/
-/*  }*/
-/*}*/
+@media (max-width: 768px) {
+  .console-log {
+    line-height: 115%;
+  }
+}
