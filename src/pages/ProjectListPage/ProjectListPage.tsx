@@ -164,7 +164,6 @@ export default function ProjectListPage() {
                 loop
                 muted
                 playsInline
-                id="ambientVideo"
               >
                 <source src={travoltaHVC} type='video/mp4;codecs=hvc1' />
                 <source src={travolta} type="video/webm" />

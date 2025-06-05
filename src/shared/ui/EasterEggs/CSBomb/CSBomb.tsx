@@ -1,6 +1,7 @@
 import './CSBomb.css'
 import {useEffect} from 'react';
-import Bomb from './cs-bomb.webp';
+import Bomb from './cs-bomb.webm';
+import BombHVC from './cs-bomb.mp4';
 import c4Plant from './sounds/c4_plant.mp3'
 import bombPl from './sounds/bombpl.mp3'
 import c4Beep from './sounds/c4_beep1.mp3'
@@ -60,8 +61,17 @@ export default function CSBomb({
   }, [active]);
 
   return (
-    <div className="cs-bomb">
-      <img src={Bomb} alt="BOOM!" />
+    <div className="cs-bomb absolute">
+      <video
+        className="relative"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src={BombHVC} type='video/mp4;codecs=hvc1' />
+        <source src={Bomb} type="video/webm" />
+      </video>
     </div>
   )
 }

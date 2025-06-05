@@ -1,20 +1,17 @@
 .cs-bomb {
-  mix-blend-mode: lighten;
-  position: absolute;
   top: 1rem;
   width: 10rem;
-  aspect-ratio: 1;
   overflow: hidden;
   left: 12.5rem;
   z-index: 1;
 }
 
-.cs-bomb img {
-  position: relative;
-  mix-blend-mode: lighten;
+.cs-bomb video {
   width: auto;
   max-width: 10rem;
   left: -48px;
+  filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.75));
+  -webkit-filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.75));
 }
 
 .cs-bomb::before {
@@ -25,10 +22,11 @@
   background: red;
   box-shadow: 0 0 15px red;
   border-radius: 100%;
-  border: 1px solid var(--primary-color-alpha);
+  border: 1px solid #750303;
   left: 22px;
   top: 33px;
   animation: blink .85s ease infinite;
+  z-index: 1;
 }
 
 @keyframes blink {
