@@ -156,27 +156,19 @@ export default function ProjectListPage() {
             }}
             onClick={() => setClickCount((prev) => (prev >= 3 ? 0 : prev + 1))}
           />
-          <video
-            className="travolta absolute"
-            autoPlay
-            loop
-            muted
-            playsInline
-            id="ambientVideo"
-          >
-            <source src={travoltaHVC} type='video/mp4;codecs=hvc1' />
-            <source src={travolta} type="video/webm" />
-          </video>
           {
             showVouchers && (
               <video
                 className="travolta absolute"
-                src={travolta}
                 autoPlay
                 loop
                 muted
                 playsInline
-              />
+                id="ambientVideo"
+              >
+                <source src={travoltaHVC} type='video/mp4;codecs=hvc1' />
+                <source src={travolta} type="video/webm" />
+              </video>
             )
           }
           <Input
@@ -249,14 +241,14 @@ export default function ProjectListPage() {
           )
         }
       </div>
-      {
-        showBomb && (
-          <CSBomb
-            active={showBomb}
-            onEnd={() => dispatch(setShowBomb(false))}
-          />
-        )
-      }
+        {
+          showBomb && (
+            <CSBomb
+              active={showBomb}
+              onEnd={() => dispatch(setShowBomb(false))}
+            />
+          )
+        }
       {
         showGtaStars && (
           <GtaStars active={showGtaStars} />
