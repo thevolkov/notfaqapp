@@ -22,11 +22,17 @@ export default function Console({showConsole}: ConsoleProps) {
 
   useEffect(() => {
     if (showConsole) {
+      const footer = document.querySelector('.footer') as HTMLElement | null;
+      footer?.classList.add('display-none');
+
       dispatch(setInput(''));
       const timeout = setTimeout(() => {
         consoleRef.current?.focus();
       }, 50);
-      return () => clearTimeout(timeout);
+      return () => {
+        footer?.classList.remove('display-none');
+        clearTimeout(timeout);
+      }
     } else {
       consoleRef.current?.blur();
     }

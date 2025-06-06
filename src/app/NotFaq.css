@@ -132,6 +132,12 @@
   cursor: pointer;
 }
 
+.display-none {
+  display: none!important;
+  opacity: 0;
+  height: 0;
+}
+
 .link {
   color: #0077ff;
 
@@ -202,7 +208,7 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 999;
+  z-index: 999999;
 }
 
 .tooltip:hover::after {

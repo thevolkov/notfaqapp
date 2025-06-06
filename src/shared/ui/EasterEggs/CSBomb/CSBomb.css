@@ -1,15 +1,13 @@
 .cs-bomb {
   top: 1rem;
-  width: 10rem;
+  width: 4.5rem;
   overflow: hidden;
-  left: 12.5rem;
-  z-index: 1;
 }
 
 .cs-bomb video {
   width: auto;
   max-width: 10rem;
-  left: -48px;
+  left: -55px;
   filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.75));
   -webkit-filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.75));
 }
@@ -23,8 +21,8 @@
   box-shadow: 0 0 15px red;
   border-radius: 100%;
   border: 1px solid #750303;
-  left: 22px;
-  top: 33px;
+  left: 15px;
+  top: 35px;
   animation: blink .85s ease infinite;
   z-index: 1;
 }
@@ -47,11 +45,20 @@
 @media (max-width: 768px) {
   .cs-bomb {
     top: .5rem;
-    left: 1rem;
+    right: 1rem;
+  }
+
+  .cs-bomb video {
+    left: -45px;
+    filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.5));
+    -webkit-filter: drop-shadow(-3px 3px 3px rgba(0, 0, 0, 0.5));
+
   }
 
   .cs-bomb::before {
     width: 5px;
     height: 5px;
+    left: 8px;
+    top: 25px;
   }
 }
