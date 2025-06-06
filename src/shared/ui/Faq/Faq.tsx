@@ -1,8 +1,10 @@
 import './Faq.css';
-import {useState, useCallback, useEffect} from 'react';
+import {useState, useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {type FAQ} from '../../../entities/project/projectSlice';
 import {Title, IconButton} from '../';
+import paul from '../../assets/imgs/paul.webp';
+import soon from '../../assets/imgs/soonsoon.png';
 
 export default function Faq({project, faqData}: {
   project: string,
@@ -20,19 +22,18 @@ export default function Faq({project, faqData}: {
     );
   }, []);
 
-  useEffect(() => {
-    if (faqData.length > 0 && openIds.length === 0) {
-      setOpenIds([faqData[0].id]);
-    }
-  }, [faqData]);
+  const visibleSoon = faqData.length > 0 && openIds.includes(faqData[0].id);
 
   return (
     <>
-      <Title className="faq-title" text="Frequently asked questions:" size="xl" />
+      <div className="relative">
+        <img className={`faq-soon absolute ${visibleSoon ? "visible" : ""}`} src={soon} alt="soon"/>
+        <img className="faq-paul absolute" src={paul} alt="FAQ"/>
+        <Title className="faq-title" text="🗿Frequently Annoying Questions:" size="xl" />
+      </div>
       <div className="faq-list">
         {
           faqData.map((item) => {
-
             const isOpen = openIds.includes(item.id);
             return (
               <div
@@ -48,10 +49,7 @@ export default function Faq({project, faqData}: {
                       : handleAnswerToggle(item.id)
                   }
                 >
-                  <Title
-                    text={item.question}
-                    size="l"
-                  />
+                  <Title text={item.question} size="l" />
                   {
                     !item.published ? (
                       <IconButton

@@ -67,15 +67,14 @@ export default function ProjectListPage() {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === 'Backquote') {
-        event.preventDefault();
-        event.stopPropagation();
+        inputRef.current?.blur();
         setShowConsole(prev => !prev);
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown, true);
+    window.addEventListener('keydown', handleKeyDown);
 
-    return () => window.removeEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   useEffect(() => {

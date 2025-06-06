@@ -57,13 +57,13 @@ export default function ProjectPage() {
 
   // useEffect(() => {
 
-    // if (rocketLaunch) {
-      // const timer = setTimeout(() => {
-      //   setRocketLaunch(false);
-      //   setShowRocket(false);
-      // }, 10000);
-      // return () => clearTimeout(timer);
-    // }
+  // if (rocketLaunch) {
+  // const timer = setTimeout(() => {
+  //   setRocketLaunch(false);
+  //   setShowRocket(false);
+  // }, 10000);
+  // return () => clearTimeout(timer);
+  // }
   // }, [rocketLaunch]);
 
   if (!project) {
@@ -152,11 +152,11 @@ export default function ProjectPage() {
           <div className="d-flex flex-column">
             <Faq project={project.title} faqData={project.faq} />
             {
-              project.title.toLowerCase() === 'not pixel' && (
+              id !== '000' && (
                 <div className="faq element-wrapper relative border-none">
                   <div className="faq-question pointer" onClick={() => navigate("/666")}>
                     <Title
-                      text="Wen CEX??? Wen PUMP???"
+                      text="Wen CEX??? Wen PUMP??? Wen SKINS???"
                       subtitle="☠️ Don't open this tab. Ok? OK?????"
                       size="l"
                     />
@@ -185,12 +185,7 @@ export default function ProjectPage() {
           <NotRocket rocketLaunch={rocketLaunch} onClick={handleRocketLaunch} />
         )
       }
-      {
-        projectTitleLower === 'not games' && (
-          <Toasty />
-        )
-      }
-
+      <Toasty />
       <AnimatedBlock
         visible={showDeleteConfirm}
         direction="bottom"
