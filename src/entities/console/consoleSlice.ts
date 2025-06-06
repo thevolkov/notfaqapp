@@ -3,7 +3,7 @@ import {setProjects} from '../project/projectSlice';
 import {initialLogs} from './constants';
 import {type AppDispatch, setCurrentUser} from '../../app/store';
 import {vouchersData} from '../project/constants';
-import eggActivated from '../../shared/lib/eggActivated';
+import eggActivatedTune from '../../shared/lib/eggActivatedTune';
 
 const getRandomLogs = (count: number) =>
   [...initialLogs].sort(() => 0.5 - Math.random()).slice(0, count);
@@ -66,7 +66,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
           name: 'sv_cheats 1',
           handler: async(dispatch) => {
             await delay(2000);
-            eggActivated(true);
+            eggActivatedTune(true);
             dispatch(consoleSlice.actions.setShowBomb(true));
             return '[EASTEREGG] Fire in the hole! 💅';
           },
@@ -75,7 +75,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
           name: 'youwonttakemealive',
           handler: async(dispatch) => {
             await delay(2000);
-            eggActivated(true);
+            eggActivatedTune(true);
             dispatch(consoleSlice.actions.setShowGtaStars(true));
             return '[EASTEREGG] 🚨🚨🚨 BUSTED!';
           },
@@ -86,7 +86,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
             await delay(2000);
             dispatch(consoleSlice.actions.setVouchers(true));
             dispatch(setProjects(vouchersData));
-            eggActivated(true);
+            eggActivatedTune(true);
             dispatch(setCurrentUser('-1'));
             return '[EASTEREGG] 🎟️ Voucher not found. Try checking under the couch?';
           },

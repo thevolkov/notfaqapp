@@ -3,11 +3,12 @@ import {NavLink} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {footerLinks} from './constants';
 import UserAvatar from '../UserAvatar/UserAvatar';
-import {type RootState} from '../../../app/store';
+import {type RootState, useAppSelector} from '../../../app/store';
 import SvgIcon from '../SvgIcon';
 
 export default function Footer() {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
+  const showVouchers = useAppSelector((state) => state.console.vouchers);
 
   return (
     <div className="footer w-100 fixed blur-bg">
@@ -23,7 +24,7 @@ export default function Footer() {
             >
               <SvgIcon id="nfa-logo" />
               <div className="footer-link-text d-flex flex-column">
-                {link.text}
+                {showVouchers ? '[ˈvaʊʧə]' : link.text}
               </div>
             </NavLink>
           ))

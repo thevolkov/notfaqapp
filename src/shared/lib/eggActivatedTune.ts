@@ -2,7 +2,7 @@ import medshot from '../assets/sounds/medshot.mp3';
 
 let audio: HTMLAudioElement | null = null;
 
-export default function eggActivated(active: boolean) {
+export default function eggActivatedTune(active: boolean) {
   if (active) {
     if (!audio) {
       audio = new Audio(medshot);
