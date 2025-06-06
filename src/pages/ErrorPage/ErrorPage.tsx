@@ -71,8 +71,8 @@ function useGlitchEffect(
 
 export default function ErrorPage() {
   const glitchTitle = useGlitchEffect('!#ERROR#666#!', 1800, 400);
-  const glitchText1 = useGlitchEffect('Your account and wallet have been blocked️.', 2700, 500);
-  const glitchText2 = useGlitchEffect('To unblock, send your seed phrase and a copy of your id.', 2100, 400);
+  const glitchText1 = useGlitchEffect('Your account and wallet have been blocked️ ☠️', 2700, 500);
+  const glitchText2 = useGlitchEffect('Wanna get unblocked? Send your seed phrase and a pic of your ID (driver’s license works too). You’ve got 7 days. Tick tock...', 2100, 400);
   const glitchCode = useGlitchEffect('STOP CODE: NOTFUNNY_EXCEPTION', 2400, 450);
   const glitchSolution = useGlitchEffect('If you’d like to know more, just scream and press F5.', 3000, 500);
 
@@ -87,9 +87,8 @@ export default function ErrorPage() {
         <div className="glitch-content absolute d-flex flex-column justify-c align-c">
           <Title className="glitch-content-title-shadow absolute" text={glitchTitle} />
           <Title className="glitch-content-title" text={glitchTitle} size="xl" />
+          <Title className="glitch-content-subtitle" text={glitchText1} size="m" />
           <div className="glitch-content-text">
-            {glitchText1}
-            <br />
             {glitchText2}
           </div>
           <div className="glitch-content-code">{glitchCode}</div>
