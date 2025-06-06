@@ -21,6 +21,7 @@ import Input from '../../shared/ui/Input/Input';
 import Textarea from '../../shared/ui/Textarea/Textarea';
 import {linksAlias} from '../../shared/constants';
 import {AnimatedBlock} from '../../shared/ui';
+import {v4 as uuidv4} from 'uuid';
 
 export default function ProjectForm() {
   const {id} = useParams<{id: string}>();
@@ -72,7 +73,7 @@ export default function ProjectForm() {
   }, []);
 
   const addFaq = () => {
-    setFaq(prev => [...prev, {id: '', published: false, question: '', answer: ''}]);
+    setFaq(prev => [...prev, {id: uuidv4(), published: false, question: '', answer: ''}]);
     requestAnimationFrame(() => {
       document.querySelector('.content')?.scrollTo({top: 99999, behavior: 'smooth'});
     });
@@ -91,7 +92,7 @@ export default function ProjectForm() {
   }, []);
 
   const currentProject: Project = useMemo(() => ({
-    id: id || String(Date.now()),
+    id: id || uuidv4(),
     title,
     image,
     desc,

@@ -16,6 +16,7 @@
   object-fit: cover;
   border: 1px solid var(--primary-color-alpha);
   filter: saturate(1.25);
+  z-index: 2;
 }
 
 /*.project-page-links {*/
@@ -27,6 +28,11 @@
 
 .project-support {
   margin-top: 2rem;
+}
+
+.light-theme .project-page-title-icon svg path {
+  fill: #7c7c7c;
+  stroke: #7c7c7c;
 }
 
 @media (max-width: 768px) {
@@ -41,6 +47,7 @@
   .project-page-image {
     width: 100%;
     aspect-ratio: 4 / 3;
+    z-index: 0;
   }
 
   .project-desc {

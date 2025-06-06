@@ -116,12 +116,12 @@ export default function ProjectPage() {
           <div className="d-flex">
             <Title text={project.title} size="2xl" shadow />
             <LottieIcon
-              className={projectTitleLower === 'notcoin' ? 'pointer' : ''}
+              className={`project-page-title-icon ${projectTitleLower === 'notcoin' ? 'pointer' : ''}`}
               iconId={project.title}
               onClick={projectTitleLower === 'notcoin' ? handleShowRocket : undefined}
             />
           </div>
-          <div className="project-page-links d-flex">
+          <div className="project-page-links d-flex flex-wrap">
             {
               Object.entries(project.links).map(([key, url]) =>
                 url ? (

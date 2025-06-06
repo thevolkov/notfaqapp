@@ -4,13 +4,18 @@
   text-wrap: balance;
 }
 
+.light-theme .title {
+  letter-spacing: -1px;
+}
+
 .title-shadow {
-  font-size: 30vw;
-  line-height: 27vw;
+  font-size: 35vw;
+  line-height: 30vw;
   font-weight: 900;
   text-wrap: nowrap;
   color: var(--secondary-color-alpha);
   opacity: .075;
+  left: -10vw;
   bottom: 0;
   z-index: -1;
   pointer-events: none;
@@ -20,8 +25,12 @@
   -ms-user-select: none;
 }
 
+.light-theme .title-shadow {
+  line-height: 25vw;
+}
+
 .title-size-2xl {
-  font-size: 4.5rem;
+  font-size: 4rem;
   line-height: normal;
   font-weight: 800;
   color: transparent;
@@ -41,7 +50,7 @@
 }
 
 .title-size-xl {
-  font-size: 3.5rem;
+  font-size: 3.25rem;
   line-height: 3.25rem;
   font-weight: 700;
 }
@@ -71,8 +80,7 @@
 
 @media (max-width: 768px) {
   .title-shadow {
-    font-size: 30vw;
-    line-height: 25vw;
+    left: 0;
   }
 
   .title-size-2xl {
@@ -99,5 +107,14 @@
 
   .subtitle {
     font-size: .65rem;
+  }
+
+  .light-theme .title-size-2xl,
+  .light-theme .title-size-xl {
+    word-spacing: -15px;
+  }
+
+  .light-theme .title-size-xl {
+    word-spacing: -10px;
   }
 }
