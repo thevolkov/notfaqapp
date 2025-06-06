@@ -23,14 +23,14 @@ export default function Console({showConsole}: ConsoleProps) {
   useEffect(() => {
     if (showConsole) {
       const footer = document.querySelector('.footer') as HTMLElement | null;
-      footer?.classList.add('display-none');
+      footer?.classList.add('footer-none');
 
       dispatch(setInput(''));
       const timeout = setTimeout(() => {
         consoleRef.current?.focus();
       }, 50);
       return () => {
-        footer?.classList.remove('display-none');
+        footer?.classList.remove('footer-none');
         clearTimeout(timeout);
       }
     } else {

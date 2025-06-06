@@ -5,8 +5,7 @@
   z-index: 999;
   box-shadow: 0 -.5rem 1rem rgba(0, 0, 0, 0.25);
   display: block;
-  transition: all .5s;
-  transition-behavior: allow-discrete;
+  transition: bottom .5s;
 }
 
 .light-theme .footer {
@@ -34,6 +33,10 @@
 
 .footer-link-text {
   font-size: .75rem;
+}
+
+.footer-none {
+  bottom: -100px!important;
 }
 
 @media (max-width: 768px) {

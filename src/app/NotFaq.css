@@ -132,15 +132,8 @@
   cursor: pointer;
 }
 
-.display-none {
-  display: none!important;
-  opacity: 0;
-  height: 0;
-}
-
 .link {
   color: #0077ff;
-
 }
 
 .faded-image {
