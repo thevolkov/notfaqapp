@@ -177,16 +177,8 @@ export default function ProjectListPage() {
             onChange={handleSearch}
           />
         </div>
+
         <div className="project-list-page-grid d-flex flex-wrap">
-          {
-            filteredProjects.length > 0 ? (
-              filteredProjects.map((project) =>
-                <ProjectCard key={project.id} project={project} />
-              )
-            ) : (
-              <Title text="Not found (ʘ‿ʘ)" size="s" />
-            )
-          }
           {
             !searchValue && currentUser?.role === 'godmode' && (
               <div
@@ -201,6 +193,15 @@ export default function ProjectListPage() {
                 />
                 <Title text="+ Add new" size="s" />
               </div>
+            )
+          }
+          {
+            filteredProjects.length > 0 ? (
+              filteredProjects.map((project) =>
+                <ProjectCard key={project.id} project={project} />
+              )
+            ) : (
+              <Title text="Not found (ʘ‿ʘ)" size="s" />
             )
           }
         </div>
@@ -239,14 +240,14 @@ export default function ProjectListPage() {
           )
         }
       </div>
-        {
-          showBomb && (
-            <CSBomb
-              active={showBomb}
-              onEnd={() => dispatch(setShowBomb(false))}
-            />
-          )
-        }
+      {
+        showBomb && (
+          <CSBomb
+            active={showBomb}
+            onEnd={() => dispatch(setShowBomb(false))}
+          />
+        )
+      }
       {
         showGtaStars && (
           <GtaStars active={showGtaStars} />

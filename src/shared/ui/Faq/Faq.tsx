@@ -5,6 +5,8 @@ import {type FAQ} from '../../../entities/project/projectSlice';
 import {Title, IconButton} from '../';
 import paul from '../../assets/imgs/paul.webp';
 import soon from '../../assets/imgs/soonsoon.png';
+import wimv from '../../assets/imgs/wimv.png';
+import {useAppSelector} from '../../../app/store';
 
 export default function Faq({project, faqData}: {
   project: string,
@@ -12,7 +14,11 @@ export default function Faq({project, faqData}: {
   highlightId?: string | null;
 }) {
   const navigate = useNavigate();
+  const showVouchers = useAppSelector((state) => state.console.vouchers);
   const [openIds, setOpenIds] = useState<string[]>([]);
+
+  const visibleSoon = faqData.length > 0 && openIds.includes(faqData[0].id);
+  const soonPng = showVouchers ? wimv : soon;
 
   const handleAnswerToggle = useCallback((id: string) => {
     setOpenIds(prev =>
@@ -22,12 +28,11 @@ export default function Faq({project, faqData}: {
     );
   }, []);
 
-  const visibleSoon = faqData.length > 0 && openIds.includes(faqData[0].id);
 
   return (
     <>
       <div className="relative">
-        <img className={`faq-soon absolute ${visibleSoon ? "visible" : ""}`} src={soon} alt="soon"/>
+        <img className={`faq-soon absolute ${visibleSoon ? "visible" : ""}`} src={soonPng} alt="soon"/>
         <img className="faq-paul absolute" src={paul} alt="FAQ"/>
         <Title className="faq-title" text="🗿Frequently Annoying Questions:" size="xl" />
       </div>
