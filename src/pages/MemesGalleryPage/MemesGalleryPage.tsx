@@ -1,7 +1,7 @@
 import './MemesGalleryPage.css';
 import {useEffect, useState} from 'react';
 import Title from '../../shared/ui/Title/Title';
-// import shuffleArray from '../../shared/lib/shuffleArray';
+import shuffleArray from '../../shared/lib/shuffleArray';
 import rabbit from '../../shared/assets/tgs/thinkingRabbit.json';
 import Lottie from 'lottie-react';
 
@@ -35,11 +35,11 @@ export default function MemesGalleryPage({images = defaultImages}: MemesGalleryP
   const [shuffledImages, setShuffledImages] = useState<string[] | null>(null);
 
   useEffect(() => {
-    // const shuffled = shuffleArray(images);
+    const shuffled = shuffleArray(images);
     //
     // preloadImages(shuffled).then(() => {
     // });
-    setShuffledImages(images);
+    setShuffledImages(shuffled);
 
   }, [images]);
 
