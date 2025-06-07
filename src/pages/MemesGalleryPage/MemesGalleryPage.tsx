@@ -1,7 +1,7 @@
 import './MemesGalleryPage.css';
 import {useEffect, useState} from 'react';
 import Title from '../../shared/ui/Title/Title';
-import shuffleArray from '../../shared/lib/shuffleArray';
+// import shuffleArray from '../../shared/lib/shuffleArray';
 import rabbit from '../../shared/assets/tgs/thinkingRabbit.json';
 import Lottie from 'lottie-react';
 
@@ -9,36 +9,38 @@ interface MemesGalleryPageProps {
   images?: string[];
 }
 
-const CDN = import.meta.env.VITE_CDN_BASE_URL;
+// const CDN = import.meta.env.VITE_CDN_BASE_URL;
+const CDN = 'https://s3.ru1.storage.beget.cloud/f99497af8d68-imaginative-elder';
 const totalMemes = 101;
 
 const defaultImages = Array.from({length: totalMemes}, (_, i) => (
   `${CDN}/memes/mm-${i + 1}.jpg`
 ));
 
-const preloadImages = (sources: string[]) => {
-  return Promise.all(
-    sources.map(
-      (src) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = () => resolve(src);
-          img.onerror = () => resolve(src);
-        })
-    )
-  );
-};
+// const preloadImages = (sources: string[]) => {
+//   return Promise.all(
+//     sources.map(
+//       (src) =>
+//         new Promise((resolve) => {
+//           const img = new Image();
+//           img.src = src;
+//           img.onload = () => resolve(src);
+//           img.onerror = () => resolve(src);
+//         })
+//     )
+//   );
+// };
 
 export default function MemesGalleryPage({images = defaultImages}: MemesGalleryPageProps) {
   const [shuffledImages, setShuffledImages] = useState<string[] | null>(null);
 
   useEffect(() => {
-    const shuffled = shuffleArray(images);
+    // const shuffled = shuffleArray(images);
+    //
+    // preloadImages(shuffled).then(() => {
+    // });
+    setShuffledImages(images);
 
-    preloadImages(shuffled).then(() => {
-      setShuffledImages(shuffled);
-    });
   }, [images]);
 
   return (
