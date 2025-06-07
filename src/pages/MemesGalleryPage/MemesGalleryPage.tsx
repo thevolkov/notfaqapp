@@ -11,7 +11,7 @@ interface MemesGalleryPageProps {
 
 // const CDN = import.meta.env.VITE_CDN_BASE_URL;
 const CDN = 'https://s3.ru1.storage.beget.cloud/f99497af8d68-imaginative-elder';
-const totalMemes = 101;
+const totalMemes = 35;
 
 const defaultImages = Array.from({length: totalMemes}, (_, i) => (
   `${CDN}/memes/mm-${i + 1}.jpg`
