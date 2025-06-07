@@ -6,7 +6,8 @@ import {
   DashboardPage,
   ProjectListPage,
   ProjectPage,
-  UserPage
+  UserPage,
+  MemesGalleryPage,
 } from '../pages';
 import ProjectForm from '../features/ProjectForm/ProjectForm';
 import BSOD from '../pages/ErrorPage/ErrorPage';
@@ -40,6 +41,11 @@ const routeLinks = [
   {
     path: '/user',
     component: <UserPage />,
+    class: '',
+  },
+  {
+    path: '/memes',
+    component: <MemesGalleryPage />,
     class: '',
   },
   {

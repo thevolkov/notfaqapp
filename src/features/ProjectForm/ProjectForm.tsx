@@ -35,7 +35,7 @@ export default function ProjectForm() {
 
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showFormConfirm, setShowFormConfirm] = useState(false);
-  const [showSidebar, setShowSidebar] = useState(false);
+  // const [showSidebar, setShowSidebar] = useState(false);
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [desc, setDesc] = useState('');
@@ -128,51 +128,16 @@ export default function ProjectForm() {
         onClick={handleBack}
       />
       <Title text={id ? `Edit ${title}` : '+[n:fə]'} size="2xl" shadow shadowText={title} />
-      <form ref={formRef} onSubmit={handleSubmit}>
-        <AnimatedBlock
-          hideWithoutUnmount={true}
-          visible={!showSidebar}
-          direction="right"
-        >
-          <div className="sidebar d-flex flex-column p-1">
-            <IconButton
-              className="sidebar-toggle absolute"
-              iconId={!showSidebar ? 'x-lg' : 'list'}
-              variant="primary"
-              onClick={() => setShowSidebar(!showSidebar)}
-            />
-            <div className="d-flex align-c">
-              <IconButton
-                variant={published ? 'success' : 'secondary'}
-                onClick={togglePublished}
-                iconId={published ? 'eye' : 'eye-slash'}
-              />{published ? 'published' : 'draft'}
-            </div>
-            {
-              id && (
-                <div className="d-flex align-c">
-                  <IconButton
-                    iconId="trash"
-                    variant="danger"
-                    onClick={() => setShowDeleteConfirm(true)}
-                  />delete
-                </div>
-              )
-            }
-            <FileInput buttonText="image" onChange={setImage} initialPreview={image} />
-            <hr />
-            <div className="d-flex align-c">
-              <IconButton
-                iconId={id ? 'floppy' : 'check-lg'}
-                variant="alpha"
-                onClick={() => setShowFormConfirm(true)}
-                disabled={!isFormValid}
-              />{id ? 'save' : 'create'}
-            </div>
-          </div>
-        </AnimatedBlock>
+      <form className="d-flex element-wrapper" ref={formRef} onSubmit={handleSubmit}>
+        {/*<AnimatedBlock*/}
+        {/*  hideWithoutUnmount={true}*/}
+        {/*  visible={!showSidebar}*/}
+        {/*  direction="right"*/}
+        {/*>*/}
+        {/*  */}
+        {/*</AnimatedBlock>*/}
 
-        <div className="d-flex flex-column element-wrapper">
+        <div className="d-flex flex-column">
           <div className="d-flex flex-column element-wrapper">
             <Input className="w-100" value={title} placeholder="Title" onChange={setTitle} required />
             <Textarea value={desc} placeholder="Description..." onChange={setDesc} required />
@@ -242,6 +207,38 @@ export default function ProjectForm() {
               );
             })
           }
+        </div>
+        <div className="sidebar relative p-1">
+         <div className="sidebar-sticky d-flex flex-column">
+           <div className="d-flex align-c">
+             <IconButton
+               variant={published ? 'success' : 'secondary'}
+               onClick={togglePublished}
+               iconId={published ? 'eye' : 'eye-slash'}
+             />{published ? 'published' : 'draft'}
+           </div>
+           {
+             id && (
+               <div className="d-flex align-c">
+                 <IconButton
+                   iconId="trash"
+                   variant="danger"
+                   onClick={() => setShowDeleteConfirm(true)}
+                 />delete
+               </div>
+             )
+           }
+           <FileInput buttonText="image" onChange={setImage} initialPreview={image} />
+           <hr />
+           <div className="d-flex align-c">
+             <IconButton
+               iconId={id ? 'floppy' : 'check-lg'}
+               variant="alpha"
+               onClick={() => setShowFormConfirm(true)}
+               disabled={!isFormValid}
+             />{id ? 'save' : 'create'}
+           </div>
+         </div>
         </div>
       </form>
 

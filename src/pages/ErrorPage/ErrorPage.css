@@ -28,6 +28,7 @@
   padding: 0 7.5rem;
   color: var(--secondary-color);
   opacity: .9;
+  text-wrap: pretty;
 }
 
 .glitch-content-title {
@@ -38,13 +39,6 @@
   animation-iteration-count: infinite;
 }
 
-.glitch-content-subtitle {
-  /*color: var(--danger) !important;*/
-  position: relative;
-  animation-name: glitch-anim-text-1;
-  animation-duration: calc(var(--time-anim) * .5);
-  animation-iteration-count: infinite;
-}
 
 .glitch-content-title-shadow {
   font-family: monospace;
@@ -54,6 +48,14 @@
   color: var(--danger);
   animation-name: glitch-anim-3;
   animation-duration: var(--time-anim);
+  animation-iteration-count: infinite;
+}
+
+.glitch-content-subtitle {
+  /*color: var(--danger) !important;*/
+  position: relative;
+  animation-name: glitch-anim-text-1;
+  animation-duration: calc(var(--time-anim) * .5);
   animation-iteration-count: infinite;
 }
 
@@ -70,7 +72,7 @@
   background: var(--danger);
   color: var(--primary-color);
   padding: .5rem;
-  width: fit-content;
+  width: min-content;
   animation-duration: var(--time-anim);
   animation-iteration-count: infinite;
   animation-name: glitch-anim-text-2;
@@ -96,12 +98,11 @@
 
 
 .light-theme .glitch {
-  background: darkblue;
+  background: blue;
 }
 
-.light-theme .glitch-content-text,
-.light-theme .glitch-content-solution {
-  color: var(--primary-color);
+.light-theme .glitch-content-text, .glitch-content-solution, .glitch-content-subtitle {
+  color: white;
 }
 
 .glitch__img {
@@ -110,7 +111,7 @@
   left: calc(-1 * var(--gap-horizontal));
   width: calc(100% + var(--gap-horizontal) * 2);
   height: calc(100% + var(--gap-vertical) * 2);
-  background: url('/imgs/not-ascii.gif') no-repeat 50% 50%;
+  background: url("https://s3.ru1.storage.beget.cloud/f99497af8d68-imaginative-elder/imgs/not-ascii.gif") no-repeat 50% 50%;
   mix-blend-mode: difference;
   background-size: 45%;
   transform: translate3d(0, 0, 0);

@@ -180,7 +180,7 @@ export default function ProjectListPage() {
 
         <div className="project-list-page-grid d-flex flex-wrap">
           {
-            !searchValue && currentUser?.role === 'godmode' && (
+            currentUser?.role === 'godmode' && (
               <div
                 className="project-list-page-card d-flex flex-column relative pointer"
                 onClick={() => navigate('/project/create')}

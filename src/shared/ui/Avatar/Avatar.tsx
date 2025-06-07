@@ -1,11 +1,11 @@
-import './UserAvatar.css'
+import './Avatar.css'
 
 type UserAvatarProps = {
   img: string;
   variant?: 'mini';
 }
 
-export default function UserAvatar({img, variant}: UserAvatarProps) {
+export default function Avatar({img, variant}: UserAvatarProps) {
 
   return (
     <div className={`user-avatar user-avatar-${variant} d-flex justify-c align-c`}>

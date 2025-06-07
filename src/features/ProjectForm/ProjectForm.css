@@ -15,7 +15,7 @@
 }
 
 .project-form-links .input {
-  width: calc((100% - 1rem) / 3);
+  width: calc((100% - .5rem) / 2);
 }
 
 .project-form-confirm {

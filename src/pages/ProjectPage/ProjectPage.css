@@ -6,6 +6,10 @@
   top: -3rem;
 }
 
+.project-page-title {
+  gap: 0;
+}
+
 .project-page-title .title {
   text-wrap: nowrap;
 }
@@ -28,6 +32,11 @@
 
 .project-support {
   margin-top: 2rem;
+}
+
+.project-page-title-icon {
+  width: 2rem!important;
+  top: .5rem!important;
 }
 
 .light-theme .project-page-title-icon svg path {

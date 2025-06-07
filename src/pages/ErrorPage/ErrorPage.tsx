@@ -88,9 +88,7 @@ export default function ErrorPage() {
           <Title className="glitch-content-title-shadow absolute" text={glitchTitle} />
           <Title className="glitch-content-title" text={glitchTitle} size="xl" />
           <Title className="glitch-content-subtitle" text={glitchText1} size="m" />
-          <div className="glitch-content-text">
-            {glitchText2}
-          </div>
+          <div className="glitch-content-text">{glitchText2}</div>
           <div className="glitch-content-code">{glitchCode}</div>
           <div className="glitch-content-solution">{glitchSolution}</div>
         </div>

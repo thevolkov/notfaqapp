@@ -7,6 +7,7 @@ import {
   earn,
   community,
   notPixel,
+  notGames,
 } from '../../assets/';
 
 const iconAlias = {
@@ -15,7 +16,8 @@ const iconAlias = {
   dogs,
   earn,
   community,
-  'not pixel': notPixel
+  'not pixel': notPixel,
+  'not games': notGames,
 };
 
 type IconId = keyof typeof iconAlias;

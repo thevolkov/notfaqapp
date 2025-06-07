@@ -56,7 +56,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
         },
         {
           name: 'about',
-          handler: () => '[INFO] This is notConsole 📟',
+          handler: () => '[INFO] This is notConsole (v. -0.001)',
         },
         {
           name: 'clear',
@@ -68,7 +68,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
             await delay(2000);
             eggActivatedTune(true);
             dispatch(consoleSlice.actions.setShowBomb(true));
-            return '[EASTEREGG] Fire in the hole! 💅';
+            return '[EASTEREGG] Fire in the hole!';
           },
         },
         {
@@ -77,7 +77,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
             await delay(2000);
             eggActivatedTune(true);
             dispatch(consoleSlice.actions.setShowGtaStars(true));
-            return '[EASTEREGG] 🚨🚨🚨 BUSTED!';
+            return '[EASTEREGG] BUSTED!';
           },
         },
         {
@@ -88,7 +88,7 @@ export const executeCommand = createAsyncThunk<CommandResult, string>(
             dispatch(setProjects(vouchersData));
             eggActivatedTune(true);
             dispatch(setCurrentUser('-1'));
-            return '[EASTEREGG] 🎟️ Voucher not found. Try checking under the couch?';
+            return '[EASTEREGG] Voucher not found. Try checking under the couch?';
           },
         },
       ];

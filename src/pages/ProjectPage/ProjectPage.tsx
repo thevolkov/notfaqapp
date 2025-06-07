@@ -1,7 +1,7 @@
 import './ProjectPage.css';
 import {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {type RootState, deleteProject, useAppSelector} from '../../app/store';
+import {useSelector} from 'react-redux';
+import {type RootState, useAppSelector} from '../../app/store';
 import {useNavigate, useParams} from 'react-router-dom';
 import IconButton from '../../shared/ui/IconButton/IconButton';
 import {type Project} from '../../entities/project/projectSlice';
@@ -9,15 +9,26 @@ import {useBackButton} from '../../shared/lib';
 import Title from '../../shared/ui/Title/Title';
 import Faq from '../../shared/ui/Faq/Faq';
 import {linksAlias} from '../../shared/constants';
-import {AnimatedBlock, Toasty} from '../../shared/ui';
+import {Toasty} from '../../shared/ui';
 import {getProjectImageSrc} from '../../shared/lib/imageHelpers';
 import LottieIcon from '../../shared/ui/LottieIcon/LottieIcon';
 import NotRocket from '../../shared/ui/EasterEggs/NotRocket/NotRocket';
 
+const titleTranscription: Record<string, string> = {
+  'notcoin': '[nɒtkɔɪn]',
+  'dogs': '[dɒɡz]',
+  'community': '[kəˈmjuːnɪtɪ]',
+  'not pixel': '[nɒt ˈpɪksɪl]',
+  'sticker pack': '[ˈstɪkə pæk]',
+  'earn': '[ɜːn]',
+  'not games': '[nɒt geɪmz]',
+  'void': '[vɔɪd]',
+  'voucher': '[ˈvaʊʧə]',
+};
+
 export default function ProjectPage() {
   const {id} = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const showVouchers = useAppSelector((state) => state.console.vouchers);
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
 
@@ -26,7 +37,6 @@ export default function ProjectPage() {
   const [showRocket, setShowRocket] = useState(false);
   const [rocketLaunch, setRocketLaunch] = useState(false);
   const [projectImage, setProjectImage] = useState('');
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const project: Project | undefined = useSelector((state: RootState) =>
     state.projects.projects.find((p) => p.id === id)
@@ -36,14 +46,6 @@ export default function ProjectPage() {
 
   const handleShowRocket = () => setShowRocket(true);
   const handleRocketLaunch = () => setRocketLaunch(true);
-
-
-  const handleDelete = () => {
-    if (!id) return
-
-    dispatch(deleteProject(id));
-    navigate('/');
-  };
 
   useEffect(() => {
     if (!project) return;
@@ -87,11 +89,6 @@ export default function ProjectPage() {
                 variant="alpha"
                 onClick={() => navigate(`/project/edit/${project.id}`)}
               />
-              <IconButton
-                iconId="trash"
-                variant="alpha"
-                onClick={() => setShowDeleteConfirm(true)}
-              />
             </>
           )
         }
@@ -100,8 +97,9 @@ export default function ProjectPage() {
             <IconButton
               className="tooltip"
               data-tooltip="draft"
-              variant="secondary"
+              variant="alpha"
               iconId="eye-slash"
+              disabled
             />
           )
         }
@@ -113,14 +111,23 @@ export default function ProjectPage() {
           alt={project.title || 'no_image'}
         />
         <div className="project-page-title d-flex flex-column justify-c">
-          <div className="d-flex">
-            <Title text={project.title} size="2xl" shadow />
+          <div className="d-flex align-s">
+            <Title
+              text={project.title}
+              size="2xl"
+              shadow
+            />
             <LottieIcon
-              className={`project-page-title-icon ${projectTitleLower === 'notcoin' ? 'pointer' : ''}`}
+              className={`project-page-title-icon relative ${projectTitleLower === 'notcoin' ? 'pointer' : ''}`}
               iconId={project.title}
               onClick={projectTitleLower === 'notcoin' ? handleShowRocket : undefined}
             />
           </div>
+          <Title
+            className="transcription relative"
+            text={titleTranscription[project.title.toLowerCase()] ?? ''}
+            size="s"
+          />
           <div className="project-page-links d-flex flex-wrap">
             {
               Object.entries(project.links).map(([key, url]) =>
@@ -186,28 +193,6 @@ export default function ProjectPage() {
         )
       }
       <Toasty />
-      <AnimatedBlock
-        visible={showDeleteConfirm}
-        direction="bottom"
-      >
-        <div className="popup d-flex flex-column align-c justify-c">
-          <Title text={`Delete ${project.title}?`} size="l" />
-          <div className="d-flex">
-            <IconButton
-              text="yep"
-              iconId="check-lg"
-              variant="alpha"
-              onClick={handleDelete}
-            />
-            <IconButton
-              text="nope"
-              iconId="x-lg"
-              variant="primary"
-              onClick={() => setShowDeleteConfirm(false)}
-            />
-          </div>
-        </div>
-      </AnimatedBlock>
     </div>
   )
 }

@@ -2,9 +2,11 @@ import './Footer.css';
 import {NavLink} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 import {footerLinks} from './constants';
-import UserAvatar from '../UserAvatar/UserAvatar';
+import Avatar from '../Avatar/Avatar';
 import {type RootState, useAppSelector} from '../../../app/store';
 import SvgIcon from '../SvgIcon';
+
+const CDN = import.meta.env.VITE_CDN_BASE_URL;
 
 export default function Footer() {
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
@@ -16,7 +18,7 @@ export default function Footer() {
         {
           footerLinks.map((link) => (
             <NavLink
-              className={({ isActive }) =>
+              className={({isActive}) =>
                 `d-flex flex-column align-c ${isActive ? 'active' : ''}`
               }
               to={link.path}
@@ -35,14 +37,29 @@ export default function Footer() {
               ? 'active'
               : ''
           }
+          to="/memes"
+        >
+          <div className="d-flex flex-column align-c">
+            <Avatar variant="mini" img={`${CDN}/memes/mm-48.jpg`} />
+            <div className="footer-link-text">
+              [nɒt miːmz]
+            </div>
+          </div>
+        </NavLink>
+        <NavLink
+          className={({isActive}) =>
+            isActive
+              ? 'active'
+              : ''
+          }
           to="/user"
         >
-        <div className="d-flex flex-column align-c">
-          <UserAvatar variant="mini" img={currentUser?.avatar || ''} />
-          <div className="footer-link-text">
-            {currentUser?.name}
+          <div className="d-flex flex-column align-c">
+            <Avatar variant="mini" img={currentUser?.avatar || ''} />
+            <div className="footer-link-text">
+              {currentUser?.name}
+            </div>
           </div>
-        </div>
         </NavLink>
       </div>
     </div>

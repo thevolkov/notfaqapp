@@ -1,0 +1,33 @@
+.memes-gallery-page {
+  gap: 2rem;
+}
+
+.masonry-grid {
+  column-count: 3;
+  column-gap: 0.5rem;
+}
+
+.masonry-item-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  margin-bottom: .5rem;
+  border: 1px solid var(--tertiary-color-alpha);
+}
+
+.masonry-item {
+  width: calc(100% + 4px);
+  height: auto;
+  display: block;
+  margin: -2px;
+}
+
+@media (max-width: 768px) {
+  .memes-gallery-page {
+    gap: 1rem;
+  }
+
+  .masonry-grid {
+    column-count: 2;
+  }
+}

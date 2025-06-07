@@ -34,6 +34,7 @@
   line-height: normal;
   font-weight: 800;
   color: transparent;
+  width: fit-content;
   -webkit-background-clip: text!important;
   background-clip: text!important;
   background: #FF9B00;
@@ -76,6 +77,17 @@
   font-weight: normal;
   color: var(--secondary-color-alpha);
   margin-left: .25rem;
+}
+
+.transcription {
+  top: -.5rem;
+  left: .25rem;
+}
+
+.transcription .title-size-s {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--secondary-color-alpha);
 }
 
 @media (max-width: 768px) {

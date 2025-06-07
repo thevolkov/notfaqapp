@@ -37,7 +37,7 @@
 }
 
 .light-theme .user-page-achiv {
-  filter: drop-shadow(0 1px 2px gray);
+  filter: drop-shadow(0 1px 1px gray);
 }
 
 .user-page-permissions {

@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {type RootState, setCurrentUser} from '../../app/store';
 import Title from '../../shared/ui/Title/Title.tsx'
 import ThemeToggle from '../../features/ThemeToggle/ThemeToggle';
-import UserAvatar from '../../shared/ui/UserAvatar/UserAvatar';
+import UserAvatar from '../../shared/ui/Avatar/Avatar';
 import UserRoleMark from '../../shared/ui/UserRoleMark/UserRoleMark';
 import premiumCheckMark from '../../shared/assets/icons/premium-check.svg'
 import silverBone from '../../shared/assets/icons/dogs-silver-bone.png'

@@ -51,7 +51,7 @@ export default function Console({showConsole}: ConsoleProps) {
             <div className="console-log d-flex" key={index}>
               {output}{
               pending && index === arr.length - 1 && (
-                <div className="pending-ellipsis">{'>>> pending'}</div>
+                <div>{'>>> pending'}<span className="pending-ellipsis" /></div>
               )
             }
             </div>
