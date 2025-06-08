@@ -1,4 +1,4 @@
-import './NotFaq.css';
+import './NotFaqApp.css';
 import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import ScrollToTop from '../shared/ui/ScrollToTop';
 import {Footer} from '../shared/ui';
@@ -60,7 +60,7 @@ const routeLinks = [
   },
 ];
 
-export default function NotFaq() {
+export default function NotFaqApp() {
   const location = useLocation();
   const navigate = useNavigate();
   const noFooterRoutes = ['/666'];
@@ -110,5 +110,5 @@ export default function NotFaq() {
       </Routes>
       {!hideFooter && <Footer />}
     </>
-  );
+  )
 }

@@ -83,5 +83,5 @@ export default function FileInput({buttonText, onChange, initialPreview}: FileIn
         )
       }
     </>
-  );
+  )
 }

@@ -200,7 +200,7 @@ export const projectsData = [
   },
 ];
 
-const voucherDesc = 'Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher...';
+const voucherDesc = 'Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher Voucher...';
 
 const faqsVoucher = {
   id: '000',

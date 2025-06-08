@@ -14,8 +14,8 @@ export default function ThemeToggle() {
         checked={theme === 'light'}
         onChange={() => dispatch(toggleTheme())}
       />
-      <div className="slider relative b-radius"/>
+      <div className="slider relative b-radius" />
       <span className="label">{theme === 'dark' ? 'Dark' : 'Light'}</span>
     </label>
-  );
+  )
 }

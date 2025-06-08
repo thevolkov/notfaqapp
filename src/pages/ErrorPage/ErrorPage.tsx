@@ -2,10 +2,10 @@ import './ErrorPage.css';
 import {useEffect, useRef, useState} from 'react';
 import {Title} from '../../shared/ui';
 
-const GLITCH_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*';
+const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*';
 
 function randomChar() {
-  return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+  return glitchChars[Math.floor(Math.random() * glitchChars.length)];
 }
 
 function useGlitchEffect(
@@ -79,14 +79,14 @@ export default function ErrorPage() {
   return (
     <div className="error-page loading">
       <div className="glitch">
-        <div className="glitch__img"></div>
-        <div className="glitch__img"></div>
-        <div className="glitch__img"></div>
-        <div className="glitch__img"></div>
-        <div className="glitch__img"></div>
+        <div className="glitch__img" />
+        <div className="glitch__img" />
+        <div className="glitch__img" />
+        <div className="glitch__img" />
+        <div className="glitch__img" />
         <div className="glitch-content absolute d-flex flex-column justify-c align-c">
-          <Title className="glitch-content-title-shadow absolute" text={glitchTitle} />
           <Title className="glitch-content-title" text={glitchTitle} size="xl" />
+          <Title className="glitch-content-title-shadow absolute" text={glitchTitle} />
           <Title className="glitch-content-subtitle" text={glitchText1} size="m" />
           <div className="glitch-content-text">{glitchText2}</div>
           <div className="glitch-content-code">{glitchCode}</div>
@@ -94,5 +94,5 @@ export default function ErrorPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

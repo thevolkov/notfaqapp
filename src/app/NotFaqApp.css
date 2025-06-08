@@ -160,7 +160,7 @@
 }
 
 .sidebar {
-  width: 20rem;
+  width: 17.5rem;
   font-size: .75rem;
   color: var(--secondary-color-alpha);
 }
@@ -172,7 +172,8 @@
 
 .sidebar-toggle {
   top: 1rem;
-  left: -2.25rem;
+  left: -2.5rem;
+  background: var(--primary-color-alpha);
 }
 
 .slider-img {
@@ -266,8 +267,4 @@
       background-position: 0 30vw;
     }
   }
-
-  /*.dashboard-wrapper {*/
-  /*  padding: 0 0 5rem 0;*/
-  /*}*/
 }

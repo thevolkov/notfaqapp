@@ -1,8 +1,8 @@
 import './Console.css';
 import {useEffect, useRef} from 'react';
 import {useAppSelector, useAppDispatch} from '../../app/store';
-import {Input} from '../../shared/ui/';
 import {setInput, executeCommand} from '../../entities/console/consoleSlice';
+import {Input} from '../../shared/ui/';
 
 interface ConsoleProps {
   showConsole: boolean;
@@ -49,11 +49,12 @@ export default function Console({showConsole}: ConsoleProps) {
         {
           logs.map((output, index, arr) => (
             <div className="console-log d-flex" key={index}>
-              {output}{
-              pending && index === arr.length - 1 && (
-                <div>{'>>> pending'}<span className="pending-ellipsis" /></div>
-              )
-            }
+              {output}
+              {
+                pending && index === arr.length - 1 && (
+                  <>{'>>> pending'}<span className="pending-ellipsis" /></>
+                )
+              }
             </div>
           ))
         }
@@ -63,9 +64,10 @@ export default function Console({showConsole}: ConsoleProps) {
         iconId="code-slash"
         value={input}
         onChange={(value) => dispatch(setInput(value))}
-        onKeyDown={(event) => event.key === 'Enter' && handleConsoleEnter()}
+        onKeyDown={(event) =>
+          event.key === 'Enter' && handleConsoleEnter()}
         colon
       />
     </div>
-  );
+  )
 }

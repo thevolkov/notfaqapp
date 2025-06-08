@@ -51,7 +51,6 @@ export default function UserPage() {
           )
         }
         <UserAvatar img={currentUser?.avatar} />
-
         {
           currentUser.role !== 'user' && (
             <UserRoleMark
@@ -88,7 +87,6 @@ export default function UserPage() {
         <div className="subtitle">username: {currentUser.userName || '-netu-'}</div>
         <div className="subtitle">id: {currentUser.id}</div>
       </div>
-
       <AnimatedBlock
         hideWithoutUnmount={true}
         visible={!showSidebar}
@@ -130,5 +128,5 @@ export default function UserPage() {
         </div>
       </AnimatedBlock>
     </div>
-  );
+  )
 }

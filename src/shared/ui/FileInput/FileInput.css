@@ -5,15 +5,15 @@
 .file-input-preview img {
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: .95rem;
+  border-radius: 1.25rem;
   border: 1px solid var(--tertiary-color-alpha);
 }
 
 .file-input-label i {
   width: fit-content;
-  padding: .5rem;
+  padding: .75rem;
   color: var(--secondary-color);
-  opacity: .8;
+  opacity: .75;
   transition: opacity 1s ease;
   border: 1px solid var(--secondary-color-alpha);
 }

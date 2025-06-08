@@ -47,5 +47,5 @@ export default function LottieIcon({
       loop={loop}
       onClick={onClick}
     />
-  );
+  )
 }

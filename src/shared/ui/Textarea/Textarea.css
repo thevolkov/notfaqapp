@@ -15,12 +15,3 @@
   border: 1px solid var(--secondary-color-alpha);
   opacity: 1;
 }
-
-/*.textarea i {*/
-/*  opacity: .5;*/
-/*  transition:opacity 1s ease;*/
-/*}*/
-
-/*.textarea:focus-within i {*/
-/*  opacity: 1;*/
-/*}*/

@@ -35,7 +35,6 @@ export default function ProjectForm() {
 
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showFormConfirm, setShowFormConfirm] = useState(false);
-  // const [showSidebar, setShowSidebar] = useState(false);
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [desc, setDesc] = useState('');
@@ -129,20 +128,11 @@ export default function ProjectForm() {
       />
       <Title text={id ? `Edit ${title}` : '+[n:fə]'} size="2xl" shadow shadowText={title} />
       <form className="d-flex element-wrapper" ref={formRef} onSubmit={handleSubmit}>
-        {/*<AnimatedBlock*/}
-        {/*  hideWithoutUnmount={true}*/}
-        {/*  visible={!showSidebar}*/}
-        {/*  direction="right"*/}
-        {/*>*/}
-        {/*  */}
-        {/*</AnimatedBlock>*/}
-
         <div className="d-flex flex-column">
           <div className="d-flex flex-column element-wrapper">
             <Input className="w-100" value={title} placeholder="Title" onChange={setTitle} required />
             <Textarea value={desc} placeholder="Description..." onChange={setDesc} required />
           </div>
-
           <Title text="Links" size="s" />
           <div className="project-form-links d-flex element-wrapper">
             {
@@ -157,7 +147,6 @@ export default function ProjectForm() {
               ))
             }
           </div>
-
           <Title text="FAQs" size="s" />
           {
             !faq.length && (
@@ -209,39 +198,38 @@ export default function ProjectForm() {
           }
         </div>
         <div className="sidebar relative p-1">
-         <div className="sidebar-sticky d-flex flex-column">
-           <div className="d-flex align-c">
-             <IconButton
-               variant={published ? 'success' : 'secondary'}
-               onClick={togglePublished}
-               iconId={published ? 'eye' : 'eye-slash'}
-             />{published ? 'published' : 'draft'}
-           </div>
-           {
-             id && (
-               <div className="d-flex align-c">
-                 <IconButton
-                   iconId="trash"
-                   variant="danger"
-                   onClick={() => setShowDeleteConfirm(true)}
-                 />delete
-               </div>
-             )
-           }
-           <FileInput buttonText="image" onChange={setImage} initialPreview={image} />
-           <hr />
-           <div className="d-flex align-c">
-             <IconButton
-               iconId={id ? 'floppy' : 'check-lg'}
-               variant="alpha"
-               onClick={() => setShowFormConfirm(true)}
-               disabled={!isFormValid}
-             />{id ? 'save' : 'create'}
-           </div>
-         </div>
+          <div className="sidebar-sticky d-flex flex-column">
+            <div className="d-flex align-c">
+              <IconButton
+                variant={published ? 'success' : 'secondary'}
+                onClick={togglePublished}
+                iconId={published ? 'eye' : 'eye-slash'}
+              />{published ? 'published' : 'draft'}
+            </div>
+            {
+              id && (
+                <div className="d-flex align-c">
+                  <IconButton
+                    iconId="trash"
+                    variant="danger"
+                    onClick={() => setShowDeleteConfirm(true)}
+                  />delete
+                </div>
+              )
+            }
+            <FileInput buttonText="image" onChange={setImage} initialPreview={image} />
+            <hr />
+            <div className="d-flex align-c">
+              <IconButton
+                iconId={id ? 'floppy' : 'check-lg'}
+                variant="alpha"
+                onClick={() => setShowFormConfirm(true)}
+                disabled={!isFormValid}
+              />{id ? 'save' : 'create'}
+            </div>
+          </div>
         </div>
       </form>
-
       <AnimatedBlock visible={showFormConfirm} direction="bottom">
         <div className="popup d-flex flex-column align-c justify-c">
           <Title text="ARE YOU SURE???" size="l" />
@@ -261,7 +249,6 @@ export default function ProjectForm() {
           </div>
         </div>
       </AnimatedBlock>
-
       <AnimatedBlock visible={showDeleteConfirm} direction="bottom">
         <div className="popup d-flex flex-column align-c justify-c">
           <Title text={`Delete ${title}?`} size="l" />
@@ -282,5 +269,5 @@ export default function ProjectForm() {
         </div>
       </AnimatedBlock>
     </div>
-  );
+  )
 }

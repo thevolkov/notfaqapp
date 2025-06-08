@@ -4,7 +4,7 @@ import {IconButton, Title} from '../../shared/ui';
 import {getProjectImageSrc} from '../../shared/lib/imageHelpers';
 import {type Project} from '../../entities/project/projectSlice';
 
-const ProjectCard = ({project}: {project: Project}) => {
+function ProjectCard({ project }: { project: Project }) {
   const navigate = useNavigate();
 
   if (project.id === '666') return null;
@@ -32,7 +32,7 @@ const ProjectCard = ({project}: {project: Project}) => {
       />
       <Title text={project.title} size="s" />
     </div>
-  );
-};
+  )
+}
 
 export default memo(ProjectCard);

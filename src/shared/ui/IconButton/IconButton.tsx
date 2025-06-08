@@ -46,5 +46,5 @@ export default function IconButton({
       }
       {text}
     </button>
-  );
+  )
 }

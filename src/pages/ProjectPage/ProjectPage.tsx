@@ -128,39 +128,37 @@ export default function ProjectPage() {
             text={titleTranscription[project.title.toLowerCase()] ?? ''}
             size="s"
           />
-          <div className="project-page-links d-flex flex-wrap">
-            {
-              Object.entries(project.links).map(([key, url]) =>
-                url ? (
-                  <a
-                    className="b-radius"
-                    key={key}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <IconButton
-                      text={key}
-                      iconId={linksAlias[key as keyof typeof linksAlias]}
-                      variant="alpha"
-                    />
-                  </a>
-                ) : null
-              )
-            }
-          </div>
+          {project.desc}
         </div>
       </div>
-      {
-        project.desc
-      }
+      <div className="project-page-links d-flex flex-wrap">
+        {
+          Object.entries(project.links).map(([key, url]) =>
+            url ? (
+              <a
+                className="b-radius"
+                key={key}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconButton
+                  text={key}
+                  iconId={linksAlias[key as keyof typeof linksAlias]}
+                  variant="alpha"
+                />
+              </a>
+            ) : null
+          )
+        }
+      </div>
       {
         project.faq.length > 0 && (
           <div className="d-flex flex-column">
             <Faq project={project.title} faqData={project.faq} />
             {
               id !== '000' && (
-                <div className="faq element-wrapper relative border-none">
+                <div className="faq faq-egg element-wrapper relative border-none">
                   <div className="faq-question pointer" onClick={() => navigate("/666")}>
                     <Title
                       text="Wen CEX??? Wen PUMP??? Wen SKINS???"

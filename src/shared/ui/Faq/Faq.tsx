@@ -28,12 +28,11 @@ export default function Faq({project, faqData}: {
     );
   }, []);
 
-
   return (
     <>
       <div className="relative">
-        <img className={`faq-soon absolute ${visibleSoon ? "visible" : ""}`} src={soonPng} alt="soon"/>
-        <img className="faq-paul absolute" src={paul} alt="FAQ"/>
+        <img className={`faq-soon absolute ${visibleSoon ? "visible" : ""}`} src={soonPng} alt="soon" />
+        <img className="faq-paul absolute" src={paul} alt="FAQ" />
         <Title className="faq-title" text="🗿Frequently Annoying Questions:" size="xl" />
       </div>
       <div className="faq-list">
@@ -82,5 +81,5 @@ export default function Faq({project, faqData}: {
         }
       </div>
     </>
-  );
+  )
 }

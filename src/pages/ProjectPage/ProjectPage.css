@@ -23,12 +23,9 @@
   z-index: 2;
 }
 
-/*.project-page-links {*/
-/*  width: 85%;*/
-/*  align-self: start;*/
-/*  flex-wrap: wrap;*/
-/*  gap: .25rem;*/
-/*}*/
+.project-page-links {
+  gap: .25rem;
+}
 
 .project-support {
   margin-top: 2rem;
@@ -64,9 +61,9 @@
     gap: 1rem;
   }
 
-  /*.project-page-links {*/
-  /*  width: 100%;*/
-  /*}*/
+  .project-page-links {
+    width: 90%;
+  }
 
   .project-desc-info {
     padding: 0;

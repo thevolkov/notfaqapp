@@ -5,8 +5,12 @@
   border-bottom: 1px solid var(--tertiary-color-alpha);
 }
 
+.faq-egg {
+  padding-bottom: 2.25rem;
+}
+
 .faq-title {
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 }
 
 .faq-paul {
@@ -56,4 +60,10 @@
 .faq-draft .title,
 .faq-draft .faq-answer {
   opacity: .1;
+}
+
+@media (max-width: 768px) {
+  .faq-title {
+    margin: 1rem 0;
+  }
 }

@@ -12,9 +12,9 @@
   --primary-color: #131313;
   --secondary-color: #ECECEC;
 
-  --primary-color-alpha: rgba(0, 0, 0, .5);
-  --secondary-color-alpha: rgba(236, 236, 236, 0.5);
-  --tertiary-color-alpha: rgba(255, 255, 255, .075);
+  --primary-color-alpha: rgba(0, 0, 0, .2);
+  --secondary-color-alpha: rgba(236, 236, 236, 0.3);
+  --tertiary-color-alpha: rgba(255, 255, 255, .05);
 
   --danger: rgba(207, 0, 0, 0.8);
   --warning: rgba(255, 140, 0, 0.8);
@@ -99,10 +99,6 @@ input, textarea, select {
   color: var(--secondary-color);
   border: none;
   width: 100%;
-}
-
-input::placeholder, textarea::placeholder {
-  /*color: var(--light-alpha-025);*/
 }
 
 input[type=text], textarea {

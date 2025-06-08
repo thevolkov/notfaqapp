@@ -66,5 +66,5 @@ export default function Textarea({
         className={className}
       />
     </div>
-  );
+  )
 }

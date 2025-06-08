@@ -1,5 +1,5 @@
 import './SvgIcon.css';
-import svgSprite from '../assets/icons/sprite.svg'
+import svgSprite from '../../assets/icons/sprite.svg'
 
 interface IconProps {
   id: string;

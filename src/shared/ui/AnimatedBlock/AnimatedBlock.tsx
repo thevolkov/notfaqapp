@@ -44,5 +44,5 @@ export default function AnimatedBlock({
     >
       {children}
     </div>
-  );
+  )
 }

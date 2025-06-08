@@ -9,7 +9,6 @@
 
 .masonry-item-wrapper {
   overflow: hidden;
-  min-height: 7.5rem;
   width: 100%;
   position: relative;
   margin-bottom: .5rem;
@@ -19,6 +18,7 @@
 .masonry-item {
   width: calc(100% + 4px);
   height: auto;
+  min-height: 5rem;
   display: block;
   margin: -2px;
 }
@@ -29,6 +29,6 @@
   }
 
   .masonry-grid {
-    column-count: 1;
+    column-count: 2;
   }
 }

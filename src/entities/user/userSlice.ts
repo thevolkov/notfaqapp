@@ -20,7 +20,7 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  currentUser: constants[0],
+  currentUser: constants[1],
   users: constants,
 };
 

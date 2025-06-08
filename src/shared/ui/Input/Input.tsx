@@ -50,7 +50,7 @@ function InputComponent(
         disabled={disabled}
       />
     </div>
-  );
+  )
 }
 
 const Input = forwardRef(InputComponent);
