@@ -36,12 +36,8 @@
 }
 
 .project-list-page-card .title {
-  margin-left: .5rem;
-  transition: margin-left 1s ease;
-}
-
-.project-list-page-card:hover .title {
   margin-left: .75rem;
+  width: fit-content;
 }
 
 .travolta {

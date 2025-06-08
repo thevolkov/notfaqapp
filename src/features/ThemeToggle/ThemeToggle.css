@@ -30,7 +30,7 @@
 }
 
 .theme-toggle input:checked + .slider {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-alpha);
 }
 
 .theme-toggle input:checked + .slider::before {

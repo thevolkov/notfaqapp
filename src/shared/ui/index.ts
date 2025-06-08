@@ -7,6 +7,8 @@ import Input from './Input/Input';
 import Textarea from './Textarea/Textarea';
 import Title from './Title/Title';
 import Toasty from './EasterEggs/Toasty/Toasty';
+import UserRoleMark from './UserRoleMark/UserRoleMark';
+import Avatar from './Avatar/Avatar';
 
 export {
   AnimatedBlock,
@@ -18,4 +20,6 @@ export {
   Textarea,
   Title,
   Toasty,
+  Avatar,
+  UserRoleMark,
 };

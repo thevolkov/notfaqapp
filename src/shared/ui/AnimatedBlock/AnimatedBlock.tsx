@@ -12,7 +12,7 @@ interface AnimatedBlockProps {
 }
 
 export default function AnimatedBlock({
-  visible,
+  visible = false,
   direction = 'bottom',
   children,
   className = '',
@@ -20,6 +20,12 @@ export default function AnimatedBlock({
 }: AnimatedBlockProps) {
   const [shouldRender, setShouldRender] = useState(visible);
   const [animationClass, setAnimationClass] = useState('');
+
+  const handleAnimationEnd = () => {
+    if (!visible && !hideWithoutUnmount) {
+      setShouldRender(false);
+    }
+  };
 
   useEffect(() => {
     if (visible) {
@@ -29,12 +35,6 @@ export default function AnimatedBlock({
       setAnimationClass(`slide-out-${direction}`);
     }
   }, [visible, direction]);
-
-  const handleAnimationEnd = () => {
-    if (!visible && !hideWithoutUnmount) {
-      setShouldRender(false);
-    }
-  };
 
   return (
     <div

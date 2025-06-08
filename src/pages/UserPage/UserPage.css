@@ -15,15 +15,6 @@
   margin-bottom: .5rem;
 }
 
-.user-page-premium {
-  width: 1rem;
-  height: 1rem;
-  top: .5rem;
-  left: .5rem;
-  z-index: 3;
-  box-shadow: none;
-}
-
 .user-page-achivs {
   gap: .25rem;
 }

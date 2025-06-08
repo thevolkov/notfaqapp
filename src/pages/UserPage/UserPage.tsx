@@ -2,26 +2,9 @@ import './UserPage.css';
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {type RootState, setCurrentUser} from '../../app/store';
-import Title from '../../shared/ui/Title/Title.tsx'
 import ThemeToggle from '../../features/ThemeToggle/ThemeToggle';
-import UserAvatar from '../../shared/ui/Avatar/Avatar';
-import UserRoleMark from '../../shared/ui/UserRoleMark/UserRoleMark';
+import {AnimatedBlock, IconButton, UserRoleMark, Avatar, Title} from '../../shared/ui';
 import premiumCheckMark from '../../shared/assets/icons/premium-check.svg'
-import silverBone from '../../shared/assets/icons/dogs-silver-bone.png'
-import goldenBone from '../../shared/assets/icons/dogs-golden-bone.png'
-import notPlatinum from '../../shared/assets/icons/not-platinum.png'
-import goldenPx from '../../shared/assets/icons/golden-px.png'
-import {AnimatedBlock} from '../../shared/ui';
-import IconButton from '../../shared/ui/IconButton/IconButton';
-
-type AchievementKey = 'not-platinum' | 'dogs-silver-bone' | 'dogs-gold-bone' | 'golden-px';
-
-const achievementAlias = {
-  'not-platinum': notPlatinum,
-  'dogs-silver-bone': silverBone,
-  'dogs-gold-bone': goldenBone,
-  'golden-px': goldenPx,
-};
 
 export default function UserPage() {
   const dispatch = useDispatch();
@@ -41,16 +24,7 @@ export default function UserPage() {
   return (
     <div className="user-page d-flex flex-column align-c">
       <div className="user-page-avatar relative d-flex justify-c">
-        {
-          currentUser.isPremium && (
-            <img
-              className="user-page-premium absolute"
-              src={premiumCheckMark}
-              alt="tg-premium"
-            />
-          )
-        }
-        <UserAvatar img={currentUser?.avatar} />
+        <Avatar img={currentUser?.avatar} />
         {
           currentUser.role !== 'user' && (
             <UserRoleMark
@@ -61,31 +35,25 @@ export default function UserPage() {
         }
       </div>
       <div className="user-page-header d-flex flex-column align-c">
-        {
-          currentUser.achievements.length >= 1 && (
-            <div
-              style={{right: `-${currentUser?.achievements.length * 1.5 + .5}rem`}}
-              className="user-page-achivs d-flex justify-c"
-            >
-              {
-                currentUser.achievements.map((achievement) => (
-                  <img
-                    className="user-page-achiv"
-                    src={achievementAlias[achievement as AchievementKey]}
-                    alt="tg-premium"
-                    key={achievement}
-                  />
-                ))
-              }
-            </div>
-          )
-        }
-        <Title
-          text={currentUser.name}
-          size="m"
-        />
+        <div className="d-flex relative">
+          <Title
+            text={currentUser.name}
+            size="m"
+          />
+          {
+            currentUser.isPremium && (
+              <img
+                className="tg-premium absolute"
+                src={premiumCheckMark}
+                alt="tg-premium"
+              />
+            )
+          }
+        </div>
         <div className="subtitle">username: {currentUser.userName || '-netu-'}</div>
         <div className="subtitle">id: {currentUser.id}</div>
+        <hr/>
+        <ThemeToggle />
       </div>
       <AnimatedBlock
         hideWithoutUnmount={true}
@@ -93,17 +61,15 @@ export default function UserPage() {
         direction="right"
       >
         <div className="sidebar d-flex flex-column p-1">
-          <IconButton
-            className="sidebar-toggle absolute"
-            iconId={!showSidebar ? 'x-lg' : 'list'}
-            variant="primary"
-            onClick={() => setShowSidebar(!showSidebar)}
-          />
-          <Title
-            text="Temporary sidebar"
-            size="s"
-          />
-          <ThemeToggle />
+          <div className="sidebar-toggle-wrapper absolute">
+            <IconButton
+              className="sidebar-toggle"
+              iconId={!showSidebar ? 'x-lg' : 'list'}
+              variant="primary"
+              onClick={() => setShowSidebar(!showSidebar)}
+            />
+          </div>
+          <div>Temporary sidebar ⚙️</div>
           <Title
             text="All users"
             size="s"
@@ -117,7 +83,7 @@ export default function UserPage() {
                   onClick={() => handleSwitchRole(user.id)}
                 >
                   <div className="d-flex align-c">
-                    <UserAvatar variant="mini" img={user?.avatar} />
+                    <Avatar variant="mini" img={user?.avatar} />
                     {user.name}
                   </div>
                   <UserRoleMark role={user.role} />

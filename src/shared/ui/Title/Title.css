@@ -2,6 +2,7 @@
   color: var(--text-color);
   z-index: 1;
   text-wrap: balance;
+  width: fit-content;
 }
 
 .light-theme .title {
@@ -51,25 +52,25 @@
 }
 
 .title-size-xl {
-  font-size: 3.25rem;
-  line-height: 3.25rem;
+  font-size: 3rem;
+  line-height: 3rem;
   font-weight: 700;
 }
 
 .title-size-l {
-  font-size: 2.5rem;
-  line-height: 2.25rem;
-  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 600;
 }
 
 .title-size-m {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .title-size-s {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .subtitle {

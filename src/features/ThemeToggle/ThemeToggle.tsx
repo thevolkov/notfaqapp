@@ -8,7 +8,6 @@ export default function ThemeToggle() {
 
   return (
     <label className="theme-toggle d-flex align-c pointer">
-      <span>Theme:</span>
       <input
         type="checkbox"
         checked={theme === 'light'}

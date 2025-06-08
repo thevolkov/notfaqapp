@@ -128,7 +128,7 @@ i {
 hr {
   border: none;
   height: 1px;
-  background: var(--tertiary-color-alpha);
+  background: var(--primary-color-alpha);
   margin: .25rem 0;
 }
 
