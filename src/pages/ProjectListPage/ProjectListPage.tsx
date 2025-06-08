@@ -182,7 +182,7 @@ export default function ProjectListPage() {
           {
             currentUser?.role === 'godmode' && (
               <div
-                className="project-list-page-card d-flex flex-column relative pointer"
+                className="project-card d-flex flex-column relative pointer"
                 onClick={() => navigate('/project/create')}
               >
                 <img
