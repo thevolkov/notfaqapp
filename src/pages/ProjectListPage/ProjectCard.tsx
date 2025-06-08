@@ -12,13 +12,13 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div
-      className="project-list-page-card d-flex flex-column relative pointer"
+      className="project-card d-flex flex-column relative pointer"
       onClick={() => navigate(`/project/${project.id}`)}
     >
       {
         !project.published && (
           <IconButton
-            className="project-list-page-card-status absolute tooltip"
+            className="project-card-status absolute tooltip"
             data-tooltip="draft"
             variant="primary"
             iconId="eye-slash"
@@ -26,17 +26,16 @@ function ProjectCard({ project }: { project: Project }) {
         )
       }
       <img
-        loading="lazy"
-        className={`b-radius ${!project.image || !project.published ? 'faded-image' : ''}`}
+        className={`project-card-image b-radius ${!project.image || !project.published ? 'faded-image' : ''}`}
         src={getProjectImageSrc(project.image)}
         alt={project.title || 'no_image'}
       />
       <div className="d-flex gap-0 fit-content relative">
         <Title text={project.title} size="s" />
         <img
-          className="tg-premium absolute"
+          className="premium-icon absolute"
           src={premiumCheckMark}
-          alt="tg-premium"
+          alt="premium-icon"
         />
       </div>
     </div>

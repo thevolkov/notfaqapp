@@ -233,14 +233,14 @@
   visibility: visible;
 }
 
-.tg-premium {
+.premium-icon {
   width: .6rem!important;
   height: .6rem;
-  right: -.6rem;
+  right: -.7rem;
   box-shadow: none;
 }
 
-.light-theme .tg-premium {
+.light-theme .premium-icon {
   filter: invert();
   -webkit-filter: invert();
 }

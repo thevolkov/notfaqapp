@@ -158,7 +158,7 @@ export default function ProjectPage() {
             <Faq project={project.title} faqData={project.faq} />
             {
               id !== '000' && (
-                <div className="faq faq-egg element-wrapper relative border-none">
+                <div className="faq faq-egg element-wrapper blur-bg relative border-none">
                   <div className="faq-question pointer" onClick={() => navigate("/666")}>
                     <Title
                       text="Wen CEX??? Wen PUMP??? Wen SKINS???"

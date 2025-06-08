@@ -43,9 +43,9 @@ export default function UserPage() {
           {
             currentUser.isPremium && (
               <img
-                className="tg-premium absolute"
+                className="premium-icon absolute"
                 src={premiumCheckMark}
-                alt="tg-premium"
+                alt="premium-icon"
               />
             )
           }
