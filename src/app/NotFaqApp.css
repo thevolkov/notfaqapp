@@ -234,10 +234,15 @@
 }
 
 .tg-premium {
-  width: .5rem!important;
-  height: .5rem;
-  right: -.5rem;
+  width: .6rem!important;
+  height: .6rem;
+  right: -.6rem;
   box-shadow: none;
+}
+
+.light-theme .tg-premium {
+  filter: invert();
+  -webkit-filter: invert();
 }
 
 /* pending... */
