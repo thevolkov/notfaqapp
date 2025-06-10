@@ -1,7 +1,7 @@
 import './ProjectPage.css';
 import {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
-import {type RootState, useAppSelector} from '../../app/store';
+import {useDispatch, useSelector} from 'react-redux';
+import {type RootState, toggleTheme, useAppSelector} from '../../app/store';
 import {useNavigate, useParams} from 'react-router-dom';
 import IconButton from '../../shared/ui/IconButton/IconButton';
 import {type Project} from '../../entities/project/projectSlice';
@@ -31,6 +31,8 @@ export default function ProjectPage() {
   const navigate = useNavigate();
   const showVouchers = useAppSelector((state) => state.console.vouchers);
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
+  const dispatch = useDispatch();
+  const theme = useSelector((state: RootState) => state.theme.theme);
 
   const {handleBack} = useBackButton();
 
@@ -57,19 +59,22 @@ export default function ProjectPage() {
     }
   }, [project, rocketLaunch, projectTitleLower]);
 
-  // useEffect(() => {
-
-  // if (rocketLaunch) {
-  // const timer = setTimeout(() => {
-  //   setRocketLaunch(false);
-  //   setShowRocket(false);
-  // }, 10000);
-  // return () => clearTimeout(timer);
-  // }
-  // }, [rocketLaunch]);
+  useEffect(() => {
+    if (rocketLaunch && theme === 'light') {
+      console.log('TEST')
+      dispatch(toggleTheme());
+      return () => {
+        dispatch(toggleTheme());
+      };
+    }
+  }, [rocketLaunch]);
 
   if (!project) {
-    return <Title text="Project not found ¯\_(ツ)_/¯" size="xl" />;
+    return (
+      <div className="d-flex justify-c">
+        not found ¯\_(ツ)_/¯
+      </div>
+    );
   }
 
   return (

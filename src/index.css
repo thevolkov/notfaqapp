@@ -13,7 +13,7 @@
   --secondary-color: #ECECEC;
 
   --primary-color-alpha: rgba(0, 0, 0, .2);
-  --secondary-color-alpha: rgba(236, 236, 236, 0.3);
+  --secondary-color-alpha: rgba(236, 236, 236, 0.2);
   --tertiary-color-alpha: rgba(255, 255, 255, .05);
 
   --danger: rgba(207, 0, 0, 0.8);

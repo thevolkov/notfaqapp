@@ -1,10 +1,10 @@
 import './MemesGalleryPage.css';
 import {useEffect, useState} from 'react';
-import Title from '../../shared/ui/Title/Title';
+import {useAppSelector} from '../../app/store';
+import {Title} from '../../shared/ui/';
+import Lottie from 'lottie-react';
 import shuffleArray from '../../shared/lib/shuffleArray';
 import {rabbit, notcoinMeme} from '../../shared/assets/';
-import Lottie from 'lottie-react';
-import {useAppSelector} from '../../app/store';
 import punkSkin from '../../shared/assets/imgs/skin-punks.png';
 import canFix from '../../shared/assets/imgs/fixThat.png';
 
@@ -13,7 +13,7 @@ interface MemesGalleryPageProps {
 }
 
 const CDN = import.meta.env.VITE_CDN_BASE_URL;
-const totalMemes = 103;
+const totalMemes = 105;
 
 const defaultImages = Array.from({length: totalMemes}, (_, i) => (
   `${CDN}/memes/mm-${i + 1}.jpg`
@@ -88,13 +88,12 @@ export default function MemesGalleryPage({images = defaultImages}: MemesGalleryP
           <div className="masonry-grid">
             {
               shuffledImages.map((src, index) => (
-                <div className="masonry-item-wrapper b-radius" key={index}>
-                  <img
-                    className="masonry-item"
-                    src={showVouchers ? `${import.meta.env.BASE_URL}imgs/projects/voucher.jpg` : src}
-                    alt={`img-${index}`}
-                  />
-                </div>
+                <img
+                  className="masonry-item b-radius"
+                  src={showVouchers ? `${import.meta.env.BASE_URL}imgs/projects/voucher.jpg` : src}
+                  alt={`img-${index}`}
+                  key={index}
+                />
               ))
             }
           </div>
