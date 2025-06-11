@@ -54,7 +54,13 @@
   -webkit-filter: none;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1400px) {
+  .project-card {
+    width: calc((100% - 2rem) / 4);
+  }
+}
+
+  @media (max-width: 768px) {
   .project-list-page {
     gap: 1rem;
   }

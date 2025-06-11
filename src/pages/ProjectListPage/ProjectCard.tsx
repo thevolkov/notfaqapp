@@ -5,10 +5,11 @@ import {getProjectImageSrc} from '../../shared/lib/imageHelpers';
 import {type Project} from '../../entities/project/projectSlice';
 import premiumCheckMark from '../../shared/assets/icons/premium-check.svg';
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, isGodmode }: { project: Project; isGodmode: boolean; }) {
   const navigate = useNavigate();
 
   if (project.id === '666') return null;
+  if (!project.published && !isGodmode) return null;
 
   return (
     <div

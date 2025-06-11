@@ -13,7 +13,7 @@ interface MemesGalleryPageProps {
 }
 
 const CDN = import.meta.env.VITE_CDN_BASE_URL;
-const totalMemes = 105;
+const totalMemes = 106;
 
 const defaultImages = Array.from({length: totalMemes}, (_, i) => (
   `${CDN}/memes/mm-${i + 1}.jpg`

@@ -15,6 +15,7 @@ import {useSelector} from 'react-redux';
 import ProjectCard from './ProjectCard';
 import travolta from '../../shared/assets/travolta.webm';
 import travoltaHVC from '../../shared/assets/travolta-hvc.mp4';
+import {useIsGodmode} from '../../shared/lib/useIsGodmode';
 
 export default function ProjectListPage() {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ export default function ProjectListPage() {
   const showVouchers = useAppSelector((state) => state.console.vouchers);
   const showGtaStars = useAppSelector((state) => state.console.showGtaStars);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isGodmode = useIsGodmode();
 
   const titleText = showVouchers ? 'voucher???' : 'not faq';
   const subtitleText = showVouchers
@@ -198,7 +200,7 @@ export default function ProjectListPage() {
           {
             filteredProjects.length > 0 ? (
               filteredProjects.map((project) =>
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard key={project.id} project={project} isGodmode={isGodmode} />
               )
             ) : (
               <Title text="Not found (ʘ‿ʘ)" size="s" />
